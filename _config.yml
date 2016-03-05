@@ -1,1 +1,7 @@
-exclude: [vendor]
+title: jonlauridsen.com
+author: Jon Lauridsen
+url: http://jonlauridsen.com
+root: /
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+theme: microfolio
