@@ -11,6 +11,8 @@ Element.prototype.setClassName = function (name) {
 }
 
 var state = {
+  tick: "tick",
+  stateChanged: "stateChanged",
   early: "early",
   morning: "morning",
   noon: "noon",
@@ -43,16 +45,16 @@ var getTimeState = function (date) {
 
 var StateManager = function () {
   var self = new EventEmitter()
-  self.defineEvents(["stateChanged"] + Object.keys(state))
+  self.defineEvents(Object.keys(state))
 
   setInterval(function () {
-    self.emit("tick", new Date())
+    self.emit(state.tick, new Date())
   }, 1000)
 
   self.set = function (newState) {
     var oldState = self._state
     self._state = newState
-    self.emit("stateChanged", self._state, oldState)
+    self.emit(state.stateChanged, self._state, oldState)
     self.emit(self._state)
   }
   self._state = self.set(getTimeState(new Date()))
@@ -67,7 +69,7 @@ var StateManager = function () {
     self._autoState = false
   }
 
-  self.on("tick", function (d) {
+  self.on(state.tick, function (d) {
     if (!self._autoState) return
     var newState = getTimeState(d)
     if (newState != self._state) {
@@ -79,7 +81,7 @@ var StateManager = function () {
 
 window.addEventListener("load", function (e) {
   stateManager = StateManager()
-  stateManager.on("stateChanged", function (state, prevState) {
+  stateManager.on(state.stateChanged, function (state, prevState) {
     console.log("Transition from " + prevState + " to " + state)
   })
   stateManager.start()
