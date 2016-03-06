@@ -1,4 +1,4 @@
-<intro>Good morning!</intro>
+<intro>Hello!</intro>
 
 My name is <imghover>Jon Lauridsen</imghover>,
 I’m a software developer
