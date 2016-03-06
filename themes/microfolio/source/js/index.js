@@ -1,15 +1,5 @@
 var stateManager
 
-Element.prototype.hasClassName = function (name) {
-  return new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)").test(this.className)
-}
-
-Element.prototype.setClassName = function (name) {
-  if (!this.hasClassName(name)) {
-    this.className = name
-  }
-}
-
 var state = {
   tick: "tick",
   stateChanged: "stateChanged",
@@ -79,11 +69,43 @@ var StateManager = function () {
   return self
 }
 
+Element.prototype.hasClassName = function (name) {
+  return new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)").test(this.className)
+}
+
+Element.prototype.setClassName = function (name) {
+  if (!this.hasClassName(name)) {
+    this.className = name
+  }
+}
+
+var stateToGreeting = {
+  early: "Oh hello, you're early,",
+  morning: "Good morning,",
+  afternoon: "Good afternoon,",
+  dinner: "Hello hello,",
+  evening: "Good evening,",
+  night: "Hi, it sure is late, huh?"
+}
+
+var enrichGreeting = function (T) {
+  var elements = Array.prototype.slice.call(
+    document.getElementsByTagName("greeting"), 0)
+
+  T.on(state.stateChanged, function (state) {
+    elements.forEach(function (el) {
+      el.setClassName(state)
+      el.innerHTML = stateToGreeting[state] || "Hello,"
+    })
+  })
+}
+
 window.addEventListener("load", function (e) {
   stateManager = StateManager()
   stateManager.on(state.stateChanged, function (state, prevState) {
     console.log("Transition from " + prevState + " to " + state)
   })
+  enrichGreeting(stateManager)
   stateManager.start()
   console.log("Page initialized")
 }, false)
