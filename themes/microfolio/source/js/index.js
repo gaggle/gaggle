@@ -1,16 +1,8 @@
 var stateManager
 
-Element.prototype.hasClassName = function (name) {
-  return new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)").test(this.className)
-}
-
-Element.prototype.setClassName = function (name) {
-  if (!this.hasClassName(name)) {
-    this.className = name
-  }
-}
-
 var state = {
+  tick: "tick",
+  stateChanged: "stateChanged",
   early: "early",
   morning: "morning",
   noon: "noon",
@@ -43,16 +35,16 @@ var getTimeState = function (date) {
 
 var StateManager = function () {
   var self = new EventEmitter()
-  self.defineEvents(["stateChanged"] + Object.keys(state))
+  self.defineEvents(Object.keys(state))
 
   setInterval(function () {
-    self.emit("tick", new Date())
+    self.emit(state.tick, new Date())
   }, 1000)
 
   self.set = function (newState) {
     var oldState = self._state
     self._state = newState
-    self.emit("stateChanged", self._state, oldState)
+    self.emit(state.stateChanged, self._state, oldState)
     self.emit(self._state)
   }
   self._state = self.set(getTimeState(new Date()))
@@ -67,7 +59,7 @@ var StateManager = function () {
     self._autoState = false
   }
 
-  self.on("tick", function (d) {
+  self.on(state.tick, function (d) {
     if (!self._autoState) return
     var newState = getTimeState(d)
     if (newState != self._state) {
@@ -77,11 +69,43 @@ var StateManager = function () {
   return self
 }
 
+Element.prototype.hasClassName = function (name) {
+  return new RegExp("(?:^|\\s+)" + name + "(?:\\s+|$)").test(this.className)
+}
+
+Element.prototype.setClassName = function (name) {
+  if (!this.hasClassName(name)) {
+    this.className = name
+  }
+}
+
+var stateToGreeting = {
+  early: "Oh hello, you're early,",
+  morning: "Good morning,",
+  afternoon: "Good afternoon,",
+  dinner: "Hello hello,",
+  evening: "Good evening,",
+  night: "Hi, it sure is late, huh?"
+}
+
+var enrichGreeting = function (T) {
+  var elements = Array.prototype.slice.call(
+    document.getElementsByTagName("greeting"), 0)
+
+  T.on(state.stateChanged, function (state) {
+    elements.forEach(function (el) {
+      el.setClassName(state)
+      el.innerHTML = stateToGreeting[state] || "Hello,"
+    })
+  })
+}
+
 window.addEventListener("load", function (e) {
   stateManager = StateManager()
-  stateManager.on("stateChanged", function (state, prevState) {
+  stateManager.on(state.stateChanged, function (state, prevState) {
     console.log("Transition from " + prevState + " to " + state)
   })
+  enrichGreeting(stateManager)
   stateManager.start()
   console.log("Page initialized")
 }, false)
