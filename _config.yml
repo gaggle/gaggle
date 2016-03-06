@@ -18,3 +18,11 @@ markdown:
   anchors:
     level: 1
     collisionSuffix: 'v'
+stylus:
+  compress: true
+uglify:
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - "*.min.js"
