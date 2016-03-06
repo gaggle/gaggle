@@ -5,3 +5,16 @@ root: /
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 theme: microfolio
+markdown:
+  render:
+    html: true
+    breaks: false
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-sub
+    - markdown-it-sup
+  anchors:
+    level: 1
+    collisionSuffix: 'v'
