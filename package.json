@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "build": "hexo clean && hexo generate",
+    "build-and-watch": "hexo clean && hexo generate --watch",
+    "ci-deploy": "./_scripts/ci-deploy",
     "deploy": "./_scripts/deploy",
-    "ci-deploy": "./_scripts/ci-deploy"
+    "serve": "hexo serve"
   },
   "hexo": {
     "version": "3.2.0"
