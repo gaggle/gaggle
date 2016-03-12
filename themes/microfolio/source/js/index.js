@@ -3,6 +3,7 @@ var enrichBackgrounds = require("./register-backgrounds")
 var enrichGreetings = require("./register-greetings")
 var stateController = require("./state-manager-controller")
 var StateManager = require("./state-manager")
+var mouseTracker = require("./mouse-tracker")
 
 var confParser = function (conf) {
   var data = {}
@@ -49,6 +50,7 @@ window.addEventListener("load", function (e) {
       }
     }))
   stateController(stateManager)
+  mouseTracker(document.getElementsByClassName("content")[0])
 
   stateManager.start()
   window.stateManager = stateManager
