@@ -5,7 +5,7 @@ I’m a programmer
 who loves producing high-quality, sustainable code.
 I specialise in internal tools
 and workflow optimisations,
-but also <heart><3</heart> frontend code,
+but also <love>&hearts;</love> frontend code,
 APIs,
 web design/UX,
 video games,
