@@ -12,26 +12,40 @@ module.exports = function (stateManager, conf) {
   var backBuffer  = document.getElementsByClassName("back")[0],
       frontBuffer = document.getElementsByClassName("front")[0],
       content     = document.getElementsByClassName("content")
+  var states = []
 
-  backBuffer.origClassName = backBuffer.className
-  frontBuffer.origClassName = frontBuffer.className
-  Array.prototype.forEach.call(content, function (el) {
-    el.origClassName = el.className
-  })
+  var removeMany = function (el, cls) {
+    cls.forEach(function (c) {
+      el.classList.remove(c)
+    })
+  }
+
+  var getIntersection = function (array1, array2) {
+    return array1.filter(function (n) {
+      return array2.indexOf(n) != -1
+    })
+  }
+
+  var toList = function (nodeList) {
+    var array = []
+    for (var i = 0; i < nodeList.length; i++) {
+      array.push(nodeList[i])
+    }
+    return array
+  }
 
   frontBuffer.addEventListener(transitionEvent, function (e) {
     if (!frontBuffer.classList.contains(FLIP_TRIGGER)) return
-    var classes = frontBuffer.className
-      .replace(frontBuffer.origClassName, "")
-      .replace(FLIP_TRIGGER, "")
-      .trim()
-    backBuffer.className = backBuffer.origClassName + " " + classes
-    frontBuffer.className = frontBuffer.origClassName
+    var state = getIntersection(states, toList(frontBuffer.classList))
+    removeMany(backBuffer, states.concat(["thumb"]))
+    backBuffer.classList.add(state)
+
+    removeMany(frontBuffer, states.concat([FLIP_TRIGGER]))
   })
 
   var shouldFrontChange = function (d) {
     return !frontBuffer.classList.contains(d) &&
-           frontBuffer.className != frontBuffer.origClassName
+           frontBuffer.className.indexOf(d) != -1
   }
 
   var shouldBackChange = function (d) {
@@ -48,6 +62,7 @@ module.exports = function (stateManager, conf) {
     var eventData = conf[eventName]
     eventData.forEach(function (e) {
       var data = e[2]
+      states.push(data.name)
       var bgsel = ".bg." + data.name
 
       style[bgsel] = {
@@ -57,6 +72,7 @@ module.exports = function (stateManager, conf) {
         "background-image": url(data.name, ".thumb")
       }
       style[".content." + data.name] = data.content
+
       media[QUERIES.l][bgsel] = {
         "background-image": url(data.name, ".l")
       }
@@ -73,14 +89,13 @@ module.exports = function (stateManager, conf) {
         if (!isBetween(value, min, max)) return
         if (!shouldFrontChange(data.name) &&
             !shouldBackChange(data.name)) return
-        if (frontBuffer.className == frontBuffer.origClassName &&
-            backBuffer.className == backBuffer.origClassName) {
+        if (!getIntersection(states, toList(backBuffer.classList)).length) {
           backBuffer.classList.add(data.name, "thumb")
         }
-        frontBuffer.className = frontBuffer.origClassName
+        removeMany(frontBuffer, states)
         frontBuffer.classList.add(data.name, FLIP_TRIGGER)
         Array.prototype.forEach.call(content, function (el) {
-          el.className = el.origClassName
+          removeMany(el, states)
           el.classList.add(data.name)
         })
         return true
