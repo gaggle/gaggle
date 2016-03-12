@@ -111,5 +111,4 @@ var attachStyleSheet = function (style, media) {
   })
   var sheet = jss.createStyleSheet(style, {named: false})
   sheet.attach()
-  console.log(sheet.toString())
 }
