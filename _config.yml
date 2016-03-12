@@ -26,3 +26,9 @@ uglify:
   compress:
   exclude:
     - "*.min.js"
+browserify:
+  exclude:
+    - "**/*.min.js"
+clean_css:
+  exclude:
+    - "*.min.css"
