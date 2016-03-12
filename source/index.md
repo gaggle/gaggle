@@ -5,9 +5,10 @@ I’m a programmer
 who loves producing high-quality, sustainable code.
 I specialise in internal tools
 and workflow optimisations,
-but also <love>&hearts;</love> frontend code,
+but also <love>&hearts;</love>
 APIs,
 web design/UX,
+frontend code,
 video games,
 and good discussions.
 [Say hi](mailto:mail@jonlauridsen.com),
