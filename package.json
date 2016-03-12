@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build-and-watch": "hexo generate --watch",
-    "clean": "hexo clean",
+    "build": "hexo generate --watch",
+    "rebuild": "hexo clean && hexo generate",
+    "serve": "hexo serve",
     "ci-deploy": "./_scripts/ci-deploy",
     "deploy": "./_scripts/deploy",
-    "rebuild": "hexo clean && hexo generate",
-    "serve": "hexo serve"
+    "test": "mocha"
   },
   "hexo": {
     "version": "3.2.0"
