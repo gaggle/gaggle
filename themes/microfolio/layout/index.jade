@@ -1,16 +1,11 @@
 extends base
 
-block prepend head
+append head
+  link(rel="stylesheet", href="/css/index.css")
   script(type="text/javascript", src="/js/index.js")
-  script(type="text/javascript", src="/libs/EventEmitter/4.3.0/EventEmitter.min.js")
-
-  link(rel="stylesheet", href="http://yui.yahooapis.com/combo"
-                              + "?pure/0.6.0/base-min.css")
-//                              + "&pure/0.6.0/buttons-min.css"
-//                              + "&pure/0.6.0/forms-min.css"
-//                              + "&pure/0.6.0/grids-responsive-min.css"
-//                              + "&pure/0.6.0//menus-min.css"
 
 block content
-  div
-    p !{page.content}
+  div.back.bg
+    div.front.bg
+  div.container
+    div.content !{page.content}
