@@ -27,6 +27,8 @@
     "wolfy87-eventemitter": "^4.3.0"
   },
   "devDependencies": {
-    "hexo-cli": "^1.0.1"
+    "hexo-cli": "^1.0.1",
+    "mocha": "^2.4.5",
+    "must": "^0.13.1"
   }
 }
