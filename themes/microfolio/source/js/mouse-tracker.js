@@ -1,12 +1,10 @@
 "use strict";
 var throttle = require("./throttler")
 
-function getMouseCoords(e) {
-  var e = e || window.event
-  document.getElementById('msg').innerHTML = e.clientX + ', ' +
-                                             e.clientY + '<br>' + e.screenX +
-                                             ', ' + e.screenY;
-}
+var SCALE       = 1,
+    OFFSET      = 0,
+    PERSPECTIVE = 500,
+    MAX_DEG     = 3
 
 var followCursor = function (el) {
 
@@ -19,15 +17,21 @@ var followCursor = function (el) {
                                 window.innerHeight || 0)
       var h = raw_height / 2
 
-      var max_deg = 7
-      var factor_x = max_deg / w
-      var factor_y = max_deg / h * -1
+      var factor_x = MAX_DEG / w
+      var factor_y = MAX_DEG / h * -1
 
       var e = e || window.event
       var degX = (e.clientX - w) * factor_x
       var degY = (e.clientY - h) * factor_y
-      el.style.transform =
-        "perspective(1000px) rotateY(" + degX + "deg) rotateX(" + degY + "deg)"
+      var xformmsg = "perspective(" + PERSPECTIVE + "px) " +
+                     "rotateY(" + degX + "deg) " +
+                     "rotateX(" + degY + "deg)"
+      if (OFFSET != 0) xformmsg += " " +
+                                   "translateZ(" + OFFSET + "px)"
+      if (SCALE != 1) xformmsg += " " +
+                                  "scaleX(" + SCALE + ") " +
+                                  "scaleY(" + SCALE + ")"
+      el.style.transform = xformmsg
     }
   }
 }
