@@ -1,6 +1,7 @@
 bg-duration = 120s
 bg-ratio-factor = 4
 transition-timing = ease-in-out
+transition-duration = 2s
 
 *
   color #222
@@ -43,7 +44,7 @@ love
     background-image url("/img/clouds.thumb.jpg")
   &.front
     transform translateZ(1)
-    transition opacity 2s transition-timing
+    transition opacity transition-duration transition-timing
     opacity 0
     &.fadein
       opacity 1
@@ -67,6 +68,6 @@ love
     display inline-block
   .content
     text-shadow -.5px 1.3px 1px #2b2b2b
-    transition text-shadow 2s transition-timing
+    transition text-shadow transition-duration transition-timing
     padding 1em 1.8em
     background rgba(10, 0, 0, 0.1)
