@@ -55,10 +55,11 @@ love
     background-image url("/img/clouds.thumb.jpg")
   &.front
     transform translateZ(1)
-    transition opacity transition-duration transition-timing
+    transition opacity 0
     opacity 0
     &.fadein
       opacity 1
+      transition opacity transition-duration transition-timing
 
 .container
   overflow scroll
