@@ -6,6 +6,8 @@ module.exports = function (stateManager, conf) {
     stateManager.on(eventName, function (value) {
       eventData.some(function (e) {
         var min = e[0], max = e[1], data = e[2]
+        if (stateManager._debug == true)
+          data += " (" + value + "/" + min + "-" + max + ")"
         if (isBetween(value, min, max) && data != el.innerHTML) {
           el.innerHTML = data
           return true

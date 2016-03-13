@@ -7,6 +7,17 @@ module.exports = function (stateManager) {
 
     var t = stateManager.time
     if (charCode) switch (String.fromCharCode(charCode)) {
+      case "d":
+        if (stateManager._debug) {
+          console.log("Debug disabled")
+          stateManager._debug = false
+        }
+        else {
+          console.log("Debug enabled")
+          stateManager._debug = true
+        }
+        stateManager.set(stateManager.time)
+        break
       case "n":
         t.setHours(t.getHours() + 1)
         stateManager.set(t)
