@@ -41,10 +41,11 @@ module.exports = function (stateManager, conf) {
     return array
   }
 
-  var shuffleBuffers = function (e) {
+  var shuffleBuffers = function () {
     var state = getIntersection(states, toList(frontBuffer.classList))
     removeMany(backBuffer, states.concat(["thumb"]))
-    backBuffer.classList.add(state)
+    if (state.length)
+      backBuffer.classList.add(state)
     if (frontBuffer.classList.contains("thumb")) {
       backBuffer.classList.add("thumb")
     }
@@ -120,13 +121,8 @@ module.exports = function (stateManager, conf) {
           }
           var img = new Image()
           img.addEventListener("load", function () {
-            console.log("Finished loading", img.src)
-            removeMany(frontBuffer, states)
+            //removeMany(frontBuffer, states)
             frontBuffer.classList.add(data.name, FLIP_TRIGGER)
-            Array.prototype.forEach.call(content, function (el) {
-              removeMany(el, states)
-              el.classList.add(data.name)
-            })
           }, false)
           img.src = p
         }
@@ -136,16 +132,19 @@ module.exports = function (stateManager, conf) {
           var thumb_img = new Image()
           thumb_img.addEventListener("load", function () {
             var triggerFull = function () {
-              frontBuffer.removeEventListener(transitionEvent, triggerFull,
-                                              false)
+              frontBuffer.removeEventListener(
+                transitionEvent, triggerFull, false)
               loadFull()
             }
             frontBuffer.addEventListener(transitionEvent, triggerFull, false)
             frontBuffer.classList.add(data.name, "thumb", FLIP_TRIGGER)
-            loadFull()
           }, false)
           thumb_img.src = path(data.name, ".thumb")
         }
+        Array.prototype.forEach.call(content, function (el) {
+          removeMany(el, states)
+          el.classList.add(data.name)
+        })
         return true
       })
     })
