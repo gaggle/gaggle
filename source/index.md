@@ -3,7 +3,7 @@
 I create high quality, sustainable software solutions.
 I'm specialized in internal tools
 and workflow optimizations of all kinds,
-but also <love>&hearts;</love>
+but also love
 web design/UX, frontend code, video games, and good discussions.
 
 [Send me a mail](mailto:mail@jonlauridsen.com),
