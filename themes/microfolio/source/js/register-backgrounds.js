@@ -16,9 +16,15 @@ module.exports = function (stateManager, conf) {
   var states = []
 
   var removeMany = function (el, cls) {
-    cls.forEach(function (c) {
-      el.classList.remove(c)
+    var newClassName = el.className
+    cls.some(function (c) {
+      var i = newClassName.indexOf(c)
+      if (i == -1) return
+      newClassName = (newClassName.slice(0, i - 1) +
+                      newClassName.slice(i + c.length, newClassName.length))
     })
+    if (newClassName)
+      el.className = newClassName
   }
 
   var getIntersection = function (array1, array2) {
@@ -35,11 +41,14 @@ module.exports = function (stateManager, conf) {
     return array
   }
 
-  var shuffleBuffers = function () {
+  var shuffleBuffers = function (e) {
     var state = getIntersection(states, toList(frontBuffer.classList))
     removeMany(backBuffer, states.concat(["thumb"]))
     backBuffer.classList.add(state)
-    removeMany(frontBuffer, states.concat([FLIP_TRIGGER]))
+    if (frontBuffer.classList.contains("thumb")) {
+      backBuffer.classList.add("thumb")
+    }
+    removeMany(frontBuffer, states.concat(["thumb", FLIP_TRIGGER]))
   }
 
   frontBuffer.addEventListener(transitionEvent, function (e) {
@@ -101,31 +110,42 @@ module.exports = function (stateManager, conf) {
         }
         if (!shouldFrontChange(data.name) &&
             !shouldBackChange(data.name)) return
-        if (!getIntersection(states, toList(backBuffer.classList)).length) {
-          var timg = new Image()
-          timg.addEventListener("load", function () {
-            backBuffer.classList.add(data.name, "thumb")
-          }, false)
-          timg.src = path(data.name, ".thumb")
-        }
 
-        var p = path(data.name, ".m")
-        if (window.matchMedia(QUERIES.l)) {
-          p = path(data.name, ".l")
-        } else if (window.matchMedia(QUERIES.xl)) {
-          p = path(data.name, ".xl")
+        var loadFull = function () {
+          var p = path(data.name, ".m")
+          if (window.matchMedia(QUERIES.l)) {
+            p = path(data.name, ".l")
+          } else if (window.matchMedia(QUERIES.xl)) {
+            p = path(data.name, ".xl")
+          }
+          var img = new Image()
+          img.addEventListener("load", function () {
+            console.log("Finished loading", img.src)
+            removeMany(frontBuffer, states)
+            frontBuffer.classList.add(data.name, FLIP_TRIGGER)
+            Array.prototype.forEach.call(content, function (el) {
+              removeMany(el, states)
+              el.classList.add(data.name)
+            })
+          }, false)
+          img.src = p
         }
-        var img = new Image()
-        img.addEventListener("load", function () {
-          console.log("Finished loading", img.src)
-          removeMany(frontBuffer, states)
-          frontBuffer.classList.add(data.name, FLIP_TRIGGER)
-          Array.prototype.forEach.call(content, function (el) {
-            removeMany(el, states)
-            el.classList.add(data.name)
-          })
-        }, false)
-        img.src = p
+        if (getIntersection(states, toList(backBuffer.classList)).length) {
+          loadFull()
+        } else {
+          var thumb_img = new Image()
+          thumb_img.addEventListener("load", function () {
+            var triggerFull = function () {
+              frontBuffer.removeEventListener(transitionEvent, triggerFull,
+                                              false)
+              loadFull()
+            }
+            frontBuffer.addEventListener(transitionEvent, triggerFull, false)
+            frontBuffer.classList.add(data.name, "thumb", FLIP_TRIGGER)
+            loadFull()
+          }, false)
+          thumb_img.src = path(data.name, ".thumb")
+        }
         return true
       })
     })
