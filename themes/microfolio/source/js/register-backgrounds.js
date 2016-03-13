@@ -1,4 +1,5 @@
 var jss = require("jss").create()
+var uniq = require("lodash/uniq")
 var transitionEvent = require("./which-transition-event")()
 
 var FLIP_TRIGGER = "fadein"
@@ -64,7 +65,6 @@ module.exports = function (stateManager, conf) {
       var data = e[2]
       states.push(data.name)
       var bgsel = ".bg." + data.name
-
       style[bgsel] = {
         "background-image": url(data.name, ".m")
       }
@@ -102,6 +102,7 @@ module.exports = function (stateManager, conf) {
       })
     })
   })
+  states = uniq(states)
   attachStyleSheet(style, media)
 }
 

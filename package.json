@@ -24,6 +24,7 @@
     "hexo-server": "^0.2.0",
     "hexo-uglify": "0.0.3",
     "jss": "^3.3.0",
+    "lodash": "^4.6.1",
     "wolfy87-eventemitter": "^4.3.0"
   },
   "devDependencies": {
