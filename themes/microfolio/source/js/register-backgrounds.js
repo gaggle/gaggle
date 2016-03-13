@@ -102,14 +102,30 @@ module.exports = function (stateManager, conf) {
         if (!shouldFrontChange(data.name) &&
             !shouldBackChange(data.name)) return
         if (!getIntersection(states, toList(backBuffer.classList)).length) {
-          backBuffer.classList.add(data.name, "thumb")
+          var timg = new Image()
+          timg.addEventListener("load", function () {
+            backBuffer.classList.add(data.name, "thumb")
+          }, false)
+          timg.src = path(data.name, ".thumb")
         }
-        removeMany(frontBuffer, states)
-        frontBuffer.classList.add(data.name, FLIP_TRIGGER)
-        Array.prototype.forEach.call(content, function (el) {
-          removeMany(el, states)
-          el.classList.add(data.name)
-        })
+
+        var p = path(data.name, ".m")
+        if (window.matchMedia(QUERIES.l)) {
+          p = path(data.name, ".l")
+        } else if (window.matchMedia(QUERIES.xl)) {
+          p = path(data.name, ".xl")
+        }
+        var img = new Image()
+        img.addEventListener("load", function () {
+          console.log("Finished loading", img.src)
+          removeMany(frontBuffer, states)
+          frontBuffer.classList.add(data.name, FLIP_TRIGGER)
+          Array.prototype.forEach.call(content, function (el) {
+            removeMany(el, states)
+            el.classList.add(data.name)
+          })
+        }, false)
+        img.src = p
         return true
       })
     })
