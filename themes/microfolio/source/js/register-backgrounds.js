@@ -35,13 +35,16 @@ module.exports = function (stateManager, conf) {
     return array
   }
 
-  frontBuffer.addEventListener(transitionEvent, function (e) {
-    if (!frontBuffer.classList.contains(FLIP_TRIGGER)) return
+  var shuffleBuffers = function () {
     var state = getIntersection(states, toList(frontBuffer.classList))
     removeMany(backBuffer, states.concat(["thumb"]))
     backBuffer.classList.add(state)
-
     removeMany(frontBuffer, states.concat([FLIP_TRIGGER]))
+  }
+
+  frontBuffer.addEventListener(transitionEvent, function (e) {
+    if (!frontBuffer.classList.contains(FLIP_TRIGGER)) return
+    shuffleBuffers()
   })
 
   var shouldFrontChange = function (d) {
@@ -52,6 +55,11 @@ module.exports = function (stateManager, conf) {
   var shouldBackChange = function (d) {
     return !frontBuffer.classList.contains(d) &&
            !backBuffer.classList.contains(d)
+  }
+
+  var shouldFlushFront = function (d) {
+    if(frontBuffer.classList.contains(FLIP_TRIGGER))
+      return true
   }
 
   var style = {}, media = {}
@@ -87,6 +95,9 @@ module.exports = function (stateManager, conf) {
       eventData.some(function (e) {
         var min = e[0], max = e[1], data = e[2]
         if (!isBetween(value, min, max)) return
+        if (shouldFlushFront(data.name)) {
+          shuffleBuffers()
+        }
         if (!shouldFrontChange(data.name) &&
             !shouldBackChange(data.name)) return
         if (!getIntersection(states, toList(backBuffer.classList)).length) {
