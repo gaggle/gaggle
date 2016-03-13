@@ -41,7 +41,7 @@ window.addEventListener("load", function (e) {
         //},
         "0-20": {
           name: "clouds",
-          content: {"text-shadow": "-1px -1px 1px #D9C69E, 1px 1px 2px #4A7FA8"}
+          content: {"text-shadow": "-1px -1px 1px #A69779, 1px 1px 2px #4A7FA8"}
         },
         "21-23": {
           name: "hospital",
