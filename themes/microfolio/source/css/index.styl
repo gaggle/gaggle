@@ -13,7 +13,6 @@ transition-duration = 2s
 }
 
 *
-  color #222
   font-family Fanwood, sans-serif
   line-height 1.3em
 
@@ -40,7 +39,7 @@ a, imghover
 }
 
 love
-  color #c62a28
+  color #c62a28 !important
 
 .bg
   background no-repeat center center fixed
@@ -79,7 +78,9 @@ love
     vertical-align middle
     display inline-block
   .content
-    text-shadow -.5px 1.3px 1px #2b2b2b
-    transition text-shadow transition-duration transition-timing
+    transition background-color transition-duration transition-timing, text-shadow transition-duration transition-timing
     padding 1em 1.8em
-    background rgba(255, 255, 255, 0.3)
+
+.container *
+  color #222
+  transition color transition-duration transition-timing

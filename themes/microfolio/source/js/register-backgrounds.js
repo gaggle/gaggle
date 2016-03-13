@@ -58,7 +58,7 @@ module.exports = function (stateManager, conf) {
   }
 
   var shouldFlushFront = function (d) {
-    if(frontBuffer.classList.contains(FLIP_TRIGGER))
+    if (frontBuffer.classList.contains(FLIP_TRIGGER))
       return true
   }
 
@@ -79,7 +79,8 @@ module.exports = function (stateManager, conf) {
       style[bgsel + ".thumb"] = {
         "background-image": url(data.name, ".thumb")
       }
-      style[".content." + data.name] = data.content
+      if (data.content) style[".content." + data.name] = data.content
+      style["." + data.name + " *"] = data["*"]
 
       media[QUERIES.l][bgsel] = {
         "background-image": url(data.name, ".l")
