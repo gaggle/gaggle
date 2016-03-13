@@ -28,7 +28,7 @@ window.addEventListener("load", function (e) {
         "5-7": "Oh hello, you're early,",
         "8-11": "Good morning,",
         "12-15": "Good afternoon,",
-        "16-19": "Hello hello,",
+        "16-19": "Hello,",
         "20-24": "Good evening,"
       }
     }))
