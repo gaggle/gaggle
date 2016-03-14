@@ -52,7 +52,9 @@ love
   position fixed
   &.back
     transform translateZ(0)
-    background-image url("/img/clouds.thumb.jpg")
+    background-color black
+    &.noJS
+      background-image url("/img/clouds.thumb.jpg")
   &.front
     transform translateZ(1)
     transition opacity 0
