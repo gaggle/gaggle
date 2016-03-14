@@ -39,15 +39,17 @@ window.addEventListener("DOMContentLoaded", function (e) {
     {
       name: "sunrise",
       "content": {
+        "text-shadow": "1px 1px 1px #CCBA6B",
         "background-color": "rgba(20, 20, 20, 0.4)"
       },
       "*": {
-        color: "#E6E6E6"
+        color: "white"
       }
     },
     {
       name: "streaky",
       "content": {
+        "text-shadow": "0 1px 0px #B34035",
         "background-color": "rgba(20, 20, 20, 0.4)"
       },
       "*": {
@@ -61,6 +63,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
     {
       name: "dog",
       "content": {
+        "text-shadow": "-1px -.5px 1px #20160F",
         "background-color": "rgba(50, 50, 50, 0.2)"
       },
       "*": {
@@ -77,6 +80,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
     {
       name: "dusk",
       "content": {
+        "text-shadow": "0 1px 1px #FFD166, .8px -1.5px 1px #1F132B",
         "background-color": "rgba(20, 20, 20, 0.4)"
       },
       "*": {
