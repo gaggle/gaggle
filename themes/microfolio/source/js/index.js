@@ -19,7 +19,7 @@ var confParser = function (conf) {
   return data
 }
 
-window.addEventListener("load", function (e) {
+window.addEventListener("DOMContentLoaded", function (e) {
   document.getElementsByClassName("back")[0].classList.remove("noJS")
   var stateManager = new StateManager()
   enrichGreetings(stateManager, confParser(
