@@ -145,6 +145,9 @@ module.exports = function (stateManager, conf) {
   stateManager.on("minutesElapsed", function () {
     changeBackground()
   })
+  frontBuffer.addEventListener("click", function () {
+    changeBackground()
+  })
   themeNames = uniq(themeNames)
   attachStyleSheet(style, media)
 }
