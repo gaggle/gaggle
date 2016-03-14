@@ -115,6 +115,7 @@ module.exports = function (stateManager, conf) {
       } else if (window.matchMedia(QUERIES.xl)) {
         p = path(theme.name, ".xl")
       }
+      console.log("Loading", p)
       var img = new Image()
       img.addEventListener("load", function () {
         frontBuffer.classList.add(theme.name, FLIP_TRIGGER)
