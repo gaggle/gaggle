@@ -115,7 +115,6 @@ module.exports = function (stateManager, conf) {
       } else if (window.matchMedia(QUERIES.xl)) {
         p = path(theme.name, ".xl")
       }
-      console.log("Loading", p)
       var img = new Image()
       img.addEventListener("load", function () {
         frontBuffer.classList.add(theme.name, FLIP_TRIGGER)
@@ -124,6 +123,7 @@ module.exports = function (stateManager, conf) {
           el.classList.add(theme.name)
         })
       }, false)
+      console.log("Queueing", p)
       img.src = p
     }
     if (getIntersection(themeNames, toList(backBuffer.classList)).length) {
@@ -139,7 +139,9 @@ module.exports = function (stateManager, conf) {
         frontBuffer.addEventListener(transitionEvent, triggerFull, false)
         frontBuffer.classList.add(theme.name, "thumb", FLIP_TRIGGER)
       }, false)
-      thumb_img.src = path(theme.name, ".thumb")
+      var thumb_path = path(theme.name, ".thumb")
+      console.log("Queueing", thumb_path)
+      thumb_img.src = thumb_path
       Array.prototype.forEach.call(content, function (el) {
         removeMany(el, themeNames)
         el.classList.add(theme.name)
