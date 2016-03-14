@@ -118,6 +118,10 @@ module.exports = function (stateManager, conf) {
       var img = new Image()
       img.addEventListener("load", function () {
         frontBuffer.classList.add(theme.name, FLIP_TRIGGER)
+        Array.prototype.forEach.call(content, function (el) {
+          removeMany(el, themeNames)
+          el.classList.add(theme.name)
+        })
       }, false)
       img.src = p
     }
@@ -135,12 +139,11 @@ module.exports = function (stateManager, conf) {
         frontBuffer.classList.add(theme.name, "thumb", FLIP_TRIGGER)
       }, false)
       thumb_img.src = path(theme.name, ".thumb")
+      Array.prototype.forEach.call(content, function (el) {
+        removeMany(el, themeNames)
+        el.classList.add(theme.name)
+      })
     }
-    Array.prototype.forEach.call(content, function (el) {
-      removeMany(el, themeNames)
-      el.classList.add(theme.name)
-    })
-
   }
   stateManager.on("minutesElapsed", function () {
     changeBackground()
