@@ -7,10 +7,17 @@ var StateManager = function (opts) {
   if (!opts) opts = {}
   if (!opts.startTime) opts.startTime = new Date()
   var self = new EventEmitter()
-  self.events = {tick: "tick", second: "second", minute: "minute", hour: "hour"}
+  self.events =
+  {
+    tick: "tick",
+    second: "second",
+    minute: "minute",
+    hour: "hour",
+    minutesElapsed: "minutesElapsed"
+  }
   self.defineEvents(Object.keys(self.events))
 
-  self.time = opts.startTime
+  self.time = new Date(opts.startTime.getTime())
   self._running = false
   setInterval(function () {
     if (self._running) {
@@ -25,6 +32,9 @@ var StateManager = function (opts) {
   self.onMinutes = function () {
     self.emit(self.events.minute, self.time.getMinutes())
   }
+  self.onMinutesElapsed = function (val) {
+    self.emit(self.events.minutesElapsed, val)
+  }
   self.onHours = function () {
     self.emit(self.events.hour, self.time.getHours())
   }
@@ -35,11 +45,14 @@ var StateManager = function (opts) {
     self.onSeconds()
     if (seconds == 0) self.onMinutes()
     if (seconds == 0 && minutes == 0) self.onHours()
+    var minutesElapsed = self.getElapsed() / 60
+    if (Number.isInteger(minutesElapsed)) self.onMinutesElapsed(minutesElapsed)
   })
 
   self.activate = function () {
     self.onSeconds()
     self.onMinutes()
+    self.onMinutesElapsed(self.getElapsed() / 60)
     self.onHours()
   }
 
@@ -55,6 +68,16 @@ var StateManager = function (opts) {
   self.set = function (newTime) {
     self.time = newTime
     self.activate()
+  }
+
+  self.setStart = function (newTime) {
+    opts.startTime = newTime
+    self.activate()
+  }
+
+  self.getElapsed = function () {
+    var timeDiff = Math.abs(self.time.getTime() - opts.startTime.getTime())
+    return timeDiff / SECOND
   }
 
   return self
