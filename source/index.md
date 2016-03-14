@@ -1,10 +1,11 @@
 <greeting>Hello,</greeting>
 
-I create high quality, sustainable software solutions.
-I'm specialized in internal tools
-and workflow optimizations of all kinds,
-but also love
-web design/UX, frontend code, video games, and good discussions.
+I create high quality, sustainable software.
+My specialities are internal tools
+and workflow optimizations,
+but I also love
+APIs, frontend, UX, thinking about code quality,
+video games, and good discussions.
 
 [Send me a mail](mailto:mail@jonlauridsen.com),
 ping me on [Twitter](https://twitter.com/jonlauridsen),
