@@ -1,8 +1,8 @@
 <greeting>Hello,</greeting>
 
-Sustainable software is important,
-I write code with an eye on code quality
-and testability  to ensure its maintainable.
+Software quality is important,
+that's why I write code with an eye on testability
+and sustainability  to ensure my solutions are maintainable.
 My specialities are internal tools development  and workflow optimisations,
 but I also love  APIs, front-end, UX, video games,
 and good discussions. 
