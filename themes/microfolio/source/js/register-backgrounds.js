@@ -1,4 +1,5 @@
 var jss = require("jss").create()
+var shuffle = require("lodash/shuffle")
 var uniq = require("lodash/uniq")
 var transitionEvent = require("./which-transition-event")()
 
@@ -13,7 +14,7 @@ module.exports = function (stateManager, conf) {
   var backBuffer  = document.getElementsByClassName("back")[0],
       frontBuffer = document.getElementsByClassName("front")[0],
       content     = document.getElementsByClassName("content")
-  var states = []
+  var themeNames = []
 
   var removeMany = function (el, cls) {
     var newClassName = el.className
@@ -42,14 +43,14 @@ module.exports = function (stateManager, conf) {
   }
 
   var shuffleBuffers = function () {
-    var state = getIntersection(states, toList(frontBuffer.classList))
-    removeMany(backBuffer, states.concat(["thumb"]))
+    var state = getIntersection(themeNames, toList(frontBuffer.classList))
+    removeMany(backBuffer, themeNames.concat(["thumb"]))
     if (state.length)
       backBuffer.classList.add(state)
     if (frontBuffer.classList.contains("thumb")) {
       backBuffer.classList.add("thumb")
     }
-    removeMany(frontBuffer, states.concat(["thumb", FLIP_TRIGGER]))
+    removeMany(frontBuffer, themeNames.concat(["thumb", FLIP_TRIGGER]))
   }
 
   frontBuffer.addEventListener(transitionEvent, function (e) {
@@ -77,84 +78,78 @@ module.exports = function (stateManager, conf) {
     var v = QUERIES[k]
     media[v] = {}
   })
-  Object.keys(conf).forEach(function (eventName) {
-    var eventData = conf[eventName]
-    eventData.forEach(function (e) {
-      var data = e[2]
-      states.push(data.name)
-      var bgsel = ".bg." + data.name
-      style[bgsel] = {
-        "background-image": url(data.name, ".m")
-      }
-      style[bgsel + ".thumb"] = {
-        "background-image": url(data.name, ".thumb")
-      }
-      if (data.content) style[".content." + data.name] = data.content
-      style["." + data.name + " *"] = data["*"]
 
-      media[QUERIES.l][bgsel] = {
-        "background-image": url(data.name, ".l")
-      }
-      media[QUERIES.xl][bgsel] = {
-        "background-image": url(data.name, ".xl")
-      }
-      //media[QUERIES.xxl][bgsel] = {
-      //  "background-image": url(data.name, ".xxl")
-      //}
-    })
-    stateManager.on(eventName, function (value) {
-      eventData.some(function (e) {
-        var min = e[0], max = e[1], data = e[2]
-        if (!isBetween(value, min, max)) return
-        if (shouldFlushFront(data.name)) {
-          shuffleBuffers()
-        }
-        if (!shouldFrontChange(data.name) &&
-            !shouldBackChange(data.name)) return
+  conf.forEach(function (theme) {
+    themeNames.push(theme.name)
+    var bgsel = ".bg." + theme.name
+    style[bgsel] = {
+      "background-image": url(theme.name, ".m")
+    }
+    style[bgsel + ".thumb"] = {
+      "background-image": url(theme.name, ".thumb")
+    }
+    if (theme.content) style[".content." + theme.name] = theme.content
+    style["." + theme.name + " *"] = theme["*"]
 
-        var loadFull = function () {
-          var p = path(data.name, ".m")
-          if (window.matchMedia(QUERIES.l)) {
-            p = path(data.name, ".l")
-          } else if (window.matchMedia(QUERIES.xl)) {
-            p = path(data.name, ".xl")
-          }
-          var img = new Image()
-          img.addEventListener("load", function () {
-            //removeMany(frontBuffer, states)
-            frontBuffer.classList.add(data.name, FLIP_TRIGGER)
-          }, false)
-          img.src = p
-        }
-        if (getIntersection(states, toList(backBuffer.classList)).length) {
-          loadFull()
-        } else {
-          var thumb_img = new Image()
-          thumb_img.addEventListener("load", function () {
-            var triggerFull = function () {
-              frontBuffer.removeEventListener(
-                transitionEvent, triggerFull, false)
-              loadFull()
-            }
-            frontBuffer.addEventListener(transitionEvent, triggerFull, false)
-            frontBuffer.classList.add(data.name, "thumb", FLIP_TRIGGER)
-          }, false)
-          thumb_img.src = path(data.name, ".thumb")
-        }
-        Array.prototype.forEach.call(content, function (el) {
-          removeMany(el, states)
-          el.classList.add(data.name)
-        })
-        return true
-      })
-    })
+    media[QUERIES.l][bgsel] = {
+      "background-image": url(theme.name, ".l")
+    }
+    media[QUERIES.xl][bgsel] = {
+      "background-image": url(theme.name, ".xl")
+    }
   })
-  states = uniq(states)
-  attachStyleSheet(style, media)
-}
 
-var isBetween = function (x, min, max) {
-  return x >= min && x <= max
+  var shuffled = []
+  var changeBackground = function () {
+    if (!shuffled.length) shuffled = shuffle(conf.slice())
+    var theme = shuffled.pop()
+    if (shouldFlushFront(theme.name)) {
+      shuffleBuffers()
+    }
+    if (!shouldFrontChange(theme.name) && !shouldBackChange(theme.name)) return
+
+    var loadFull = function () {
+      var p = path(theme.name, ".m")
+      if (window.matchMedia(QUERIES.l)) {
+        p = path(theme.name, ".l")
+      } else if (window.matchMedia(QUERIES.xl)) {
+        p = path(theme.name, ".xl")
+      }
+      var img = new Image()
+      img.addEventListener("load", function () {
+        frontBuffer.classList.add(theme.name, FLIP_TRIGGER)
+      }, false)
+      img.src = p
+    }
+    if (getIntersection(themeNames, toList(backBuffer.classList)).length) {
+      loadFull()
+    } else {
+      var thumb_img = new Image()
+      thumb_img.addEventListener("load", function () {
+        var triggerFull = function () {
+          frontBuffer.removeEventListener(
+            transitionEvent, triggerFull, false)
+          loadFull()
+        }
+        frontBuffer.addEventListener(transitionEvent, triggerFull, false)
+        frontBuffer.classList.add(theme.name, "thumb", FLIP_TRIGGER)
+      }, false)
+      thumb_img.src = path(theme.name, ".thumb")
+    }
+    Array.prototype.forEach.call(content, function (el) {
+      removeMany(el, themeNames)
+      el.classList.add(theme.name)
+    })
+
+  }
+  stateManager.on("minutesElapsed", function () {
+    changeBackground()
+  })
+  frontBuffer.addEventListener("click", function () {
+    changeBackground()
+  })
+  themeNames = uniq(themeNames)
+  attachStyleSheet(style, media)
 }
 
 var path = function (name, suffix) {
