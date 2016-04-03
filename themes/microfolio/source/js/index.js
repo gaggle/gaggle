@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", function (e) {
     {
       name: "sunrise",
       "content": {
-        "text-shadow": "1px 1px 1px #CCBA6B",
+        "text-shadow": "1px 1px 1px #97854c",
         "background-color": "rgba(20, 20, 20, 0.4)"
       },
       "*": {
