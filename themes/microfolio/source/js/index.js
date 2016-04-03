@@ -1,4 +1,5 @@
 "use strict";
+require("./polyfills/isInteger")
 var enrichBackgrounds = require("./register-backgrounds")
 var enrichGreetings = require("./register-greetings")
 var stateController = require("./state-manager-controller")
