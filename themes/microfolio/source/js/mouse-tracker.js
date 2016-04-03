@@ -10,6 +10,7 @@ var followCursor = function (el) {
 
   return {
     run: function (e) {
+      e = e || window.event
       var raw_width = Math.max(document.documentElement.clientWidth,
                                window.innerWidth || 0)
       var w = raw_width / 2
@@ -20,7 +21,6 @@ var followCursor = function (el) {
       var factor_x = MAX_DEG / w
       var factor_y = MAX_DEG / h * -1
 
-      var e = e || window.event
       var degX = (e.clientX - w) * factor_x
       var degY = (e.clientY - h) * factor_y
       var xformmsg = "perspective(" + PERSPECTIVE + "px) " +
