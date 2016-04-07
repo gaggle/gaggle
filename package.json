@@ -8,7 +8,9 @@
     "serve": "hexo serve",
     "ci-deploy": "./_scripts/ci-deploy",
     "deploy": "./_scripts/deploy",
-    "test": "mocha"
+    "test": "mocha",
+    "uitest": "intern-runner config=tests/intern",
+    "phantom": "phantomjs --webdriver=4444"
   },
   "hexo": {
     "version": "3.2.0"
@@ -28,8 +30,11 @@
     "wolfy87-eventemitter": "^4.3.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "hexo-cli": "^1.0.1",
+    "intern": "^3.1.1",
     "mocha": "^2.4.5",
-    "must": "^0.13.1"
+    "must": "^0.13.1",
+    "phantomjs-prebuilt": "^2.1.7"
   }
 }
