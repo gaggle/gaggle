@@ -1,14 +1,16 @@
 language: node_js
+
 node_js:
   - "stable"
 
 before_script:
+ - phantomjs --version
+ - phantomjs --webdriver=4444 2>&1 >/dev/null &
  - find ./_scripts -type f -exec chmod +x {} \;
+ - npm run rebuild
+ - npm run start & sleep 5
 
-script: npm run rebuild
-
-after_success:
- - npm run ci-deploy
+script: "npm run test"
 
 env:
   global:
