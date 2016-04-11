@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo generate --watch",
+    "start": "hexo server",
     "rebuild": "hexo clean && hexo generate",
-    "serve": "hexo serve",
-    "ci-deploy": "./_scripts/ci-deploy",
+    "test": "selenium & wdio",
+    "posttest": "curl http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer",
     "deploy": "./_scripts/deploy",
-    "test": "mocha",
-    "uitest": "nightwatch"
+    "ci-deploy": "./_scripts/ci-deploy"
   },
   "hexo": {
     "version": "3.2.0"
@@ -29,11 +28,13 @@
     "wolfy87-eventemitter": "^4.3.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "hexo-cli": "^1.0.1",
     "mocha": "^2.4.5",
     "must": "^0.13.1",
-    "nightwatch": "^0.8.18",
     "phantomjs-prebuilt": "^2.1.7",
-    "selenium-server": "2.53.0"
+    "selenium-server": "2.53.0",
+    "wdio-mocha-framework": "^0.2.12",
+    "webdriverio": "^4.0.5"
   }
 }
