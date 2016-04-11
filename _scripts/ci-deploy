@@ -6,4 +6,6 @@ if [ "$TRAVIS_REPO_SLUG" == "gaggle/gaggle" ] && [ "$TRAVIS_PULL_REQUEST" == "fa
   git config --global user.name "travis-ci"
   git config --global user.email "travis@travis-ci.org"
   npm run deploy
+else
+  echo "Skipping continuous deployment"
 fi
