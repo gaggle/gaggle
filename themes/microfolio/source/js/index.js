@@ -1,5 +1,5 @@
 "use strict";
-require("./polyfills/isInteger")
+require("./polyfills")
 require("./extensions/remove-element")
 var DoubleBuffer = require("./double-buffer")
 var inBetween = require("./in-between-range")
