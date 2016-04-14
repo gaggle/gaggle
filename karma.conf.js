@@ -16,7 +16,7 @@ module.exports = function (config) {
       './themes/**/*.js': ['browserify']
     },
 
-    reporters: ['coverage', 'coveralls'],
+    reporters: ['dots', 'coverage', 'coveralls'],
 
     browserify: {
       debug: true, // generate source maps for easier debugging
