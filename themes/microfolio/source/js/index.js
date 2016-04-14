@@ -1,97 +1,81 @@
 "use strict";
 require("./polyfills/isInteger")
-var enrichBackgrounds = require("./register-backgrounds")
-var enrichGreetings = require("./register-greetings")
-var stateController = require("./state-manager-controller")
-var StateManager = require("./state-manager")
+require("./extensions/remove-element")
+var DoubleBuffer = require("./double-buffer")
+var inBetween = require("./in-between-range")
 var mouseTracker = require("./mouse-tracker")
+var registerKeyboard = require("./register-keyboard-shortcuts")
+var ThemeManager = require("./theme-manager")
+var TimeManager = require("./time-manager")
 
-var confParser = function (conf) {
-  var data = {}
-  Object.keys(conf).forEach(function (eventName) {
-    var rangeData = conf[eventName]
-    data[eventName] = Object.keys(rangeData).map(function (rangestr) {
-      var value = rangeData[rangestr]
-      var pair = rangestr.split("-").map(Number)
-      pair.push(value)
-      return pair
-    })
-  })
-  return data
+var bgpath = function (name, suffix) {
+  if (!suffix) suffix = ""
+  return "/img/" + name + suffix + ".jpg"
 }
 
-window.addEventListener("DOMContentLoaded", function (e) {
-  document.getElementsByClassName("back")[0].classList.remove("noJS")
-  var stateManager = new StateManager()
-  enrichGreetings(stateManager, confParser(
-    {
-      hour: {
-        "5-6": "Oh hello, you're early,",
-        "7-8": "Good morning,",
-        "9-11": "Hi,",
-        "12-15": "Good afternoon,",
-        "16-19": "Hello,",
-        "20-23": "Good evening,",
-        "0-1": "Hi,",
-        "2-4": "Hi, it sure is late, huh?"
-      }
-    }))
-  enrichBackgrounds(stateManager, [
-    {
-      name: "sunrise",
-      "content": {
-        "text-shadow": "1px 1px 1px #97854c",
-        "background-color": "rgba(20, 20, 20, 0.4)"
-      },
-      "*": {
-        color: "white"
-      }
-    },
-    {
-      name: "streaky",
-      "content": {
-        "text-shadow": "0 1px 0px #B34035",
-        "background-color": "rgba(20, 20, 20, 0.4)"
-      },
-      "*": {
-        color: "#E6E6E6"
-      }
-    },
-    {
-      name: "clouds",
-      content: {"text-shadow": "-1px -1px 1px #A69779, 1px 1px 2px #4A7FA8"}
-    },
-    {
-      name: "dog",
-      "content": {
-        "text-shadow": "-1px -.5px 1px #20160F",
-        "background-color": "rgba(50, 50, 50, 0.2)"
-      },
-      "*": {
-        color: "#E6E6E6"
-      }
-    },
-    {
-      name: "hospital",
-      "content": {
-        "text-shadow": "0 1px 1px #D9CEB1, 0 -1px 2px #8A8371",
-        "background-color": "rgba(170, 170, 170, 0.3)"
-      }
-    },
-    {
-      name: "dusk",
-      "content": {
-        "text-shadow": "0 1px 1px #FFD166, .8px -1.5px 1px #1F132B",
-        "background-color": "rgba(20, 20, 20, 0.4)"
-      },
-      "*": {
-        color: "#E6E6E6"
-      }
+var QUERIES = {
+  l: "(min-width: 691px)",
+  xl: "(min-width: 1382px)"
+  //xxl: "(min-width: 2765px)"
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+  document.getElementsByClassName("noJS").remove()
+
+  var timeManager = new TimeManager()
+
+  var chooseGreeting = function (hr) {
+    var night = "Hi,"
+    var value = inBetween({
+      "5-6": "Oh hello, you're up early,",
+      "6-9": "Good morning,",
+      "9-11": "Hi,",
+      "11-13": "Good day,",
+      "13-15": "Good afternoon,",
+      "15-18": "Hello,",
+      "18-23": "Good evening,",
+      "23-24": night, "0-2": night,
+      "2-4": "Hi, up late huh?"
+    }, hr)
+    document.getElementsByTagName("greeting")[0].innerHTML = value
+    return value
+  }
+
+  var buffer = new DoubleBuffer(document.body, document.getElementsByClassName("container")[0])
+  var themeManager = new ThemeManager([".content"], ["sunrise", "streaky", "clouds", "dog", "hospital", "dusk"])
+  buffer.front.element.addEventListener("click", function () {
+    timeManager.set(new Date())
+  })
+
+  themeManager.on(themeManager.events.changed, function (theme) {
+    var p = bgpath(theme, ".m")
+    if (window.matchMedia(QUERIES.xl).matches)
+      p = bgpath(theme, ".xl")
+    else if (window.matchMedia(QUERIES.l).matches)
+      p = bgpath(theme, ".l")
+    if (buffer.back.isEmpty()) {
+      buffer.set(bgpath(theme, ".thumb"), p)
+    } else {
+      buffer.set(p)
     }
-  ])
-  stateController(stateManager)
+  })
+
+  timeManager.on(timeManager.events.initialize, function () {
+    chooseGreeting(timeManager.time.getHours())
+    console.log("Theme", themeManager.setRandom())
+  })
+  timeManager.on(timeManager.events.theHour, chooseGreeting)
+  timeManager.on(timeManager.events.minutesElapsed, function () {
+    console.log("Theme", themeManager.setRandom())
+  })
+  registerKeyboard(timeManager)
   mouseTracker(document.getElementsByClassName("content")[0])
-  stateManager.start()
-  window.stateManager = stateManager
+  timeManager.start()
+
+  window.buffer = buffer
+  window.chooseGreeting = chooseGreeting
+  window.themeManager = themeManager
+  window.timeManager = timeManager
+
   console.log("Page initialized")
 }, false)
