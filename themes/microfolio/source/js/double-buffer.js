@@ -6,7 +6,10 @@ var DoubleBuffer = function (parentNode, referenceNode) {
   return this
 }
 
-DoubleBuffer.prototype.set = function () {
+/**
+ * @param {...string} path
+ */
+DoubleBuffer.prototype.set = function (path) {
   var self = this
   var paths = Array.prototype.slice.call(arguments)
 
