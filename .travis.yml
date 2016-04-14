@@ -11,6 +11,8 @@ before_script:
  - npm run start & sleep 5
 
 script: "npm run test"
+after_success:
+   - npm run ci-deploy
 
 env:
   global:
