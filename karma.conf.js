@@ -8,6 +8,7 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files: [
       './test/*.js',
+      {pattern: './test/*.jpg', watched: false, included: false, served: true, nocache: false},
       './themes/**/*.js'
     ],
 
