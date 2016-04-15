@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", function () {
     if (buffer.back.isEmpty()) {
       buffer.set(bgpath(theme, ".thumb"), p)
     } else {
-      buffer.set(p)
+      buffer.set(bgpath(theme, ".thumb"), p)
     }
   })
 
