@@ -26,9 +26,9 @@ Buffer.prototype.isEmpty = function () {
   return this.element.style.backgroundImage == ""
 }
 
-Buffer.prototype.fadeIn = function (path) {
+Buffer.prototype.fadeIn = function (path, duration) {
   this.set(path)
-  return animate.fadeIn(this.element, {duration: 2000})
+  return animate.fadeIn(this.element, {duration: duration})
 }
 
 var url = function (path) {
