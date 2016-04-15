@@ -1,7 +1,4 @@
-var transitionEvent = require("./which-transition-event")()
-
-var FADE_IN = "fadein"
-var FADE_IN_TIMEOUT = 15 * 1000
+var animate = require("./animate")
 
 var Buffer = function (cls, parentNode, referenceNode) {
   this.element = document.createElement("buffer")
@@ -21,29 +18,17 @@ Buffer.prototype.get = function () {
 }
 
 Buffer.prototype.reset = function () {
-  this.element.classList.remove(FADE_IN)
   this.element.style.backgroundImage = ""
-}
-
-Buffer.prototype.fadeIn = function (path) {
-  var self = this
-  return new Promise(function (resolve, reject) {
-    self.set(path)
-    self.element.classList.add(FADE_IN)
-    var timeout = setTimeout(function () {
-      self.element.classList.remove(FADE_IN)
-      reject()
-    }, FADE_IN_TIMEOUT)
-    self.element.addEventListener(transitionEvent, function (e) {
-      e.target.removeEventListener(e.type, arguments.callee) // one-time event
-      clearTimeout(timeout)
-      resolve()
-    }, false)
-  })
+  return animate.fadeOut(this.element, {duration: 0})
 }
 
 Buffer.prototype.isEmpty = function () {
   return this.element.style.backgroundImage == ""
+}
+
+Buffer.prototype.fadeIn = function (path) {
+  this.set(path)
+  return animate.fadeIn(this.element, {duration: 2000})
 }
 
 var url = function (path) {
