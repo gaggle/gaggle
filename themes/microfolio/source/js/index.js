@@ -1,12 +1,12 @@
 "use strict";
 require("./polyfills")
 require("./extensions/remove-element")
-var DoubleBuffer = require("./double-buffer")
+var DoubleBuffer = require("./DoubleBuffer")
 var inBetween = require("./in-between-range")
 var mouseTracker = require("./mouse-tracker")
 var registerKeyboard = require("./register-keyboard-shortcuts")
-var ThemeManager = require("./theme-manager")
-var TimeManager = require("./time-manager")
+var ThemeManager = require("./ThemeManager")
+var TimeManager = require("./TimeManager")
 
 var bgpath = function (name, suffix) {
   if (!suffix) suffix = ""

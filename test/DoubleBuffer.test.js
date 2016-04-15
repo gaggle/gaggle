@@ -1,7 +1,7 @@
 "use strict";
-var DoubleBuffer = require("../themes/microfolio/source/js/double-buffer")
+var DoubleBuffer = require("../themes/microfolio/source/js/DoubleBuffer")
 
-describe("double-buffer", function () {
+describe("DoubleBuffer", function () {
   this.timeout(5000)
   var buffer
   beforeEach(function () {
