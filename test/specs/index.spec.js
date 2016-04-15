@@ -16,14 +16,8 @@ describe("index", function () {
   })
 
   describe("noJS fallback", function () {
-    it("all 'noJS' classes should be removed after page load", function () {
+    it("all 'noJS' elements should be removed after page load", function () {
       browser.elements('.noJS').value.should.be.empty
-    })
-  })
-
-  describe("theming", function () {
-    it("should apply theme to .content", function () {
-      browser.intersectClasses(".content", validThemes).should.have.length(1)
     })
   })
 })

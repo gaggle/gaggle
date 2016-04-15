@@ -7,10 +7,15 @@ before_script:
  - phantomjs --version
  - phantomjs --webdriver=4444 2>&1 >/dev/null &
  - find ./_scripts -type f -exec chmod +x {} \;
+
+script:
+ - npm test
  - npm run rebuild
  - npm run start & sleep 5
+ - npm run ci-test
 
-script: "npm run test"
+after_success:
+   - npm run ci-deploy
 
 env:
   global:

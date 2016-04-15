@@ -1,15 +1,12 @@
-bg-duration = 120s
-bg-ratio-factor = 4
-transition-timing = ease-in-out
-transition-duration = 2s
+@import "./settings"
 
 @font-face {
   font-family: "Fanwood";
   src: url("webfonts/fanwood-webfont.eot");
   src: url("webfonts/fanwood-webfont.eot?#iefix") format("embedded-opentype"),
-          url("webfonts/fanwood-webfont.woff") format("woff"),
-          url("webfonts/fanwood-webfont.ttf") format("truetype"),
-          url("webfonts/fanwood-webfont.svg#webfont") format("svg");
+    url("webfonts/fanwood-webfont.woff") format("woff"),
+    url("webfonts/fanwood-webfont.ttf") format("truetype"),
+    url("webfonts/fanwood-webfont.svg#webfont") format("svg");
 }
 
 *
@@ -29,40 +26,8 @@ a, imghover
   font-style italic
   text-decoration underline
 
-@keyframes animatedBackground {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 100% 0;
-  }
-}
-
 love
   color #c62a28 !important
-
-.bg
-  background no-repeat center center fixed
-  background-size cover
-  cursor pointer
-  //animation animatedBackground (bg-duration*bg-ratio-factor) ease-out forwards
-  //@media only screen and (min-aspect-ratio: 1 / 1)
-  //  animation animatedBackground bg-duration ease-out forwards
-  height 100%
-  width 100%
-  position fixed
-  &.back
-    transform translateZ(0)
-    background-color black
-    &.noJS
-      background-image url("/img/clouds.thumb.jpg")
-  &.front
-    transform translateZ(1)
-    transition opacity 0
-    opacity 0
-    &.fadein
-      opacity 1
-      transition opacity transition-duration transition-timing
 
 .container
   overflow scroll
@@ -78,13 +43,16 @@ love
     display inline-block
     vertical-align middle
     margin-bottom -2em
+  *
+    color #222
+    transition background-color transition-duration transition-timing, color transition-duration transition-timing, text-shadow transition-duration transition-timing
   div
     vertical-align middle
     display inline-block
   .content
-    transition background-color transition-duration transition-timing, text-shadow transition-duration transition-timing
     padding 1em 1.8em
 
-.container *
-  color #222
-  transition color transition-duration transition-timing
+buffer.noJS
+  background-image url("/img/clouds.thumb.jpg")
+@require "./buffer"
+@require "./themes"
