@@ -1,4 +1,5 @@
 "use strict";
+require("../themes/microfolio/source/js/polyfills")
 var DoubleBuffer = require("../themes/microfolio/source/js/DoubleBuffer")
 
 describe("DoubleBuffer", function () {
@@ -14,18 +15,6 @@ describe("DoubleBuffer", function () {
   })
 
   describe("#set", function () {
-    it("should immediately set front buffer", function () {
-      var buffer = new DoubleBuffer(undefined, undefined, {duration: 10000})
-      return new Promise(function (resolve) {
-        buffer.set("./base/test/test.jpg")
-        setTimeout(resolve, 100) // enough time to load image, but not enough to end the transition
-      })
-        .then(function () {
-          expect(buffer.back.get()).to.be.empty
-          expect(buffer.front.get()).not.to.be.empty
-        })
-    })
-
     it("should eventually set back buffer", function () {
       return buffer.set("./base/test/test.jpg")
         .then(function () {

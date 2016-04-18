@@ -6,8 +6,7 @@
     "start": "hexo server",
     "rebuild": "hexo clean && hexo generate",
     "test": "karma start",
-    "ci-test": "selenium & wdio",
-    "postci-test": "curl http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer",
+    "ci-test": "karma start karma.sauce.conf.js",
     "deploy": "./_scripts/deploy",
     "ci-deploy": "./_scripts/ci-deploy"
   },
@@ -40,6 +39,7 @@
     "karma-coveralls": "^1.1.2",
     "karma-mocha": "^0.2.2",
     "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sauce-launcher": "^0.3.1",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.7",
