@@ -6,8 +6,7 @@
     "start": "hexo server",
     "rebuild": "hexo clean && hexo generate",
     "test": "karma start",
-    "ci-test": "selenium & wdio",
-    "postci-test": "curl http://localhost:4444/selenium-server/driver/?cmd=shutDownSeleniumServer",
+    "ci-test": "karma start karma.sauce.conf.js",
     "deploy": "./_scripts/deploy",
     "ci-deploy": "./_scripts/ci-deploy"
   },
