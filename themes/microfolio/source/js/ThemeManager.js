@@ -13,9 +13,9 @@ var ThemeManager = function (elements, themes) {
   self._shuffled = []
   self._elements = flatMap(elements, function (e) {
     if (e instanceof HTMLElement) return [e]
-    var el = document.querySelectorAll(e)
-    if (!el) throw new Error("No element '" + e + "'")
-    return Array.prototype.slice.call(el) // unwrap NodeList
+    var el = Array.prototype.slice.call(document.querySelectorAll(e)) // unwrap NodeList
+    if (!el.length) throw new Error("No element '" + e + "'")
+    return el
   })
   self.theme = null
   return this
