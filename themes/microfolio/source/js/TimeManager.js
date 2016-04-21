@@ -5,12 +5,14 @@ var SECOND = 1000
 
 var StateManager = function (opts) {
   var self = this
-  if (!opts) self.opts = {}
-  if (!self.opts.startTime) self.opts.startTime = new Date()
+  self.opts = opts || {}
+  if (self.opts.startTime === undefined) {
+    self.opts.startTime = new Date()
+  }
   self._emitter = new EventEmitter()
   self.events = {
     tick: "tick",
-    initialize: "initialize",
+    initialized: "initialized",
     theSecond: "theSecond",
     theMinute: "theMinute",
     theHour: "theHour",
@@ -19,7 +21,7 @@ var StateManager = function (opts) {
   self._emitter.defineEvents(Object.keys(self.events))
   self.on = self._emitter.on.bind(self._emitter)
 
-  self.time = new Date(self.opts.startTime.getTime())
+  self._set(self.opts.startTime)
   self._running = false
   setInterval(function () {
     if (self._running) {
@@ -35,21 +37,25 @@ var StateManager = function (opts) {
   return this
 }
 
-StateManager.prototype.initialize = function () {
-  this._emitter.emit(this.events.initialize)
+StateManager.prototype.initialized = function () {
+  this._emitter.emit(this.events.initialized)
   this._processEvents()
 }
 
-StateManager.prototype.set = function (newTime) {
+StateManager.prototype._set = function (newTime) {
   this.opts.startTime = new Date(newTime)
   this.time = new Date(this.opts.startTime.getTime())
-  this.initialize()
+}
+
+StateManager.prototype.set = function (newTime) {
+  this._set(newTime)
+  this.initialized()
   return this.time
 }
 
 StateManager.prototype.start = function (quiet) {
   if (!this._running && !quiet) {
-    this.initialize()
+    this.initialized()
   }
   this._running = true
 }
