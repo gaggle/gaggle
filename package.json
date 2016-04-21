@@ -40,10 +40,12 @@
     "karma-mocha": "^0.2.2",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sauce-launcher": "^0.3.1",
+    "karma-sinon": "^1.0.4",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.7",
     "selenium-server": "2.53.0",
+    "sinon": "^1.17.3",
     "wdio-mocha-framework": "^0.2.12",
     "webdriverio": "^4.0.5"
   }
