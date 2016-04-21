@@ -60,7 +60,7 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   })
 
-  timeManager.on(timeManager.events.initialize, function () {
+  timeManager.on(timeManager.events.initialized, function () {
     chooseGreeting(timeManager.time.getHours())
     console.log("Theme", themeManager.setRandom())
   })

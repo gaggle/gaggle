@@ -3,7 +3,6 @@ require("../themes/microfolio/source/js/polyfills")
 var DoubleBuffer = require("../themes/microfolio/source/js/DoubleBuffer")
 
 describe("DoubleBuffer", function () {
-  this.timeout(5000)
   var buffer
   beforeEach(function () {
     buffer = new DoubleBuffer(undefined, undefined, {duration: 10})

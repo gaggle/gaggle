@@ -3,7 +3,7 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['mocha', 'chai', 'browserify'],
+    frameworks: ['mocha', 'chai', 'sinon', 'browserify'],
 
     // list of files / patterns to load in the browser
     files: [
