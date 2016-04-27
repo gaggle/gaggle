@@ -13,9 +13,11 @@ var lookAt = function (el, x, y, opts) {
   var degX = (x - w) * factor_x
   var degY = (y - h) * factor_y
 
-  el.style.transform = "perspective(" + opts.perspective + ") " +
+  var transform = "perspective(" + opts.perspective + ") " +
     "rotateY(" + degX + "deg) " +
     "rotateX(" + degY + "deg)"
+  el.style.transform = transform
+  el.style.mozTransform = transform
 }
 
 var parseOpts = function (raw_opts, el) {
