@@ -7,8 +7,8 @@
     "rebuild": "hexo clean && hexo generate",
     "test": "karma start",
     "ci-test": "karma start karma.sauce.conf.js",
-    "deploy": "./scripts/deploy",
-    "ci-deploy": "./scripts/ci-deploy"
+    "deploy": "./_scripts/deploy",
+    "ci-deploy": "./_scripts/ci-deploy"
   },
   "hexo": {
     "version": "3.2.0"
