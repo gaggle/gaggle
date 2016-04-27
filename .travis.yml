@@ -6,7 +6,7 @@ node_js:
 before_script:
   - "phantomjs --version"
   - "phantomjs --webdriver=4444 2>&1 >/dev/null &"
-  - "find ./_scripts -type f -exec chmod +x {} \\;"
+  - "find ./scripts -type f -exec chmod +x {} \\;"
 
 script:
   - "npm run rebuild"
