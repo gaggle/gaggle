@@ -3,9 +3,10 @@ require("./polyfills")
 require("./extensions/remove-element")
 var DoubleBuffer = require("./DoubleBuffer")
 var inBetween = require("./in-between-range")
-var mouseTracker = require("./mouse-tracker")
+var lookAt = require("./look-at")
 var registerKeyboard = require("./register-keyboard-shortcuts")
 var ThemeManager = require("./ThemeManager")
+var throttle = require("./throttler")
 var TimeManager = require("./TimeManager")
 
 var bgpath = function (name, suffix) {
@@ -69,7 +70,12 @@ window.addEventListener("DOMContentLoaded", function () {
     console.log("Theme", themeManager.setRandom())
   })
   registerKeyboard(timeManager)
-  mouseTracker(document.getElementsByClassName("content")[0])
+
+  var content = document.getElementsByClassName("content")[0]
+  document.body.onmousemove = throttle(function (e) {
+    lookAt(content, e.clientX, e.clientY, {max_degrees: 3})
+  }, 100)
+
   timeManager.start()
 
   window.buffer = buffer
