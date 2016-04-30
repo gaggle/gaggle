@@ -1,14 +1,15 @@
 <greeting>Hello,</greeting>
 
-Software quality is important,
-that's why I write code with an eye on testability
-to ensure my solutions are maintainable.
-My specialities are internal tools development and workflow optimisations,
-but I also love APIs, front-end, UX, video games,
-and good discussions.
+My passions are making great tools and easy workflows.
+I write code with an eye on testability
+to ensure it's correct and maintainable.
+I also love APIs, front-end, UX, video games, and good discussions.
 
-[Send me a mail](mailto:mail@jonlauridsen.com),
-ping me on [Twitter](https://twitter.com/jonlauridsen),
-or if you want an overview of my work
-there’s always [LinkedIn](https://dk.linkedin.com/in/jonlauridsen)
-and [GitHub](https://github.com/gaggle).
+Want more details?
+Check out [GitHub][] and [LinkedIn][].
+And [ping me on mail](mailto:mail@jonlauridsen.com) or [Twitter][]
+so we can have a nice chat.
+
+[github]: https://github.com/gaggle
+[linkedin]: https://linkedin.com/in/jonlauridsen
+[twitter]: https://twitter.com/jonlauridsen
