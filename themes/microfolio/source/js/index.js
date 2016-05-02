@@ -1,7 +1,7 @@
 "use strict";
 require("./polyfills")
 require("./extensions/remove-element")
-var DoubleBuffer = require("./DoubleBuffer")
+var DoubleBuffer = require("double-buffer.js")
 var inBetween = require("./in-between-range")
 var lookAt = require("./look-at")
 var registerKeyboard = require("./register-keyboard-shortcuts")
