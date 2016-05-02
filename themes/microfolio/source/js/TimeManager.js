@@ -1,4 +1,5 @@
 "use strict";
+var isInteger = require("is-integer")
 var EventEmitter = require("wolfy87-eventemitter")
 
 var SECOND = 1000
@@ -93,7 +94,7 @@ StateManager.prototype._processEvents = function () {
   if (second == 0) this._onTheMinute(minute)
   if (second == 0 && minute == 0) this._onTheHour(hour)
   var minutesElapsed = this._getElapsed() / 60
-  if (Number.isInteger(minutesElapsed) && minutesElapsed > 0) this._onMinutesElapsed(minutesElapsed)
+  if (isInteger(minutesElapsed) && minutesElapsed > 0) this._onMinutesElapsed(minutesElapsed)
 }
 
 module.exports = StateManager
