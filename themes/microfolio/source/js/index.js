@@ -1,5 +1,5 @@
 "use strict";
-require("./polyfills")
+require("es6-promise").polyfill()
 require("./extensions/remove-element")
 var DoubleBuffer = require("double-buffer.js")
 var inBetween = require("./in-between-range")

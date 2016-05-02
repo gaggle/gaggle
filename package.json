@@ -27,6 +27,7 @@
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
     "hexo-uglify": "0.0.3",
+    "is-integer": "^1.0.6",
     "lodash": "^4.9.0",
     "wolfy87-eventemitter": "^4.3.0"
   },
