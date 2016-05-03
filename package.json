@@ -6,7 +6,7 @@
     "start": "hexo server",
     "rebuild": "hexo clean && hexo generate",
     "test": "karma start",
-    "ci-test": "karma start karma.sauce.conf.js",
+    "ci-test": "karma start karma.ci.conf.js",
     "deploy": "./_scripts/deploy",
     "ci-deploy": "./_scripts/ci-deploy"
   },
