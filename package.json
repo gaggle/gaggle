@@ -48,7 +48,5 @@
     "phantomjs-prebuilt": "^2.1.7",
     "selenium-server": "2.53.0",
     "sinon": "^1.17.3",
-    "wdio-mocha-framework": "^0.2.12",
-    "webdriverio": "^4.0.5"
   }
 }
