@@ -1,6 +1,7 @@
 "use strict";
 var Eyes = require("eyes.selenium").Eyes
 var _ = require("lodash")
+var Q = require("q")
 var Webdriver = require("selenium-webdriver")
 var s = require("util").format
 
@@ -62,42 +63,28 @@ describe("jonlauridsen.com", function () {
 })
 
 var eyesOnIndexTest = function (driver, eyes) {
-  var getAttribute = function (el, attr) {
-    return driver.findElement(Webdriver.By.css(el))
-      .then(function (el) {
-        return el.getCssValue(attr)
+  var waitForNoTransition = function () {
+    return Q.delay(1000)
+      .then(function () {
+        return driver.wait(function () {
+          return driver.executeScript("return buffer.transitioning")
+            .then(function (val) {
+              return val == false
+            })
+        }, 2 * MINUTE)
       })
   }
 
-  var waitForAttribute = function (el, attr, ideal) {
-    return driver.wait(function () {
-      return getAttribute(el, attr)
-        .then(function (attr) {
-          if (_.isFunction(ideal))
-            return ideal(attr)
-          return attr == ideal
-        })
-    }, 2 * MINUTE)
-  }
-
-  var waitOnEmptyFrontBuffer = waitForAttribute.bind(
-    this, "buffer.front", "background-image", "none")
-
   return driver.get("http://jonlauridsen.com")
-    .then(waitOnEmptyFrontBuffer)
+    .then(waitForNoTransition)
     .then(function () {
       return driver.executeScript("timeManager.stop(); timeManager.set(new Date(1997, 7, 29, 2, 14, 0))")
     })
-    .then(waitOnEmptyFrontBuffer)
+    .then(waitForNoTransition)
     .then(function () {
       return driver.executeScript("themeManager.set('clouds')")
     })
-    .then(waitOnEmptyFrontBuffer)
-    .then(function () {
-      return waitForAttribute("buffer", "background-image", function (attr) {
-        return attr.indexOf("clouds.l.jpg") > -1
-      })
-    })
+    .then(waitForNoTransition)
     .then(function () {
       return eyes.checkWindow("index")
     })
