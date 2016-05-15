@@ -7,6 +7,7 @@
     "rebuild": "hexo clean && hexo generate",
     "test": "karma start",
     "test:ci": "karma start karma.ci.conf.js",
+    "uitest:sl": "mocha test/ui",
     "deploy": "./_scripts/deploy",
     "deploy:ci": "./_scripts/ci-deploy",
     "sauce-connect": "./_scripts/sauce-connect"
