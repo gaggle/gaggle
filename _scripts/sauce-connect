@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+"use strict";
+var sauceConnectLauncher = require("sauce-connect-launcher")
+
+sauceConnectLauncher({
+  verbose: true,
+  tunnelIdentifier: "jonlauridsen.com" // must match ui test
+}, function (err, sauceConnectProcess) {
+  if (err) {
+    console.log(err.message)
+    return
+  }
+  console.log("Sauce Connect ready")
+})
