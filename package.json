@@ -6,9 +6,10 @@
     "start": "hexo server",
     "rebuild": "hexo clean && hexo generate",
     "test": "karma start",
-    "ci-test": "karma start karma.ci.conf.js",
+    "test:ci": "karma start karma.ci.conf.js",
     "deploy": "./_scripts/deploy",
-    "ci-deploy": "./_scripts/ci-deploy"
+    "deploy:ci": "./_scripts/ci-deploy",
+    "sauce-connect": "./_scripts/sauce-connect"
   },
   "hexo": {
     "version": "3.2.0"
@@ -17,6 +18,7 @@
     "browserify": "^13.0.0",
     "double-buffer.js": "github:gaggle/double-buffer.js",
     "es6-promise": "^3.1.2",
+    "eyes.selenium": "0.0.48",
     "hexo": "^3.2.0",
     "hexo-clean-css": "0.0.2",
     "hexo-cli": "^1.0.1",
@@ -46,7 +48,9 @@
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.7",
+    "sauce-connect-launcher": "^0.14.0",
     "selenium-server": "2.53.0",
-    "sinon": "^1.17.3",
+    "selenium-webdriver": "^2.53.2",
+    "sinon": "^1.17.3"
   }
 }

@@ -11,10 +11,10 @@ before_script:
 script:
   - "npm run rebuild"
   - "npm run start & sleep 5"
-  - "npm run ci-test"
+  - "npm run test:ci"
 
 after_success:
-  - "npm run ci-deploy"
+  - "npm run deploy:ci"
 
 env:
   global:
