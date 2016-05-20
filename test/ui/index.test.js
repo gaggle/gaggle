@@ -76,7 +76,7 @@ var eyesOnIndexTest = function (driver, eyes) {
       })
   }
 
-  return driver.get("http://jonlauridsen.com")
+  return driver.get("http://localhost:4000")
     .then(waitForNoTransition)
     .then(function () {
       return driver.executeScript("timeManager.stop(); timeManager.set(new Date(1997, 7, 29, 2, 14, 0))")
