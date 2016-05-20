@@ -25,21 +25,22 @@ var canonize = function (s) {
   return s
 }
 
-describe("jonlauridsen.com", function () {
+const title = "jonlauridsen.com"
+describe(title, function () {
   var nowstr = new Date().toISOString().replace("T", " ").substr(0, 19) // => 2016-05-15 13:07:01
   this.timeout(5 * MINUTE)
   _.map(getSauceBrowsers(), function (browser) {
     _.map(getResolutions(), function (resolution) {
-      var canonicalName = canonize(s("%s-%s-%s", browser.platform, browser.browserName,
+      var slug = canonize(s("%s-%s-%s", browser.platform, browser.browserName,
         s("%sx%s", resolution.width, resolution.height)))
-      it(canonicalName, function () {
-        var buildname = canonize(this.test.parent.fullTitle() + "-" + (process.env.TRAVIS_JOB_NUMBER || nowstr));
+      var buildName = canonize(title + "-" + (process.env.TRAVIS_JOB_NUMBER || nowstr))
+      it(slug, function () {
         var webdriver = new Webdriver.Builder()
           .withCapabilities(_.merge(browser, {
             screenResolution: "1024x768", // maximum resolution for machine instance
             username: process.env.SAUCE_USERNAME,
             accessKey: process.env.SAUCE_ACCESS_KEY,
-            build: buildname,
+            build: buildName,
             name: this.test.title,
             tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "jonlauridsen.com" // must match sauce-connect script
           }))
@@ -49,7 +50,7 @@ describe("jonlauridsen.com", function () {
 
         var eyes = new Eyes()
         eyes.setApiKey(process.env.EYES_KEY)
-        return eyes.open(webdriver, this.test.parent.title, this.test.title, resolution)
+        return eyes.open(webdriver, title, slug, resolution)
           .then(function (driver) {
             return eyesOnIndexTest.bind(this)(driver, eyes)
               .finally(function () {
