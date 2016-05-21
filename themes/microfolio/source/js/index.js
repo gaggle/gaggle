@@ -54,11 +54,7 @@ window.addEventListener("DOMContentLoaded", function () {
       p = bgpath(theme, ".xl")
     else if (window.matchMedia(QUERIES.l).matches)
       p = bgpath(theme, ".l")
-    if (buffer.back.isEmpty()) {
-      buffer.set(bgpath(theme, ".thumb"), p)
-    } else {
-      buffer.set(bgpath(theme, ".thumb"), p)
-    }
+    buffer.set(bgpath(theme, ".thumb"), p)
   })
 
   timeManager.on(timeManager.events.initialized, function () {
