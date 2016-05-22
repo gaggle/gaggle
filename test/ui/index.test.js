@@ -66,7 +66,7 @@ const eyesOnIndexTest = (driver, eyes) => {
             .then((val) => {
               return val == false
             })
-        }, 2 * MINUTE)
+        }, MINUTE)
       })
   }
 
