@@ -1,5 +1,5 @@
 "use strict";
-var ThemeManager = require("../themes/microfolio/source/js/ThemeManager")
+var ThemeManager = require("../../themes/microfolio/source/js/ThemeManager")
 
 describe("ThemeManager", function () {
   var el

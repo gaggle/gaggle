@@ -1,75 +1,69 @@
 "use strict";
-var Eyes = require("eyes.selenium").Eyes
-var _ = require("lodash")
-var Q = require("q")
-var Webdriver = require("selenium-webdriver")
-var s = require("util").format
+const Eyes = require("eyes.selenium").Eyes
+const _ = require("lodash")
+const Q = require("q")
+const Webdriver = require("selenium-webdriver")
+const s = require("util").format
+const canonize = require("../helpers/canonize")
 
-var SECOND = 1000
-var MINUTE = 60 * SECOND
+const SECOND = 1000
+const MINUTE = 60 * SECOND
 
-var getSauceBrowsers = require("../../sauce-labs-browsers")
-var getResolutions = function () {
-  return {
-    small: {width: 1000, height: 650}
-  }
+const getSauceBrowsers = require("../../sauce-labs-browsers")
+const getResolutions = () => ({small: "1000x650"})
+
+const browserMatrix = (groupname) => {
+  const nowstr = new Date().toISOString().replace("T", " ").substr(0, 19) // => 2016-05-15 13:07:01
+  return _.flatMap(getSauceBrowsers(), (browser) => {
+    return _.map(getResolutions(), (resolution) => ({
+      browser: browser,
+      res: resolution,
+      slug: canonize(s("%s-%s-%s", browser.platform, browser.browserName, resolution)),
+      groupname: groupname,
+      buildname: canonize(groupname + "-" + (process.env.TRAVIS_JOB_NUMBER || nowstr)),
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "jonlauridsen.com"
+    }))
+  })
 }
 
-var canonize = function (s) {
-  // TODO: Obvious refactor is obvious
-  s = s.toLowerCase()
-  s = s.replace(/ /g, "-")
-  s = s.replace(/\./g, "-")
-  s = s.replace(/\(/g, "")
-  s = s.replace(/\)/g, "")
-  return s
-}
-
-const title = "jonlauridsen.com"
-describe(title, function () {
-  var nowstr = new Date().toISOString().replace("T", " ").substr(0, 19) // => 2016-05-15 13:07:01
+describe("jonlauridsen.com", function () {
   this.timeout(5 * MINUTE)
-  _.map(getSauceBrowsers(), function (browser) {
-    _.map(getResolutions(), function (resolution) {
-      var slug = canonize(s("%s-%s-%s", browser.platform, browser.browserName,
-        s("%sx%s", resolution.width, resolution.height)))
-      var buildName = canonize(title + "-" + (process.env.TRAVIS_JOB_NUMBER || nowstr))
-      it(slug, function () {
-        var webdriver = new Webdriver.Builder()
-          .withCapabilities(_.merge(browser, {
-            screenResolution: "1024x768", // maximum resolution for machine instance
-            username: process.env.SAUCE_USERNAME,
-            accessKey: process.env.SAUCE_ACCESS_KEY,
-            build: buildName,
-            name: this.test.title,
-            tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "jonlauridsen.com" // must match sauce-connect script
-          }))
-          .usingServer(s("http://%s:%s@ondemand.saucelabs.com:80/wd/hub",
-            process.env.SAUCE_USERNAME, process.env.SAUCE_ACCESS_KEY))
-          .build()
+  browserMatrix(this.title).forEach((run) => {
+    it(s("index-%s", run.slug), function () {
+      const webdriver = new Webdriver.Builder()
+        .withCapabilities(_.merge(run.browser, {
+          screenResolution: "1024x768", // maximum resolution for machine instance
+          username: process.env.SAUCE_USERNAME,
+          accessKey: process.env.SAUCE_ACCESS_KEY,
+          build: run.buildname,
+          name: this.test.title,
+          tunnelIdentifier: run.tunnelIdentifier
+        }))
+        .usingServer(s("http://%s:%s@ondemand.saucelabs.com:80/wd/hub",
+          process.env.SAUCE_USERNAME, process.env.SAUCE_ACCESS_KEY))
+        .build()
 
-        var eyes = new Eyes()
-        eyes.setApiKey(process.env.EYES_KEY)
-        return eyes.open(webdriver, title, slug, resolution)
-          .then(function (driver) {
-            return eyesOnIndexTest.bind(this)(driver, eyes)
-              .finally(function () {
-                driver.quit()
-                eyes.close()
-              })
-          })
-      })
+      const eyes = new Eyes()
+      eyes.setApiKey(process.env.EYES_KEY)
+      return eyes.open(webdriver, run.groupname, this.test.title, res2Obj(run.res))
+        .then((driver) => {
+          return eyesOnIndexTest.bind(this)(driver, eyes)
+            .finally(() => {
+              driver.quit()
+              eyes.close()
+            })
+        })
     })
   })
 })
 
-var eyesOnIndexTest = function (driver, eyes) {
-  var waitForNoTransition = function () {
+const eyesOnIndexTest = (driver, eyes) => {
+  const waitForNoTransition = () => {
     return Q.delay(1000)
-      .then(function () {
-        return driver.wait(function () {
+      .then(() => {
+        return driver.wait(() => {
           return driver.executeScript("return buffer.transitioning")
-            .then(function (val) {
+            .then((val) => {
               return val == false
             })
         }, 2 * MINUTE)
@@ -78,15 +72,14 @@ var eyesOnIndexTest = function (driver, eyes) {
 
   return driver.get("http://localhost:4000")
     .then(waitForNoTransition)
-    .then(function () {
-      return driver.executeScript("timeManager.stop(); timeManager.set(new Date(1997, 7, 29, 2, 14, 0))")
-    })
+    .then(() => driver.executeScript("timeManager.stop(); timeManager.set(new Date(1997, 7, 29, 2, 14, 0))"))
     .then(waitForNoTransition)
-    .then(function () {
-      return driver.executeScript("themeManager.set('clouds')")
-    })
+    .then(() => driver.executeScript("themeManager.set('clouds')"))
     .then(waitForNoTransition)
-    .then(function () {
-      return eyes.checkWindow("index")
-    })
+    .then(() => eyes.checkWindow("index"))
+}
+
+const res2Obj = (res) => {
+  const split = res.split("x")
+  return {width: Number(split[0]), height: Number(split[1])}
 }

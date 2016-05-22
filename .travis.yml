@@ -11,7 +11,8 @@ before_script:
 script:
   - "npm run rebuild"
   - "npm run start & sleep 5"
-  - "npm run test:ci"
+  - "npm test"
+  - "npm run test:karma:ci"
 
 after_success:
   - "npm run deploy:ci"

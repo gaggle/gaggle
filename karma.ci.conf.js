@@ -7,17 +7,12 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      "./test/*.js",
-      {pattern: "./test/*.jpg", watched: false, included: false, served: true, nocache: false}
-    ],
-
-    exclude: [
-      "./themes/microfolio/source/js/index.js"
+      "./test/karma/*.js",
+      {pattern: "./test/karma/*.jpg", watched: false, included: false, served: true, nocache: false}
     ],
 
     preprocessors: {
-      "./test/*.js": ["browserify"],
-      "./themes/**/*.js": ["browserify"]
+      "./test/karma/*.js": ["browserify"],
     },
 
     reporters: ["dots", "saucelabs"],

@@ -1,5 +1,5 @@
 "use strict";
-var throttler = require("../themes/microfolio/source/js/throttler")
+var throttler = require("../../themes/microfolio/source/js/throttler")
 
 describe("throttler", function () {
   var clock
