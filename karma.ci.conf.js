@@ -12,7 +12,7 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      "./test/karma/*.js": ["browserify"],
+      "./test/karma/*.js": ["browserify"]
     },
 
     reporters: ["dots", "saucelabs"],

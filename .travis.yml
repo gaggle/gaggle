@@ -1,23 +1,19 @@
 language: node_js
-
 node_js:
-  - "stable"
-
+  - stable
 before_script:
-  - "phantomjs --version"
-  - "phantomjs --webdriver=4444 2>&1 >/dev/null &"
-  - "find ./_scripts -type f -exec chmod +x {} \\;"
-
+  - 'phantomjs --version'
+  - 'phantomjs --webdriver=4444 2>&1 >/dev/null &'
+  - 'find ./_scripts -type f -exec chmod +x {} \;'
 script:
-  - "npm run rebuild"
-  - "npm run start & sleep 5"
-  - "npm test"
-  - "npm run test:karma:ci"
-  - "npm run test:ui:sl"
+  - 'npm run rebuild'
+  - 'npm run start & sleep 5'
+  - 'npm test'
+  - 'npm run test:karma:ci'
+  - 'npm run test:ui:sl'
 
 after_success:
-  - "npm run deploy:ci"
-
+  - 'npm run deploy:ci'
 env:
   global:
     - secure: >-
@@ -31,6 +27,5 @@ env:
 cache:
   directories:
     - node_modules
-
 addons:
   sauce_connect: true
