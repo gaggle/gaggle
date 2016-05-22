@@ -5,6 +5,7 @@
   "scripts": {
     "start": "hexo server",
     "rebuild": "hexo clean && hexo generate",
+    "test": "mocha",
     "test:karma": "karma start",
     "test:karma:ci": "karma start karma.ci.conf.js",
     "uitest:sl": "mocha test/ui",
