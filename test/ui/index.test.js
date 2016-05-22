@@ -1,59 +1,54 @@
 "use strict";
-var Eyes = require("eyes.selenium").Eyes
-var _ = require("lodash")
-var Q = require("q")
-var Webdriver = require("selenium-webdriver")
-var s = require("util").format
-var canonize = require("../helpers/canonize")
+const Eyes = require("eyes.selenium").Eyes
+const _ = require("lodash")
+const Q = require("q")
+const Webdriver = require("selenium-webdriver")
+const s = require("util").format
+const canonize = require("../helpers/canonize")
 
-var SECOND = 1000
-var MINUTE = 60 * SECOND
+const SECOND = 1000
+const MINUTE = 60 * SECOND
 
-var getSauceBrowsers = require("../../sauce-labs-browsers")
-var getResolutions = function () {
-  return {small: "1000x650"}
-}
+const getSauceBrowsers = require("../../sauce-labs-browsers")
+const getResolutions = () => ({small: "1000x650"})
 
-var browserMatrix = function (groupname) {
-  var nowstr = new Date().toISOString().replace("T", " ").substr(0, 19) // => 2016-05-15 13:07:01
-  return _.flatMap(getSauceBrowsers(), function (browser) {
-    return _.map(getResolutions(), function (resolution) {
-      return {
-        browser: browser,
-        res: resolution,
-        slug: canonize(s("%s-%s-%s", browser.platform, browser.browserName, resolution)),
-        groupname: groupname,
-        buildname: canonize(groupname + "-" + (process.env.TRAVIS_JOB_NUMBER || nowstr)),
-        tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "jonlauridsen.com"
-      }
-    })
+const browserMatrix = (groupname) => {
+  const nowstr = new Date().toISOString().replace("T", " ").substr(0, 19) // => 2016-05-15 13:07:01
+  return _.flatMap(getSauceBrowsers(), (browser) => {
+    return _.map(getResolutions(), (resolution) => ({
+      browser: browser,
+      res: resolution,
+      slug: canonize(s("%s-%s-%s", browser.platform, browser.browserName, resolution)),
+      groupname: groupname,
+      buildname: canonize(groupname + "-" + (process.env.TRAVIS_JOB_NUMBER || nowstr)),
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "jonlauridsen.com"
+    }))
   })
 }
 
 describe("jonlauridsen.com", function () {
   this.timeout(5 * MINUTE)
-  browserMatrix(this.title).forEach(function (run) {
+  browserMatrix(this.title).forEach((run) => {
     it(s("index-%s", run.slug), function () {
-      var self = this
-      var webdriver = new Webdriver.Builder()
+      const webdriver = new Webdriver.Builder()
         .withCapabilities(_.merge(run.browser, {
           screenResolution: "1024x768", // maximum resolution for machine instance
           username: process.env.SAUCE_USERNAME,
           accessKey: process.env.SAUCE_ACCESS_KEY,
           build: run.buildname,
-          name: self.test.title,
+          name: this.test.title,
           tunnelIdentifier: run.tunnelIdentifier
         }))
         .usingServer(s("http://%s:%s@ondemand.saucelabs.com:80/wd/hub",
           process.env.SAUCE_USERNAME, process.env.SAUCE_ACCESS_KEY))
         .build()
 
-      var eyes = new Eyes()
+      const eyes = new Eyes()
       eyes.setApiKey(process.env.EYES_KEY)
-      return eyes.open(webdriver, run.groupname, self.test.title, res2Obj(run.res))
-        .then(function (driver) {
+      return eyes.open(webdriver, run.groupname, this.test.title, res2Obj(run.res))
+        .then((driver) => {
           return eyesOnIndexTest.bind(this)(driver, eyes)
-            .finally(function () {
+            .finally(() => {
               driver.quit()
               eyes.close()
             })
@@ -62,13 +57,13 @@ describe("jonlauridsen.com", function () {
   })
 })
 
-var eyesOnIndexTest = function (driver, eyes) {
-  var waitForNoTransition = function () {
+const eyesOnIndexTest = (driver, eyes) => {
+  const waitForNoTransition = () => {
     return Q.delay(1000)
-      .then(function () {
-        return driver.wait(function () {
+      .then(() => {
+        return driver.wait(() => {
           return driver.executeScript("return buffer.transitioning")
-            .then(function (val) {
+            .then((val) => {
               return val == false
             })
         }, 2 * MINUTE)
@@ -77,21 +72,14 @@ var eyesOnIndexTest = function (driver, eyes) {
 
   return driver.get("http://localhost:4000")
     .then(waitForNoTransition)
-    .then(function () {
-      return driver.executeScript("timeManager.stop(); timeManager.set(new Date(1997, 7, 29, 2, 14, 0))")
-    })
+    .then(() => driver.executeScript("timeManager.stop(); timeManager.set(new Date(1997, 7, 29, 2, 14, 0))"))
     .then(waitForNoTransition)
-    .then(function () {
-      return driver.executeScript("themeManager.set('clouds')")
-    })
+    .then(() => driver.executeScript("themeManager.set('clouds')"))
     .then(waitForNoTransition)
-    .then(function () {
-      return eyes.checkWindow("index")
-    })
+    .then(() => eyes.checkWindow("index"))
 }
 
-var res2Obj = function (res) {
-  var split = res.split("x")
+const res2Obj = (res) => {
+  const split = res.split("x")
   return {width: Number(split[0]), height: Number(split[1])}
-
 }
