@@ -21,7 +21,7 @@ const browserMatrix = (groupname) => {
       slug: canonize(s("%s-%s-%s", browser.platform, browser.browserName, resolution)),
       groupname: groupname,
       buildname: canonize(groupname + "-" + (process.env.TRAVIS_JOB_NUMBER || nowstr)),
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "jonlauridsen.com"
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "development"
     }))
   })
 }
