@@ -13,6 +13,7 @@ script:
   - "npm run start & sleep 5"
   - "npm test"
   - "npm run test:karma:ci"
+  - "npm run test:ui:sl"
 
 after_success:
   - "npm run deploy:ci"
