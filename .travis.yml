@@ -1,31 +1,31 @@
 language: node_js
-
 node_js:
-  - "stable"
-
+  - stable
 before_script:
-  - "phantomjs --version"
-  - "phantomjs --webdriver=4444 2>&1 >/dev/null &"
-  - "find ./_scripts -type f -exec chmod +x {} \\;"
-
+  - 'phantomjs --version'
+  - 'phantomjs --webdriver=4444 2>&1 >/dev/null &'
+  - 'find ./_scripts -type f -exec chmod +x {} \;'
 script:
-  - "npm run rebuild"
-  - "npm run start & sleep 5"
-  - "npm test"
-  - "npm run test:karma:ci"
+  - 'npm run rebuild'
+  - 'npm run start & sleep 5'
+  - 'npm test'
+  - 'npm run test:karma:ci'
+  - 'npm run test:ui:sl'
 
 after_success:
-  - "npm run deploy:ci"
-
+  - 'npm run deploy:ci'
 env:
   global:
-    - secure: UzeC9pLigUpriLNKkaDVYymbst7ZoaAq8w1KcDctn62C3YVHFoKIyIUwcUp7OyvhpXCc+BRZxaoCH5XDfAAzVGLXr8axuaWys0aMSyWZ+YAf2CVYKb2P+vyN+miO84AVubEh+8V0rUeeW5K1o3sWCxvO00BY6D6/tHpBNT2Tqw9xqwlrzjDQj8UeyMR5IMrkxOwK90qCjFeu2GXnJCYJbTt77s2S5no8s9af+67TuQdDkRYrjbFLhEenZ1lvNc5stkKuq+Dzz3MphVPWRj2FuOGJrS8ET/dyhi6ssD2vAy+SxilJhsJlpEMISlKn20G729ttpfjZgDCu91wxzuRe5HD2SMtjlhVc88/uL2s5LyY4oeXvrrWJOYLVO8FCLfb1/RGM3+VezNXSPvi64G3SShonJGk6PC0gWsu+0na5fdXVwJZQuwwbxdXl8SWKjFPB7GFsbeZ2GmcbmlVsGX+Ny+5A03pVOJN+nllh2bhNzN2KjRQmzLpwAOuLMncfCvTzpSdB8U34q1atQJbbNeNI3syJFxCkKSIPhu+RreBd5e4DMZd7s8Yt+RHbyoAIrKZqiORn8Zzw+sMG+HYNtzqqshRAXS0gHc9xzloU37ibFB6rhQIQB5iPr+lyo1QUvUCRXsJVq/SeIKs+nIrQ1OwUlFevuLEScbkjSP2ZRypbiKU=
-    - secure: L72SzLkb+2SLb3TT7z3suYVJORVNuWEqEBPmvxW12XG4kY9C1aJ+kVwt+rcU9Ba3oMEreGadGC9Q05014Sdh2sqiVpmqW4prnmfFOUVGNHTxQMTX/XjegNuWuMB8GWNH0IuECtlVi4aNkwswy7/dKfs9io0V+ATVxPP/xBpdpsABiiAbB9mT+/64ZSl6vvaI917U70KTKt4gbmK704ptG7M0owdGm/5386fIqQIQLDB4+QQR/pAM6BH9BFaurA9qfQlme8/2LewFqDwc7xLR2Kuax3GcZICgS16zByVfT4jtoKte8RwZ6WVkV8ByZmzsPjPvQgVaSuAKAv8+PMx4gN/+Vvvz+W3kKGRLsOYpwvYxY9ZKeMwcn/jSEx32xuKx20+8s7AcDWUyhoRmP8+Xh881oCCDCEyNVzjtv6oSrXH8UeRoQUMam7BSt4N0THUuyLGiOrd9SO6kVU4jD7FCFKcwdknDoguwLJt7s59bZuGmXlIONtUxZz5dAx52t+Lr2uDIbbYBPHGm2RiEhFYTRtOkjboaM/YQJy2qn2mwd7oCq3t9Gqkri53G/Gu9Zwny9O98e01bCO5ksWX8WgjOg2gYBMtWuZJp1s7RyBy/mrKi/v1WdPHWcoRgJnvMDD17Peko86W8k7Z5LIq5njy8deNjlYa4JuXzwfwijcFq6zE=
-    - secure: ZCwECKc041nndj0LaN6nfuEMq13vxEkK8ti339YnjAkohBKVaGqu9+ok2cajj1E5LIpo9OvUBf5uGBCqFtO3gQ900Yim4Z4n817hitBUlmg+zdT0T9SsAgIhNw2gVG2RwgQC5ZZ4ZK7ngqWm7kjP38YEQvEt1t6FovnbKvBxNDiYxTUivMUOFl96aFUEmC7kk0bH6Yum916vnMCXch8qaw/r5exoqnLsMAYdT0gkQ3qtKL+jx0M+w414ZFC/Mc/RV3bNJPVakIlw98IZxu0I+BEHeWv3FS2Q2e6pmwe1pDBD8j+C1PwLKIDl0yi1qtz9D/eZEj63jRSGXdWCgqTdXrNPeVpca5peaXFNR1UiX260/BG+oE9ZI4UV3FgzHJtR6aFoid9ii48VCSh0Ww57HlxxR24Pi8lu71GezQj368JkSZt8/1nr+3wqGcpDWzqKTZS9qKd30gEhYHUAu6U00hSl74PjT4KNG/UycUlDMJiclVyIXjmKcrccxTK7FsF0P4NhOlgOtbl1YoSjjhLczUo2bRk/zN5f4Ru+l5hi4tR7t8gMQiee7kVQGlYVYyXAiHb6WYAZB78lrJJaGbAN+1R9LQoc/+ABaZJV2UfkefAkh3cCptHEevJcKoX5PYdHhELWD5bOtL8YgI4AyWQC4Kf6QayIdoPMQOP0rZsZjls=
-
+    - secure: >-
+        UzeC9pLigUpriLNKkaDVYymbst7ZoaAq8w1KcDctn62C3YVHFoKIyIUwcUp7OyvhpXCc+BRZxaoCH5XDfAAzVGLXr8axuaWys0aMSyWZ+YAf2CVYKb2P+vyN+miO84AVubEh+8V0rUeeW5K1o3sWCxvO00BY6D6/tHpBNT2Tqw9xqwlrzjDQj8UeyMR5IMrkxOwK90qCjFeu2GXnJCYJbTt77s2S5no8s9af+67TuQdDkRYrjbFLhEenZ1lvNc5stkKuq+Dzz3MphVPWRj2FuOGJrS8ET/dyhi6ssD2vAy+SxilJhsJlpEMISlKn20G729ttpfjZgDCu91wxzuRe5HD2SMtjlhVc88/uL2s5LyY4oeXvrrWJOYLVO8FCLfb1/RGM3+VezNXSPvi64G3SShonJGk6PC0gWsu+0na5fdXVwJZQuwwbxdXl8SWKjFPB7GFsbeZ2GmcbmlVsGX+Ny+5A03pVOJN+nllh2bhNzN2KjRQmzLpwAOuLMncfCvTzpSdB8U34q1atQJbbNeNI3syJFxCkKSIPhu+RreBd5e4DMZd7s8Yt+RHbyoAIrKZqiORn8Zzw+sMG+HYNtzqqshRAXS0gHc9xzloU37ibFB6rhQIQB5iPr+lyo1QUvUCRXsJVq/SeIKs+nIrQ1OwUlFevuLEScbkjSP2ZRypbiKU=
+    - secure: >-
+        L72SzLkb+2SLb3TT7z3suYVJORVNuWEqEBPmvxW12XG4kY9C1aJ+kVwt+rcU9Ba3oMEreGadGC9Q05014Sdh2sqiVpmqW4prnmfFOUVGNHTxQMTX/XjegNuWuMB8GWNH0IuECtlVi4aNkwswy7/dKfs9io0V+ATVxPP/xBpdpsABiiAbB9mT+/64ZSl6vvaI917U70KTKt4gbmK704ptG7M0owdGm/5386fIqQIQLDB4+QQR/pAM6BH9BFaurA9qfQlme8/2LewFqDwc7xLR2Kuax3GcZICgS16zByVfT4jtoKte8RwZ6WVkV8ByZmzsPjPvQgVaSuAKAv8+PMx4gN/+Vvvz+W3kKGRLsOYpwvYxY9ZKeMwcn/jSEx32xuKx20+8s7AcDWUyhoRmP8+Xh881oCCDCEyNVzjtv6oSrXH8UeRoQUMam7BSt4N0THUuyLGiOrd9SO6kVU4jD7FCFKcwdknDoguwLJt7s59bZuGmXlIONtUxZz5dAx52t+Lr2uDIbbYBPHGm2RiEhFYTRtOkjboaM/YQJy2qn2mwd7oCq3t9Gqkri53G/Gu9Zwny9O98e01bCO5ksWX8WgjOg2gYBMtWuZJp1s7RyBy/mrKi/v1WdPHWcoRgJnvMDD17Peko86W8k7Z5LIq5njy8deNjlYa4JuXzwfwijcFq6zE=
+    - secure: >-
+        ZCwECKc041nndj0LaN6nfuEMq13vxEkK8ti339YnjAkohBKVaGqu9+ok2cajj1E5LIpo9OvUBf5uGBCqFtO3gQ900Yim4Z4n817hitBUlmg+zdT0T9SsAgIhNw2gVG2RwgQC5ZZ4ZK7ngqWm7kjP38YEQvEt1t6FovnbKvBxNDiYxTUivMUOFl96aFUEmC7kk0bH6Yum916vnMCXch8qaw/r5exoqnLsMAYdT0gkQ3qtKL+jx0M+w414ZFC/Mc/RV3bNJPVakIlw98IZxu0I+BEHeWv3FS2Q2e6pmwe1pDBD8j+C1PwLKIDl0yi1qtz9D/eZEj63jRSGXdWCgqTdXrNPeVpca5peaXFNR1UiX260/BG+oE9ZI4UV3FgzHJtR6aFoid9ii48VCSh0Ww57HlxxR24Pi8lu71GezQj368JkSZt8/1nr+3wqGcpDWzqKTZS9qKd30gEhYHUAu6U00hSl74PjT4KNG/UycUlDMJiclVyIXjmKcrccxTK7FsF0P4NhOlgOtbl1YoSjjhLczUo2bRk/zN5f4Ru+l5hi4tR7t8gMQiee7kVQGlYVYyXAiHb6WYAZB78lrJJaGbAN+1R9LQoc/+ABaZJV2UfkefAkh3cCptHEevJcKoX5PYdHhELWD5bOtL8YgI4AyWQC4Kf6QayIdoPMQOP0rZsZjls=
+    - secure: >-
+        KHz09/xp24ijpY2LLh3rFAcn+VPFMH02khJOqR5XtVkvOiBK7sLXQBGkkokxbFQVq3ABKPCXTITu7WXQR71fnh/8DbVzZ8bG6HsPBoXfdJeQ1hIoLSplZhgx1SUH1wMQWjY3nwz/yMLtFckWYNRTHyBlD1xZSEXTvmYRsdm3iS+ZsiBLVO44cqIQkiKX2jOwSBVo1Qx84b2aGAmsFo7mcVjKHzyuRcqJxoKhfSlV9zcOm7gYEeYKP0imSMNXBulPN+j0FT+R9BbdQdWWe1PfUUZ8FyrK0iOTJp09MAK2tAo3LiOHOBHVdAlUDtmmt663KBdv1OxRQHLCwwq4hmwlG358AxWYtVnYYXT1PtVzUqVPgkgfxRWf7/AvA/ab9qL/tfarpy/1uOfInbDh47HunKWZwyqCHFyVpRNKSfXfsz8qPtfjXxLOkaDSeIKdDyPOGP2WFu1t6B1bTKw6khghbfGAU//yy8S6twT3CjKjw5Qys/0jiWl8Ara+dLkdtCqxOsMjTVgcXyBhcmRGTlUC1moq0Rcng0Aor1no9B89IcrEYVRkz/N1HK+KDFCC3vYM8DUIHBI61RDHpJl+QjYzwSgAwHoBC5RFNBvHRHPXwY/sQOaeF7f/9Hf+1lKvXPHSYrXVacMU1opWqMoKj41BrwaBls7TqCcyxtfYtcjroQE=
 cache:
   directories:
     - node_modules
-
 addons:
   sauce_connect: true

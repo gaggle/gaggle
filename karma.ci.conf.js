@@ -12,7 +12,7 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      "./test/karma/*.js": ["browserify"],
+      "./test/karma/*.js": ["browserify"]
     },
 
     reporters: ["dots", "saucelabs"],
@@ -37,7 +37,8 @@ module.exports = function (config) {
     browserNoActivityTimeout: 90000,
 
     sauceLabs: {
-      testName: "jonlauridsen.com (gaggle)",
+      testName: "karma-tests",
+      build: "karma-" + process.env.TRAVIS_JOB_NUMBER,
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       startConnect: false
     }

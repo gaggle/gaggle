@@ -4,7 +4,7 @@ var sauceConnectLauncher = require("sauce-connect-launcher")
 
 sauceConnectLauncher({
   verbose: true,
-  tunnelIdentifier: "jonlauridsen.com" // must match ui test
+  tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "development"
 }, function (err, sauceConnectProcess) {
   if (err) {
     console.log(err.message)

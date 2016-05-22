@@ -20,13 +20,13 @@ const browserMatrix = (groupname) => {
       res: resolution,
       slug: canonize(s("%s-%s-%s", browser.platform, browser.browserName, resolution)),
       groupname: groupname,
-      buildname: canonize(groupname + "-" + (process.env.TRAVIS_JOB_NUMBER || nowstr)),
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "jonlauridsen.com"
+      buildname: canonize(s("%s-%s", groupname, process.env.TRAVIS_JOB_NUMBER || nowstr)),
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "development"
     }))
   })
 }
 
-describe("jonlauridsen.com", function () {
+describe("UI", function () {
   this.timeout(5 * MINUTE)
   browserMatrix(this.title).forEach((run) => {
     it(s("index-%s", run.slug), function () {
@@ -66,7 +66,7 @@ const eyesOnIndexTest = (driver, eyes) => {
             .then((val) => {
               return val == false
             })
-        }, 2 * MINUTE)
+        }, MINUTE)
       })
   }
 
