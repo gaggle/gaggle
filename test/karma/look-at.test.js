@@ -1,5 +1,5 @@
 "use strict";
-var tracker = require("../themes/microfolio/source/js/look-at")
+var tracker = require("../../themes/microfolio/source/js/look-at")
 
 var getTransform = function (el) {
   return el.style.transform || el.style.mozTransform
