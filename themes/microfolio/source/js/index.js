@@ -1,13 +1,13 @@
 "use strict";
 require("es6-promise").polyfill()
-require("./extensions/remove-element")
+require("../../components/js/extensions/remove-element")
 var DoubleBuffer = require("double-buffer.js")
-var inBetween = require("./in-between-range")
-var lookAt = require("./look-at")
-var registerKeyboard = require("./register-keyboard-shortcuts")
-var ThemeManager = require("./ThemeManager")
-var throttle = require("./throttler")
-var TimeManager = require("./TimeManager")
+var inBetween = require("../../components/js/in-between-range")
+var lookAt = require("../../components/js/look-at")
+var registerKeyboard = require("../../components/js/register-keyboard-shortcuts")
+var ThemeManager = require("../../components/js/ThemeManager")
+var throttle = require("../../components/js/throttler")
+var TimeManager = require("../../components/js/TimeManager")
 
 var bgpath = function (name, suffix) {
   if (!suffix) suffix = ""
