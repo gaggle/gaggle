@@ -45,6 +45,7 @@ describe("UI", function () {
 
       const eyes = new Eyes()
       eyes.setApiKey(process.env.EYES_KEY)
+      eyes.setBatch(run.buildname, run.buildname)
       return eyes.open(webdriver, run.groupname, this.test.title, res2Obj(run.res))
         .then((driver) => {
           return eyesOnIndexTest.bind(this)(driver, eyes)
