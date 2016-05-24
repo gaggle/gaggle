@@ -1,5 +1,5 @@
 "use strict";
-var inBetween = require("../../themes/microfolio/source/js/in-between-range")
+var inBetween = require("../../themes/microfolio/components/js/in-between-range")
 
 describe("in-between", function () {
   it("should find value", function () {
