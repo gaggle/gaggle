@@ -1,8 +1,8 @@
 extends base
 
 append head
-  link(rel="stylesheet", href="/css/index.css")
-  script(type="text/javascript", src="/js/index.js")
+  !=css("/css/index.css")
+  !=js("/js/index.js")
 
 block content
   buffer.noJS
