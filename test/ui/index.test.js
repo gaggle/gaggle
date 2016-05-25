@@ -10,7 +10,11 @@ const SECOND = 1000
 const MINUTE = 60 * SECOND
 
 const getSauceBrowsers = require("../../sauce-labs-browsers")
-const getResolutions = () => ({small: "1000x650"})
+const getResolutions = () => ({
+  iphone4_land: "480x320",
+  iphone4_port: "320x480",
+  small: "1000x650"
+})
 
 const browserMatrix = (groupname) => {
   const nowstr = new Date().toISOString().replace("T", " ").substr(0, 19) // => 2016-05-15 13:07:01
