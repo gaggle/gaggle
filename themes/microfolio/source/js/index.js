@@ -2,59 +2,44 @@
 require("es6-promise").polyfill()
 require("../../components/js/extensions/remove-element")
 var DoubleBuffer = require("double-buffer.js")
+var getBufferArgs = require("../../components/js/get-buffer-args")
 var inBetween = require("../../components/js/in-between-range")
 var lookAt = require("../../components/js/look-at")
 var registerKeyboard = require("../../components/js/register-keyboard-shortcuts")
+var themeConfiguration = require("../../components/js/theme-configuration")
 var ThemeManager = require("../../components/js/ThemeManager")
 var throttle = require("../../components/js/throttler")
 var TimeManager = require("../../components/js/TimeManager")
 
-var bgpath = function (name, suffix) {
-  if (!suffix) suffix = ""
-  return "/img/" + name + suffix + ".jpg"
-}
-
-var QUERIES = {
-  l: "(min-width: 691px)",
-  xl: "(min-width: 1382px)"
-  //xxl: "(min-width: 2765px)"
-}
-
 window.addEventListener("DOMContentLoaded", function () {
   document.getElementsByClassName("noJS").remove()
+  var conf = themeConfiguration(raw_conf)
+  console.log("Loaded configuration:", conf)
 
+  var buffer = new DoubleBuffer(document.body, document.getElementsByClassName("container")[0])
+  var themeManager = new ThemeManager([".content"], Object.keys(conf.background.themes))
   var timeManager = new TimeManager()
 
   var chooseGreeting = function (hr) {
-    var night = "Hi,"
-    var value = inBetween({
-      "5-6": "Oh hello, you're up early,",
-      "6-9": "Good morning,",
-      "9-11": "Hi,",
-      "11-13": "Good day,",
-      "13-15": "Good afternoon,",
-      "15-18": "Hello,",
-      "18-23": "Good evening,",
-      "23-24": night, "0-2": night,
-      "2-4": "Hi, up late huh?"
-    }, hr)
+    var value = inBetween(conf.greetings, hr)
     document.getElementsByTagName("greeting")[0].innerHTML = value
     return value
   }
 
-  var buffer = new DoubleBuffer(document.body, document.getElementsByClassName("container")[0])
-  var themeManager = new ThemeManager([".content"], ["sunrise", "streaky", "clouds", "dog", "hospital", "dusk"])
   buffer.front.element.addEventListener("click", function () {
     timeManager.set(new Date())
   })
 
   themeManager.on(themeManager.events.changed, function (theme) {
-    var p = bgpath(theme, ".m")
-    if (window.matchMedia(QUERIES.xl).matches)
-      p = bgpath(theme, ".xl")
-    else if (window.matchMedia(QUERIES.l).matches)
-      p = bgpath(theme, ".l")
-    buffer.set(bgpath(theme, ".thumb"), p)
+    var bg = conf.background;
+    var bufferArgs = getBufferArgs(
+      bg.themes,
+      bg.root_url || "",
+      bg.default_size,
+      bg.preview_size,
+      bg.responsive_sizes,
+      theme)
+    buffer.set.apply(buffer, bufferArgs)
   })
 
   timeManager.on(timeManager.events.initialized, function () {
