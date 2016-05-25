@@ -27,6 +27,9 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   buffer.front.element.addEventListener("click", function () {
+    if (buffer.transitioning) {
+      throw new Error("Transition in progress")
+    }
     timeManager.set(new Date())
   })
 
