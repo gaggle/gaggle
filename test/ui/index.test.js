@@ -26,9 +26,9 @@ const browserMatrix = (groupname) => {
   })
 }
 
-describe("UI", function () {
-  this.timeout(5 * MINUTE)
-  browserMatrix(this.title).forEach((run) => {
+browserMatrix("UI").forEach((run) => {
+  describe(s("UI-%s", run.slug), function () {
+    this.timeout(5 * MINUTE)
     it(s("index-%s", run.slug), function () {
       const webdriver = new Webdriver.Builder()
         .withCapabilities(_.merge(run.browser, {
