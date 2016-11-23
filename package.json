@@ -27,6 +27,7 @@
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
     "hexo-tag-gist-it": "github:gaggle/hexo-tag-gist-it",
+    "hexo-toc": "^1.0.4",
     "install": "^0.8.2",
     "number-to-words": "^1.2.3"
   },

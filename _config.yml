@@ -80,3 +80,14 @@ archive_generator:
     yearly: false
     monthly: false
     daily: false
+
+
+toc:
+  maxdepth: 3
+  class: toc
+  anchor:
+    symbol: '#'
+
+markdown:
+  render:
+    html: true
