@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
+    "clean": "hexo clean",
     "start": "hexo server",
     "rebuild": "hexo clean && hexo generate",
     "test": "mocha",
