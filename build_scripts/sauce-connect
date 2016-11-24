@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 "use strict";
-var sauceConnectLauncher = require("sauce-connect-launcher")
+const sauceConnectLauncher = require("sauce-connect-launcher")
 
 sauceConnectLauncher({
   verbose: true,
   tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER || "development"
-}, function (err, sauceConnectProcess) {
+}, (err, sauceConnectProcess) => {
   if (err) {
     console.log(err.message)
     return
