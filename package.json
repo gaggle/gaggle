@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
+    "clean": "hexo clean",
     "start": "hexo server",
     "rebuild": "hexo clean && hexo generate",
     "test": "mocha",
@@ -26,6 +27,8 @@
     "hexo-renderer-markdown-it": "^3.4.1",
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
+    "hexo-tag-gist-it": "github:gaggle/hexo-tag-gist-it",
+    "hexo-toc": "^1.0.4",
     "install": "^0.8.2",
     "number-to-words": "^1.2.3"
   },
