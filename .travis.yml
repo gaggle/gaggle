@@ -4,14 +4,13 @@ node_js:
 before_script:
   - 'phantomjs --version'
   - 'phantomjs --webdriver=4444 2>&1 >/dev/null &'
-  - 'find ./_scripts -type f -exec chmod +x {} \;'
+  - 'find ./build_scripts -type f -exec chmod +x {} \;'
 script:
   - 'npm run rebuild'
-  - 'npm run start & sleep 5'
+  - 'npm run serve & sleep 5'
   - 'npm test'
   - 'npm run test:karma:ci'
-  - 'npm run test:ui:sl'
-
+  - 'npm run test:ui:saucelabs'
 after_success:
   - 'npm run deploy:ci'
 env:

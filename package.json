@@ -8,10 +8,10 @@
     "test": "mocha",
     "test:karma": "karma start",
     "test:karma:ci": "karma start karma.ci.conf.js",
-    "test:ui:sl": "mocha test/ui",
-    "deploy": "./_scripts/deploy",
-    "deploy:ci": "./_scripts/ci-deploy",
-    "sauce-connect": "./_scripts/sauce-connect"
+    "test:ui:saucelabs": "mocha test/ui",
+    "deploy": "./build_scripts/deploy",
+    "deploy:ci": "./build_scripts/ci-deploy",
+    "sauce-connect": "./build_scripts/sauce-connect"
   },
   "hexo": {
     "version": "3.2.2"
