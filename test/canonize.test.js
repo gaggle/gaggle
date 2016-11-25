@@ -1,6 +1,6 @@
 "use strict";
 var expect = require("chai").expect
-var canonize = require("./helpers/canonize")
+var canonize = require("./canonize")
 
 describe("canonize", function () {
   it("should work", function () {
