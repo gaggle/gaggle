@@ -1,84 +1,54 @@
+# Hexo Configuration
+
+# Site
 title: jonlauridsen.com
 author: Jon Lauridsen
+language: en
+
+# URL
 url: http://jonlauridsen.com
 root: /
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
-theme: microfolio
-microfolio:
-  greetings:
-    05-06: Oh hello, you're up early,
-    06-09: Good morning,
-    09-11: Hi,
-    11-13: Good day,
-    13-15: Good afternoon,
-    15-18: Hello,
-    18-23: Good evening,
-    23-24: Hi,
-    00-02: Hi,
-    02-04: Hi, up late huh?
-  background:
-    root_url: /img/
-    themes:
-      sunrise:
-        .xl: sunrise.xl.jpg
-        .l: sunrise.l.jpg
-        .m: sunrise.m.jpg
-        .thumb: sunrise.thumb.jpg
-      streaky:
-        .xl: streaky.xl.jpg
-        .l: streaky.l.jpg
-        .m: streaky.m.jpg
-        .thumb: streaky.thumb.jpg
-      clouds:
-        .xl: clouds.xl.jpg
-        .l: clouds.l.jpg
-        .m: clouds.m.jpg
-        .thumb: clouds.thumb.jpg
-      dog:
-        .xl: dog.xl.jpg
-        .l: dog.l.jpg
-        .m: dog.m.jpg
-        .thumb: dog.thumb.jpg
-      hospital:
-        .xl: hospital.xl.jpg
-        .l: hospital.l.jpg
-        .m: hospital.m.jpg
-        .thumb: hospital.thumb.jpg
-      dusk:
-        .xl: dusk.xl.jpg
-        .l: dusk.l.jpg
-        .m: dusk.m.jpg
-        .thumb: dusk.thumb.jpg
-    default_size: .m
-    preview_size: .thumb
-    responsive_sizes:
-      1368: .xl
-      684: .l
+permalink: blog/:year/:title/
+archive_dir: blog
+
+# Writing
+new_post_name: :year-:title.md
+titlecase: true
+filename_case: 1
+post_asset_folder: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: true
+
+# Extensions
+theme: apollo
+theme_config:
+  menu:
+    Home: /
+    Blog: /blog/
+  favicon:
+  logo:
+  ga:
+  startyear: 2016
+
+archive_generator:
+  per_page: 0
+  yearly: false
+  monthly: false
+  daily: false
+
+toc:
+  maxdepth: 3
+  class: toc
+  anchor:
+    symbol: '#'
+
 markdown:
   render:
-    html: true
+    html: true # Required for toc
     breaks: false
     linkify: true
     typographer: true
     quotes: '“”‘’'
-  plugins:
-    - markdown-it-sub
-    - markdown-it-sup
-  anchors:
-    level: 1
-    collisionSuffix: 'v'
-stylus:
-  compress: true
-uglify:
-  mangle: true
-  output:
-  compress:
-  exclude:
-    - "*.min.js"
-browserify:
-  exclude:
-    - "**/*.min.js"
-clean_css:
-  exclude:
-    - "*.min.css"
