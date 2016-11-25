@@ -6,6 +6,7 @@ before_script:
   - 'phantomjs --webdriver=4444 2>&1 >/dev/null &'
   - 'find ./build_scripts -type f -exec chmod +x {} \;'
 script:
+  - 'npm run setup'
   - 'npm run test:ci'
 after_success:
   - 'npm run deploy:ci'
