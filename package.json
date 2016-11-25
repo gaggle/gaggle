@@ -3,15 +3,13 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "start": "hexo server",
-    "rebuild": "hexo clean && hexo generate",
-    "test": "mocha",
-    "test:karma": "karma start",
-    "test:karma:ci": "karma start karma.ci.conf.js",
-    "test:ui:sl": "mocha test/ui",
-    "deploy": "./_scripts/deploy",
-    "deploy:ci": "./_scripts/ci-deploy",
-    "sauce-connect": "./_scripts/sauce-connect"
+    "test": "mocha & karma start",
+    "test:ci": "mocha & karma start karma.ci.conf.js",
+    "build": "hexo generate",
+    "deploy": "./build_scripts/deploy",
+    "deploy:ci": "./build_scripts/ci-deploy",
+    "setup": "./build_scripts/setup",
+    "sauce-connect": "./build_scripts/sauce-connect"
   },
   "hexo": {
     "version": "3.2.2"
