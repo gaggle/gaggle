@@ -1,3 +1,5 @@
+layout: index
+---
 <greeting>Hello,</greeting>
 
 My passions are making great tools and easy workflows.
