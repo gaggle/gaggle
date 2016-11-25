@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "test": "mocha & karma start",
-    "test:ci": "concurrently --kill-others -s \"last\" -p \"[{name}]\" -n \"SERV,TEST\" \"hexo server\" \"mocha & karma start karma.ci.conf.js\"",
+    "test:ci": "mocha & karma start karma.ci.conf.js",
     "deploy": "./build_scripts/deploy",
     "deploy:ci": "./build_scripts/ci-deploy",
     "setup": "./build_scripts/setup",
@@ -32,7 +32,6 @@
   "devDependencies": {
     "browserify-istanbul": "^2.0.0",
     "chai": "^3.5.0",
-    "concurrently": "^3.1.0",
     "karma": "^1.3.0",
     "karma-browserify": "^5.1.0",
     "karma-chai": "^0.1.0",
