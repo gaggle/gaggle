@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+"use strict";
+const NAME = "apollo"
+const GITPATH = "https://github.com/pinggod/hexo-theme-apollo.git"
+
+const fs = require("fs")
+const path = require("path")
+const spawn = require("child_process").execSync
+
+const dir_exists = function () {
+    try {
+        fs.accessSync(theme_path, fs.F_OK)
+        return true
+    } catch (err) {
+        return false
+    }
+}
+
+const rm_dir = function (dir_path) {
+    try {
+        var files = fs.readdirSync(dir_path)
+    }
+    catch (e) {
+        return
+    }
+    if (files.length > 0)
+        for (var i = 0; i < files.length; i++) {
+            var file_path = path.join(dir_path, files[i])
+            if (fs.statSync(file_path).isFile())
+                fs.unlinkSync(file_path)
+            else
+                rm_dir(file_path)
+        }
+    fs.rmdirSync(dir_path)
+}
+
+const args = process.argv
+args.shift() // bin/node
+args.shift() // build_scripts/setup
+
+const theme_path = path.join("themes", NAME)
+const forced = args[0] == "-f" || args[0] == "--force"
+let theme_exists = dir_exists(theme_path)
+
+if (theme_exists && forced) {
+    console.log("Deleting existing theme", theme_path)
+    rm_dir(theme_path)
+    theme_exists = false
+}
+
+if (!theme_exists) {
+    spawn(`git clone ${GITPATH} ${theme_path}`)
+} else {
+    console.log("Theme exists, skipping setup")
+}
