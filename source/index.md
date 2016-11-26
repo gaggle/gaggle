@@ -1,4 +1,5 @@
 layout: index
+class: home
 ---
 <greeting>Hello,</greeting>
 
