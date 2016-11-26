@@ -17,6 +17,7 @@
   "dependencies": {
     "browserify": "^13.1.1",
     "hexo": "^3.2.2",
+    "hexo-excerpt": "^1.1.2",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-feed": "^1.2.0",
     "hexo-renderer-jade": "^0.3.0",
