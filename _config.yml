@@ -28,10 +28,6 @@ theme_config:
   menu:
     Home: /
     Blog: /blog/
-  favicon:
-  logo:
-  ga:
-  startyear: 2016
 
 archive_generator:
   per_page: 0
