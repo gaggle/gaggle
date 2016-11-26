@@ -23,7 +23,7 @@ highlight:
   tab_replace: true
 
 # Extensions
-theme: apollo
+theme: simplicity-itself
 theme_config:
   menu:
     Home: /
