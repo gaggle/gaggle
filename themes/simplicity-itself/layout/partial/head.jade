@@ -1,0 +1,11 @@
+meta(charset="utf-8")
+meta(name="X-UA-Compatible", content="IE=edge")
+
+title
+  block head_title
+    = config.title
+block head_description
+  meta(name="description", content= config.description)
+
+meta(name="viewport", content="width=device-width, initial-scale=1")
+link(rel="stylesheet", href=url_for("css/main.css"))

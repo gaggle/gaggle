@@ -1,0 +1,30 @@
+mixin itemInfo(item)
+  .info
+    h1.title
+      - var target = item.link ? "_blank" : "_self"
+      a.link(href= item.link || url_for(item.path), target=target)
+        != item.title || item.slug
+    .date
+      != full_date(item.date, 'll')
+
+//- Blog page
+mixin postList()
+  ul.posts.post-list
+    each item in page.posts.toArray()
+      - var has_excerpt_cls = item.excerpt != "" ? "has-excerpt" : ""
+      li.post-list-item
+        article.post-block
+          +itemInfo(item)
+          .content(class=has_excerpt_cls)
+            != item.excerpt || item.content
+          a.read-more(href= url_for(item.path), class=has_excerpt_cls)!= __('more')
+
+//- Post Page
+mixin post(item)
+  article.post-block
+    +itemInfo(item)
+    .content
+      .excerpt
+        != item.excerpt
+      .more
+        != item.more

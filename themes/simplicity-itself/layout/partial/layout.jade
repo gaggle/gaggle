@@ -1,0 +1,14 @@
+doctype
+html
+  head
+    include head
+    include scripts
+  body(class=page.class)
+    .wrap
+      header
+        block header
+      section.container
+        block content
+        block pagination
+      footer
+        block footer
