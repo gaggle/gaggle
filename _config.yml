@@ -28,6 +28,7 @@ theme_config:
   menu:
     Home: /
     Blog: /blog/
+  ga: UA-22672641-1
 
 archive_generator:
   per_page: 0
