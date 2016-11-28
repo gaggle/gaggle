@@ -1,0 +1,11 @@
+extends partial/layout
+
+block header
+  include partial/header
+
+block content
+  include mixins/post
+  +postList()
+
+block footer
+  include partial/footer
