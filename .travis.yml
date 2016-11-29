@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - stable
+  - 6
 before_script:
   - 'phantomjs --version'
   - 'phantomjs --webdriver=4444 2>&1 >/dev/null &'
