@@ -1,0 +1,28 @@
+.post-list
+  margin 2em 0
+
+  .post-list-item
+    padding 1em 0 2em
+    border-bottom 1px solid color-post-list-divider
+
+    &:first-child
+      padding-top 0
+
+    &:last-child
+      border-bottom 0
+
+    .content
+      display none
+
+      @media mq-tablet
+        display block
+
+      &.has-excerpt
+        display block
+
+    .read-more
+      color color-post-list-read-more
+      @media mq-tablet
+        display none
+        &.has-excerpt
+          display block

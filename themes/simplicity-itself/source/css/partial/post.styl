@@ -1,0 +1,214 @@
+$codebase
+  position absolute
+  top -4px
+  right 0
+  color color-post-code-type
+  text-align right
+  font-size 1em
+  padding 5px
+  width 20px
+  height 20px
+  font-weight 600
+
+article
+  .info
+    display flex
+
+    @media mq-tablet
+      display block
+
+    .title
+      margin 0 0 0.65em
+      padding-right .5em
+
+      @media mq-tablet
+        margin-bottom 0
+
+    .date
+      color color-post-date
+      margin 1.2em 0
+      width 100px
+
+      @media mq-tablet
+        margin-top 0
+
+      span
+        margin-left 0.5rem
+
+  h1, h2, h3, h4, h5, h6
+    position relative
+    margin 1em 0
+
+  h1
+    font-size 24px
+
+  h2, h3
+    font-size 21px
+
+  h4, h5, h6
+    font-size 17px
+
+  a
+    color color-post-link
+
+  blockquote
+    margin 2em 0
+    padding-left 20px
+    border-left 4px solid color-post-quote-highlight
+
+  img
+    display block
+    max-width 100%
+    margin 1em auto
+
+  .video-container
+    position relative
+    padding-bottom 56.25%
+    padding-top 30px
+    height 0
+    margin-bottom 2em
+
+    & iframe, & object, & embed
+      position absolute
+      top 0
+      left 0
+      width 100%
+      height 100%
+
+  & table, & figure.highlight
+    box-shadow 0 1px 2px rgba(0, 0, 0, 0.125)
+
+  & ul
+    list-style initial
+
+  & ol
+    list-style decimal
+
+  hr
+    margin 20px auto
+
+  figcaption > *
+    padding 0 2px
+
+  pre
+    padding 1.2em 1.4em
+    line-height line-height-code
+    margin 0
+
+  .highlight
+    position relative
+    margin 1em 0
+    border-radius 2px
+    background-color color-post-highlight-background
+    overflow-x auto
+
+    table, tr, td
+      width 100%
+      border-collapse collapse
+      padding 0
+      margin 0
+
+    .gutter
+      display none
+
+    .line.marked
+      background-color color-post-code-marked-line
+
+    code-signs(keys)
+      for key in keys
+        &.{key} .code:after
+          content key
+          @extend $codebase
+
+    signs = "html", "js", "bash", "css", "scss", "diff", "java", "xml", "python", "json", "swift", "ruby", "perl", "php", "c", "java", "cpp", "ts"
+    code-signs(signs)
+
+    &.cpp .code:after
+      content 'c++'
+
+  code, pre
+    font-size 0.8
+    background-color color-post-code-background
+    font-family font-mono
+    color #525252
+
+    .function .keyword,
+    .constant
+      color #0092db
+
+    .keyword,
+    .attribute
+      color #e96900
+
+    .number,
+    .literal
+      color #ae81ff
+
+    .tag,
+    .tag .title,
+    .change,
+    .winutils,
+    .flow,
+    .lisp .title,
+    .clojure .built_in,
+    .nginx .title,
+    .tex .special
+      color #2973b7
+
+    .symbol,
+    .symbol .string,
+    .value,
+    .regexp
+      color #42b983
+
+    .title
+      color #83B917
+
+    .tag .value,
+    .string,
+    .subst,
+    .haskell .type,
+    .preprocessor,
+    .ruby .class .parent,
+    .built_in,
+    .sql .aggregate,
+    .django .template_tag,
+    .django .variable,
+    .smalltalk .class,
+    .javadoc,
+    .django .filter .argument,
+    .smalltalk .localvars,
+    .smalltalk .array,
+    .attr_selector,
+    .pseudo,
+    .addition,
+    .stream,
+    .envvar,
+    .apache .tag,
+    .apache .cbracket,
+    .tex .command,
+    .prompt
+      color #42b983
+
+    .comment,
+    .java .annotation,
+    .python .decorator,
+    .template_comment,
+    .pi,
+    .doctype,
+    .shebang,
+    .apache .sqbracket,
+    .tex .formula
+      color #b3b3b3
+
+    .deletion
+      color #BA4545
+
+    .coffeescript .javascript,
+    .javascript .xml,
+    .tex .formula,
+    .xml .javascript,
+    .xml .vbscript,
+    .xml .css,
+    .xml .cdata
+      opacity 0.5

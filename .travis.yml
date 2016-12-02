@@ -1,17 +1,13 @@
 language: node_js
 node_js:
-  - stable
+  - 6
 before_script:
   - 'phantomjs --version'
   - 'phantomjs --webdriver=4444 2>&1 >/dev/null &'
-  - 'find ./_scripts -type f -exec chmod +x {} \;'
+  - 'find ./build_scripts -type f -exec chmod +x {} \;'
+  - 'PATH=$(npm bin):$PATH hexo server & sleep 5'
 script:
-  - 'npm run rebuild'
-  - 'npm run start & sleep 5'
-  - 'npm test'
-  - 'npm run test:karma:ci'
-  - 'npm run test:ui:sl'
-
+  - 'npm run test:ci'
 after_success:
   - 'npm run deploy:ci'
 env:
@@ -24,8 +20,5 @@ env:
         ZCwECKc041nndj0LaN6nfuEMq13vxEkK8ti339YnjAkohBKVaGqu9+ok2cajj1E5LIpo9OvUBf5uGBCqFtO3gQ900Yim4Z4n817hitBUlmg+zdT0T9SsAgIhNw2gVG2RwgQC5ZZ4ZK7ngqWm7kjP38YEQvEt1t6FovnbKvBxNDiYxTUivMUOFl96aFUEmC7kk0bH6Yum916vnMCXch8qaw/r5exoqnLsMAYdT0gkQ3qtKL+jx0M+w414ZFC/Mc/RV3bNJPVakIlw98IZxu0I+BEHeWv3FS2Q2e6pmwe1pDBD8j+C1PwLKIDl0yi1qtz9D/eZEj63jRSGXdWCgqTdXrNPeVpca5peaXFNR1UiX260/BG+oE9ZI4UV3FgzHJtR6aFoid9ii48VCSh0Ww57HlxxR24Pi8lu71GezQj368JkSZt8/1nr+3wqGcpDWzqKTZS9qKd30gEhYHUAu6U00hSl74PjT4KNG/UycUlDMJiclVyIXjmKcrccxTK7FsF0P4NhOlgOtbl1YoSjjhLczUo2bRk/zN5f4Ru+l5hi4tR7t8gMQiee7kVQGlYVYyXAiHb6WYAZB78lrJJaGbAN+1R9LQoc/+ABaZJV2UfkefAkh3cCptHEevJcKoX5PYdHhELWD5bOtL8YgI4AyWQC4Kf6QayIdoPMQOP0rZsZjls=
     - secure: >-
         KHz09/xp24ijpY2LLh3rFAcn+VPFMH02khJOqR5XtVkvOiBK7sLXQBGkkokxbFQVq3ABKPCXTITu7WXQR71fnh/8DbVzZ8bG6HsPBoXfdJeQ1hIoLSplZhgx1SUH1wMQWjY3nwz/yMLtFckWYNRTHyBlD1xZSEXTvmYRsdm3iS+ZsiBLVO44cqIQkiKX2jOwSBVo1Qx84b2aGAmsFo7mcVjKHzyuRcqJxoKhfSlV9zcOm7gYEeYKP0imSMNXBulPN+j0FT+R9BbdQdWWe1PfUUZ8FyrK0iOTJp09MAK2tAo3LiOHOBHVdAlUDtmmt663KBdv1OxRQHLCwwq4hmwlG358AxWYtVnYYXT1PtVzUqVPgkgfxRWf7/AvA/ab9qL/tfarpy/1uOfInbDh47HunKWZwyqCHFyVpRNKSfXfsz8qPtfjXxLOkaDSeIKdDyPOGP2WFu1t6B1bTKw6khghbfGAU//yy8S6twT3CjKjw5Qys/0jiWl8Ara+dLkdtCqxOsMjTVgcXyBhcmRGTlUC1moq0Rcng0Aor1no9B89IcrEYVRkz/N1HK+KDFCC3vYM8DUIHBI61RDHpJl+QjYzwSgAwHoBC5RFNBvHRHPXwY/sQOaeF7f/9Hf+1lKvXPHSYrXVacMU1opWqMoKj41BrwaBls7TqCcyxtfYtcjroQE=
-cache:
-  directories:
-    - node_modules
 addons:
   sauce_connect: true
