@@ -1,0 +1,9 @@
+ul.nav.nav-list
+  each url, name in theme.menu
+    - var re = /^(http|https):\/\/*/gi;
+    - var target = re.test(url) ? "_blank" : "_self"
+    - var is_active = ("/" + page.path).startsWith(url == "/" ? "/index.html" : url)
+    li.nav-list-item(class=name.toLowerCase())
+      a.link(class={active: is_active} href=url target=target)
+        != name
+hr

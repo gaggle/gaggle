@@ -1,7 +1,7 @@
 # Hexo Configuration
 
 # Site
-title: jonlauridsen.com
+title: Jon Lauridsen
 author: Jon Lauridsen
 language: en
 
@@ -28,6 +28,7 @@ theme_config:
   menu:
     Home: /
     Blog: /blog/
+  ga: UA-22672641-1
 
 archive_generator:
   per_page: 0

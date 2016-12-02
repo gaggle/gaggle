@@ -17,7 +17,6 @@
   "dependencies": {
     "browserify": "^13.1.1",
     "hexo": "^3.2.2",
-    "hexo-excerpt": "^1.1.2",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-feed": "^1.2.0",
     "hexo-renderer-jade": "^0.3.0",
@@ -25,7 +24,6 @@
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
     "hexo-tag-gist-it": "github:gaggle/hexo-tag-gist-it",
-    "hexo-toc": "^1.0.4",
     "install": "^0.8.2",
     "number-to-words": "^1.2.3"
   },
