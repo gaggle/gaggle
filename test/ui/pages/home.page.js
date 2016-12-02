@@ -1,8 +1,8 @@
 var Page = require("./page")
 
 class HomePage extends Page {
-  open(path) {
-    return super.open("/")
+  open(path = null) {
+    return super.open(path || "/")
   }
 }
 

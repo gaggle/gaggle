@@ -1,8 +1,8 @@
 var Page = require("./page")
 
 class BlogPage extends Page {
-  open(path) {
-    return super.open("/blog")
+  open(path = null) {
+    return super.open(path || "/blog")
   }
 }
 

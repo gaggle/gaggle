@@ -2,8 +2,8 @@
 const uiTesting = require("../../ui-testing")
 
 class Page {
-  open(path) {
-    browser.url(path)
+  open(path = null) {
+    browser.url(path || "/")
   }
 
   screenshot() {
