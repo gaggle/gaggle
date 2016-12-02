@@ -7,9 +7,7 @@
     "test:ci": "istanbul cover _mocha --report text-lcov -- -R spec | node ./node_modules/coveralls/bin/coveralls.js && wdio",
     "build": "hexo generate",
     "deploy": "./build_scripts/deploy",
-    "deploy:ci": "./build_scripts/ci-deploy",
-    "setup": "./build_scripts/setup",
-    "sauce-connect": "./build_scripts/sauce-connect"
+    "deploy:ci": "./build_scripts/ci-deploy"
   },
   "hexo": {
     "version": "3.2.2"
