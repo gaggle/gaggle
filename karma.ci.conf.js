@@ -25,10 +25,17 @@ module.exports = function (config) {
       "./test/frontend/*.js": ["browserify"]
     },
 
-    reporters: ["dots", "saucelabs"],
+    reporters: ["dots", "coverage", "coveralls", "saucelabs"],
 
     browserify: {
-      debug: true // generate source maps for easier debugging
+      debug: true, // generate source maps for easier debugging
+      transform: ["browserify-istanbul"]
+    },
+
+    coverageReporter: {
+      reporters: [
+        {type: "lcov", dir: ".coverage"}
+      ]
     },
 
     urlRoot: "/__karma__/",
