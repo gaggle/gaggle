@@ -1,5 +1,6 @@
 "use strict";
 const expect = require('chai').expect
+const HeaderPage = new (require('./pages/header.page'))
 const HomePage = new (require('./pages/home.page'))
 const uiTesting = require("../ui-testing")
 
@@ -10,8 +11,8 @@ describe('home', function () {
       it(`has links to home and blog (${size_s})`, () => {
         HomePage.open()
         HomePage.size(size)
-        expect(HomePage.home_link.isVisible()).to.be.true
-        expect(HomePage.blog_link.isVisible()).to.be.true
+        expect(HeaderPage.home_link.isVisible()).to.be.true
+        expect(HeaderPage.blog_link.isVisible()).to.be.true
       })
     })(e)
   }
