@@ -7,12 +7,12 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      "./test/karma/*.js",
-      {pattern: "./test/karma/*.jpg", watched: false, included: false, served: true, nocache: false}
+      "./test/frontend/*.js",
+      {pattern: "./test/frontend/*.jpg", watched: false, included: false, served: true, nocache: false}
     ],
 
     preprocessors: {
-      "./test/karma/*.js": ["browserify"]
+      "./test/frontend/*.js": ["browserify"]
     },
 
     reporters: ["dots", "saucelabs"],

@@ -1,3 +1,6 @@
+layout: index
+class: home
+---
 <greeting>Hello,</greeting>
 
 My passions are making great tools and easy workflows.
