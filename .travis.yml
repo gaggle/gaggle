@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - stable
+  - 6
 before_script:
   - 'phantomjs --version'
   - 'phantomjs --webdriver=4444 2>&1 >/dev/null &'
   - 'find ./build_scripts -type f -exec chmod +x {} \;'
-  - 'PATH=$(npm bin):$PATH hexo server & sleep 5'
+  - 'PATH=$(npm bin):$PATH hexo server --draft & sleep 5'
 script:
   - 'npm run test:ci'
 after_success:

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "test": "mocha & karma start",
-    "test:ci": "mocha & karma start karma.ci.conf.js",
+    "test:ci": "mocha & karma start karma.ci.conf.js & npm run test:ui",
+    "test:ui": "wdio wdio.conf.js",
     "build": "hexo generate",
     "deploy": "./build_scripts/deploy",
     "deploy:ci": "./build_scripts/ci-deploy",
@@ -41,10 +42,15 @@
     "karma-sinon": "^1.0.5",
     "mocha": "^3.1.2",
     "mocha-lcov-reporter": "^1.2.0",
+    "parallel-mocha": "0.0.7",
     "phantomjs-prebuilt": "^2.1.13",
     "sauce-connect-launcher": "^1.1.1",
     "selenium-server": "3.0.1",
     "selenium-webdriver": "^3.0.1",
-    "sinon": "^1.17.6"
+    "sinon": "^1.17.6",
+    "wdio-mocha-framework": "^0.5.4",
+    "wdio-phantomjs-service": "^0.2.2",
+    "wdio-sauce-service": "^0.2.5",
+    "webdriverio": "^4.4.0"
   }
 }

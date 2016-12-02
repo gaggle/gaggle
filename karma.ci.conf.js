@@ -1,6 +1,16 @@
-module.exports = function (config) {
-  var customLaunchers = require("./sauce-labs-browsers")()
+const slBrowsers = require("./saucelabs-browsers")
 
+const sluggify = (s) => {
+  return s.toLowerCase().replace(" ", "-")
+}
+
+let customLaunchers = {}
+for (var i = 0, l = slBrowsers.length; i < l; i++) {
+  let slug = sluggify(`${slBrowsers[i].browserName}-${slBrowsers[i].platform}`)
+  customLaunchers[slug] = slBrowsers[i]
+}
+
+module.exports = function (config) {
   config.set({
     basePath: "",
     frameworks: ["mocha", "chai", "sinon", "browserify"],
