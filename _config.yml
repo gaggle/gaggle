@@ -49,5 +49,3 @@ markdown:
     linkify: true
     typographer: true
     quotes: '“”‘’'
-
-excerpt_depth: 3

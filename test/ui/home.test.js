@@ -1,10 +1,10 @@
 "use strict";
-const expect = require('chai').expect
-const HeaderPage = new (require('./pages/header.page'))
-const HomePage = new (require('./pages/home.page'))
+const expect = require("chai").expect
+const HeaderPage = new (require("./pages/header.page"))
+const HomePage = new (require("./pages/home.page"))
 const uiTesting = require("../ui-testing")
 
-describe('home', function () {
+describe("home", function () {
   for (var e of uiTesting.sizes) {
     (function (size) {
       let size_s = `${size.width}x${size.height}`
