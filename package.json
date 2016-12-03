@@ -13,6 +13,7 @@
     "version": "3.2.2"
   },
   "dependencies": {
+    "gascrolldepth": "github:leighmcculloch/gascrolldepth.js",
     "hexo": "^3.2.2",
     "hexo-filter-cleanup": "^1.0.6",
     "hexo-generator-archive": "^0.1.4",
