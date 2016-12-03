@@ -58,11 +58,6 @@ table
 section.container
   margin 0 layout-margins
 
-.wrap
-  @media mq-tablet
-    width layout-max-width
-    margin 0 auto
-
 hr
   width 80%
   max-width 300px
@@ -70,6 +65,11 @@ hr
   height 1px
   border 0
   background-image linear-gradient(left, transparent, color-header-divider, transparent)
+
+.wrap
+  @media mq-tablet
+    width layout-max-width
+    margin 0 auto
 
 .copyright
   display none
