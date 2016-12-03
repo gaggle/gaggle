@@ -1,3 +1,4 @@
+var gascrolldepth = require("gascrolldepth")
 var moment = require("moment")
 
 var update_datetime = function (el) {
@@ -7,5 +8,6 @@ var update_datetime = function (el) {
 
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".relative-time").forEach(update_datetime)
+  window.gascrolldepth.init()
   console.log("Ready")
 })
