@@ -1,6 +1,7 @@
 const slBrowsers = require("./saucelabs-browsers")
 
 let capabilities = [{browserName: 'phantomjs'}]
+let maxInstances = 40
 if (process.env.SAUCE_USERNAME) {
   console.log("wdio - Configuring to SauceLabs")
   const browsers = slBrowsers({
@@ -12,6 +13,7 @@ if (process.env.SAUCE_USERNAME) {
   capabilities = Object.keys(browsers).map((key) => {
     return browsers[key]
   })
+  maxInstances = 5
 }
 
 exports.config = {
@@ -19,7 +21,7 @@ exports.config = {
   key: process.env.SAUCE_ACCESS_KEY,
 
   specs: ['./test/ui/*.js'],
-  maxInstances: 40,
+  maxInstances: maxInstances,
   capabilities: capabilities,
   sync: true,
   logLevel: 'error',
