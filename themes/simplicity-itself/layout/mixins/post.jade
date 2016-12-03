@@ -5,7 +5,7 @@ mixin itemInfo(item)
       a.link(href= item.link || url_for(item.path), target=target)
         != item.title || item.slug
     .date
-      != full_date(item.date, 'll')
+      != full_date(item.date, "ll")
 
 //- Blog page
 mixin postList()
@@ -17,7 +17,7 @@ mixin postList()
           +itemInfo(item)
           .content(class=has_excerpt_cls)
             != item.excerpt || item.content
-          a.read-more(href= url_for(item.path), class=has_excerpt_cls)!= __('more')
+          a.read-more(href= url_for(item.path), class=has_excerpt_cls)!= __("more")
 
 //- Post Page
 mixin post(item)
