@@ -3,7 +3,7 @@ const uiTesting = require("../../ui-testing")
 
 class Page {
   open(path = null) {
-    browser.url(path || "/")
+    return browser.url(path || "/")
   }
 
   screenshot() {
