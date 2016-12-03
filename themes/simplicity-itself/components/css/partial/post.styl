@@ -55,9 +55,53 @@ article
     color color-post-link
 
   blockquote
-    margin 2em 0
-    padding-left 20px
-    border-left 4px solid color-post-quote-highlight
+    background-color color-quote-background
+    padding 1.5em 1em
+    margin 0.5em .8em
+    p
+      margin 0 2em
+      font-style italic
+
+    &.pullquote
+      position relative
+
+      p
+        &:before, &:after
+          position absolute
+          height 1.3em
+          font-family font-serif
+          font-size 4em
+        &:before
+          content open-quote
+          top -0.2em
+          left 0.2em
+        &:after
+          content close-quote
+          bottom -0.4em
+          right 0.4em
+          text-align right
+
+      &.left, &.right
+        width 17em
+
+      &.left
+        float left
+
+      &.right
+        float right
+
+    footer
+      display block
+      text-align right
+      margin 0
+      padding 0
+      &:before
+        display block
+        content "—"
+        font-size 2em
+        height 1em
+      cite
+        padding-left 0.5em
 
   img
     display block
