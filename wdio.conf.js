@@ -3,7 +3,6 @@ const slBrowsers = require("./saucelabs-browsers")
 let capabilities = [{browserName: 'phantomjs'}]
 let maxInstances = 40
 if (process.env.SAUCE_USERNAME) {
-  console.log("wdio - Configuring to SauceLabs")
   const browsers = slBrowsers({
     "name-prefix": "ui",
     tunnel: process.env.TRAVIS_JOB_NUMBER,
