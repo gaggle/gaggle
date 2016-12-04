@@ -47,7 +47,7 @@ module.exports = function (config) {
     singleRun: true,
     concurrency: concurrency,
 
-    // Keept getting "Disconnected, because no message in 10000 ms." from Firefox
+    // Kept getting "Disconnected, because no message in 10000 ms." from Firefox
     browserDisconnectTimeout: 10 * SECOND, // default 2000
     browserDisconnectTolerance: 1,
     browserNoActivityTimeout: MINUTE,
