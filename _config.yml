@@ -31,7 +31,6 @@ theme_config:
   ga: UA-22672641-1
 
 archive_generator:
-  per_page: 0
   yearly: false
   monthly: false
   daily: false

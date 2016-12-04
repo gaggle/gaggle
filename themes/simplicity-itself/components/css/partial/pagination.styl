@@ -1,0 +1,18 @@
+.paginator
+  margin 4em 0
+  text-align center
+
+  .prev, .next
+    display inline-block
+    margin 0 4px
+    padding 4px 12px
+    border-radius 4px
+    font-size 14px
+    text-decoration none
+    color color-pagination-text
+    background-color color-pagination-background
+    &:hover
+      background-color darken(color-pagination-background, 15%)
+    &:active
+      background-color darken(color-pagination-background, 25%)
+      border-bottom-width 0
