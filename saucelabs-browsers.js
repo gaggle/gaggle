@@ -1,16 +1,16 @@
 "use strict";
 
 const browsers = {
-  chrome: {versions: ['latest'], platforms: ['Windows 10']},
-  safari: {versions: ['latest'], platforms: ['OS X 10.11']},
-  firefox: {versions: ['latest'], platforms: ['Linux']},
-  MicrosoftEdge: {versions: ['latest'], platforms: ['Windows 10']},
-  'internet explorer': {versions: ['latest'], platforms: ['Windows 7']}
+  chrome: {versions: ["latest"], platforms: ["Windows 10"]},
+  safari: {versions: ["latest"], platforms: ["OS X 10.11"]},
+  firefox: {versions: ["latest"], platforms: ["Linux"]},
+  MicrosoftEdge: {versions: ["latest"], platforms: ["Windows 10"]},
+  "internet explorer": {versions: ["latest"], platforms: ["Windows 7"]}
 }
 
 function sluggify(str) {
   str = str.toLowerCase()
-  str = str.replace(/[^a-z0-9]+/g, '-')
+  str = str.replace(/[^a-z0-9]+/g, "-")
   return str
 }
 
