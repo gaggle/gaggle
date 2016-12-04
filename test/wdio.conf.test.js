@@ -16,6 +16,10 @@ describe("wdio.conf", function () {
 
   describe("by default", () => {
     beforeEach(() => {
+      // Scoop out envs that are present when Travis runs
+      delete process.env.SAUCE_USERNAME
+      delete process.env.TRAVIS_JOB_NUMBER
+      delete process.env.TRAVIS_BUILD_NUMBER
       conf = rewire("../wdio.conf")
     })
 
