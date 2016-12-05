@@ -1,3 +1,4 @@
+"use strict";
 var Page = require("./page")
 
 class BlogPage extends Page {
