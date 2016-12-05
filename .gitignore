@@ -1,4 +1,5 @@
 .idea
+debug.log
 db.json
 coverage/
 node_modules/
