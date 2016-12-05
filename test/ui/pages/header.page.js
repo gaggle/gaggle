@@ -1,3 +1,5 @@
+"use strict";
+/* global $ */
 var Page = require("./page")
 
 class HeaderPage extends Page {

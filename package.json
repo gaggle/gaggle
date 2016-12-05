@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "test": "istanbul cover _mocha && karma start && istanbul report",
-    "test:ci": "npm test && wdio && npm run test:submitcov",
-    "test:submitcov": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:ci": "npm test && wdio && npm run submitcov",
     "build": "hexo generate",
     "deploy": "./build_scripts/deploy",
-    "deploy:ci": "./build_scripts/ci-deploy"
+    "deploy:ci": "./build_scripts/ci-deploy",
+    "lint": "hexo clean && hexo generate --debug --silent && eslint .",
+    "submitcov": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "hexo": {
     "version": "3.2.2"
@@ -33,6 +34,7 @@
     "browserify-istanbul": "^2.0.0",
     "chai": "^3.5.0",
     "coveralls": "^2.11.15",
+    "eslint": "^3.11.1",
     "istanbul": "^0.4.5",
     "karma": "^1.3.0",
     "karma-browserify": "^5.1.0",

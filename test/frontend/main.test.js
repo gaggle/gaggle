@@ -1,4 +1,5 @@
 "use strict";
+/* global onReady */
 var expect = require("chai").expect
 var createElements = require("../create-elements")
 
