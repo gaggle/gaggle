@@ -1,4 +1,5 @@
 "use strict";
+/* global browser */
 const uiTesting = require("../../ui-testing")
 
 class Page {

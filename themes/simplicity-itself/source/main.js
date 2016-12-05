@@ -1,3 +1,4 @@
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "gascrolldepth" }]*/
 var gascrolldepth = require("gascrolldepth")
 var moment = require("moment")
 var helpers = require("../components/js/helpers")
@@ -14,5 +15,4 @@ window.onReady = function () {
 
 document.addEventListener("DOMContentLoaded", function () {
   window.onReady()
-  console.log("Ready")
 })
