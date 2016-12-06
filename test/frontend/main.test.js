@@ -1,7 +1,6 @@
 "use strict";
-/* global onReady */
 var expect = require("chai").expect
-var createElements = require("../create-elements")
+var createElements = require("./create-elements")
 
 describe("main", function () {
   describe("#update_datetime", function () {
