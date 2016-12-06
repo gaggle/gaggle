@@ -9,7 +9,7 @@
     "deploy": "./build_scripts/deploy",
     "deploy:ci": "./build_scripts/ci-deploy",
     "lint": "hexo clean && hexo generate --debug --silent && eslint .",
-    "submitcov": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "submitcov": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
   },
   "hexo": {
     "version": "3.2.2"
@@ -33,6 +33,7 @@
     "browserify": "^13.1.1",
     "browserify-istanbul": "^2.0.0",
     "chai": "^3.5.0",
+    "codacy-coverage": "^2.0.0",
     "coveralls": "^2.11.15",
     "eslint": "^3.11.1",
     "istanbul": "^0.4.5",
