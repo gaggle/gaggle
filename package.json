@@ -9,7 +9,7 @@
     "deploy": "./build_scripts/deploy",
     "deploy:ci": "./build_scripts/ci-deploy",
     "lint": "hexo clean && hexo generate --debug --silent && eslint .",
-    "submitcov": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
+    "submitcov": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || true && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage || true"
   },
   "hexo": {
     "version": "3.2.2"
