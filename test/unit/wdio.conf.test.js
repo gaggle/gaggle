@@ -3,14 +3,14 @@ const expect = require("chai").expect
 const _ = require("lodash")
 const rewire = require("rewire")
 
-describe("wdio.conf", function () {
+describe("wdio.conf", () => {
   let conf, env
 
   before(() => {
     env = _.cloneDeep(process.env)
   })
 
-  afterEach(()=> {
+  afterEach(() => {
     process.env = _.cloneDeep(env)
   })
 

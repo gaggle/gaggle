@@ -16,7 +16,7 @@ function sluggify(str) {
 
 module.exports = function (opts = {}) {
   const sl_browsers = {}
-  var keys = Object.keys(browsers)
+  let keys = Object.keys(browsers)
   keys.forEach((key) => {
     let value = browsers[key]
     value.versions.forEach((version) => {
@@ -26,8 +26,8 @@ module.exports = function (opts = {}) {
         sl_browsers[slug] = {
           base: "SauceLabs",
           browserName: key,
-          platform: platform,
-          version: version,
+          platform,
+          version,
           "tunnel-identifier": opts.tunnel,
           name: opts.name || `${prefix}${slug}`,
           build: opts.build

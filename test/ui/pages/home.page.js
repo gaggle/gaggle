@@ -1,5 +1,5 @@
 "use strict";
-var Page = require("./page")
+let Page = require("./page")
 
 class HomePage extends Page {
   open(path = null) {

@@ -1,4 +1,4 @@
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "gascrolldepth" }]*/
+"use strict";
 var gascrolldepth = require("gascrolldepth")
 var moment = require("moment")
 var helpers = require("../components/js/helpers")

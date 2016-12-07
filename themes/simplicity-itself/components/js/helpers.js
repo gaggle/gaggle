@@ -1,3 +1,5 @@
+"use strict";
+
 exports.mapElementsByClassName = function (className, fn) {
   var result = []
   var elements = document.getElementsByClassName(className)

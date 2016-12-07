@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function (tagName, opts) {
   if (!opts) opts = {}
   var el = document.createElement(tagName)
