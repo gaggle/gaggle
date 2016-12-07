@@ -1,6 +1,6 @@
 "use strict";
 let expect = require("chai").expect
-let get_browsers = require("../saucelabs-browsers")
+let get_browsers = require("../../saucelabs-browsers")
 
 describe("browsers", () => {
   const browsers = get_browsers()

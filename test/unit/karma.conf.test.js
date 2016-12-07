@@ -18,7 +18,7 @@ describe("karma.conf", () => {
 
   const get_conf = () => {
     let c = new FakeConfig()
-    rewire("../karma.conf")(c)
+    rewire("../../karma.conf")(c)
     return c.data
   }
 

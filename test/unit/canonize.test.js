@@ -1,6 +1,6 @@
 "use strict";
 let expect = require("chai").expect
-let canonize = require("./canonize")
+let canonize = require("../canonize")
 
 describe("canonize", () => {
   it("should work", () => {

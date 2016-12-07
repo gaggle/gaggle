@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "test": "istanbul cover _mocha && karma start && istanbul report",
+    "test": "istanbul cover _mocha test/unit && karma start && istanbul report && npm run lint",
     "test:ci": "npm test && wdio",
     "build": "hexo generate",
     "deploy": "./build_scripts/deploy",
