@@ -20,7 +20,7 @@ describe("wdio.conf", () => {
       delete process.env.SAUCE_USERNAME
       delete process.env.TRAVIS_JOB_NUMBER
       delete process.env.TRAVIS_BUILD_NUMBER
-      conf = rewire("../wdio.conf")
+      conf = rewire("../../wdio.conf")
     })
 
     it("should specificy phantomjs capability", () => {
@@ -33,7 +33,7 @@ describe("wdio.conf", () => {
       process.env.SAUCE_USERNAME = "sauce_user"
       process.env.TRAVIS_JOB_NUMBER = "123"
       process.env.TRAVIS_BUILD_NUMBER = "abc"
-      conf = rewire("../wdio.conf")
+      conf = rewire("../../wdio.conf")
     })
 
     it("should specify many capabilities", () => {
