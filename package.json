@@ -8,7 +8,7 @@
     "build": "hexo generate",
     "deploy": "./build_scripts/deploy",
     "deploy:ci": "./build_scripts/ci-deploy",
-    "lint": "hexo clean && hexo generate --debug --silent && eslint .",
+    "lint": "hexo clean && hexo generate --debug --silent && eslint . && stylelint public/**/*.css",
     "submitcov": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
   },
   "hexo": {
@@ -55,6 +55,9 @@
     "selenium-webdriver": "^3.0.1",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
+    "stylelint": "^7.6.0",
+    "stylelint-config-standard": "^15.0.0",
+    "stylelint-order": "^0.2.2",
     "wdio-mocha-framework": "^0.5.4",
     "wdio-phantomjs-service": "^0.2.2",
     "wdio-sauce-service": "^0.2.5",
