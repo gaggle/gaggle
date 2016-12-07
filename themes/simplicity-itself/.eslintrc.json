@@ -4,5 +4,15 @@
     "commonjs": true,
     "es6": false,
     "node": false
+  },
+  "rules": {
+    "arrow-body-style": "off",
+    "no-var": "off",
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "gascrolldepth"
+      }
+    ]
   }
 }

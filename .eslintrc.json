@@ -7,6 +7,17 @@
   },
   "extends": "eslint:recommended",
   "rules": {
+    "arrow-body-style": "error",
+    "arrow-spacing": "error",
+    "eqeqeq": "error",
+    "no-eq-null": "error",
+    "no-eval": "error",
+    "no-extend-native": "error",
+    "no-duplicate-imports": "error",
+    "no-mixed-requires": "error",
+    "no-var": "error",
+    "object-shorthand": "error",
+    "prefer-spread": "error",
     "quotes": [
       "error",
       "double",
@@ -14,20 +25,6 @@
         "allowTemplateLiterals": true
       }
     ],
-    "eqeqeq": "error",
-    "no-eq-null": "error",
-    "no-eval": "error",
-    "no-extend-native": "error",
-    "strict": "error",
-    "arrow-body-style": "error",
-    "arrow-spacing": "error",
-    "no-duplicate-imports": "error",
-    "no-var": "error",
-    "object-shorthand": [
-      "error",
-      "always"
-    ],
-    "prefer-arrow-callback": "error",
-    "prefer-spread": "error"
+    "strict": "error"
   }
 }
