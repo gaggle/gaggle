@@ -13,11 +13,11 @@ class FakeConfig {
   }
 }
 
-describe("karma.conf", function () {
+describe("karma.conf", () => {
   let conf, env
 
   const get_conf = () => {
-    var c = new FakeConfig()
+    let c = new FakeConfig()
     rewire("../karma.conf")(c)
     return c.data
   }
@@ -26,7 +26,7 @@ describe("karma.conf", function () {
     env = _.cloneDeep(process.env)
   })
 
-  afterEach(()=> {
+  afterEach(() => {
     process.env = _.cloneDeep(env)
   })
 

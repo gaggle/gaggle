@@ -1,3 +1,4 @@
+"use strict";
 let browsers = ["PhantomJS"]
 let customLaunchers = undefined
 let reporters = ["dots", "coverage"]
@@ -22,8 +23,8 @@ if (process.env.SAUCE_USERNAME) {
 module.exports = function (config) {
   config.set({
     basePath: "",
-    customLaunchers: customLaunchers,
-    browsers: browsers,
+    customLaunchers,
+    browsers,
     frameworks: ["mocha", "sinon-chai", "browserify"],
     files: [
       "test/frontend/**/*.js",
@@ -33,7 +34,7 @@ module.exports = function (config) {
       "test/**/*.js": ["browserify"],
       "themes/**/*.js": ["browserify"]
     },
-    reporters: reporters,
+    reporters,
     coverageReporter: {
       reporters: [
         {"type": "text"},
@@ -45,7 +46,7 @@ module.exports = function (config) {
     logLevel: config.LOG_ERROR,
     autoWatch: false,
     singleRun: true,
-    concurrency: concurrency,
+    concurrency,
 
     // Kept getting "Disconnected, because no message in 10000 ms." from Firefox
     browserDisconnectTimeout: 10 * SECOND, // default 2000

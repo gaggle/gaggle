@@ -1,10 +1,10 @@
 "use strict";
-var expect = require("chai").expect
-var get_browsers = require("../saucelabs-browsers")
+let expect = require("chai").expect
+let get_browsers = require("../saucelabs-browsers")
 
-describe("browsers", function () {
+describe("browsers", () => {
   const browsers = get_browsers()
-  for (var key in browsers) {
+  for (let key in browsers) {
     if (!browsers.hasOwnProperty(key)) continue
     let val = browsers[key]
     it(`should define dict for ${key}`, () => {

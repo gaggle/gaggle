@@ -4,8 +4,8 @@ const HeaderPage = new (require("./pages/header.page"))
 const HomePage = new (require("./pages/home.page"))
 const uiTesting = require("../ui-testing")
 
-describe("home", function () {
-  for (var e of uiTesting.sizes) {
+describe("home", () => {
+  for (let e of uiTesting.sizes) {
     (function (size) {
       let size_s = `${size.width}x${size.height}`
       it(`has links to home and blog (${size_s})`, () => {
