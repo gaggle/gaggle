@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": false,
+    "commonjs": false,
+    "es6": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "quotes": [
+      "error",
+      "double",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "eqeqeq": "error",
+    "no-eq-null": "error",
+    "no-eval": "error",
+    "no-extend-native": "error",
+    "strict": "error",
+    "arrow-body-style": "error",
+    "arrow-spacing": "error",
+    "no-duplicate-imports": "error",
+    "no-var": "error",
+    "object-shorthand": [
+      "error",
+      "always"
+    ],
+    "prefer-arrow-callback": "error",
+    "prefer-spread": "error"
+  }
+}

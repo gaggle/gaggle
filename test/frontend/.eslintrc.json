@@ -1,0 +1,11 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": false,
+    "node": false
+  },
+  "globals": {
+    "onReady": true
+  }
+}
