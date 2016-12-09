@@ -13,7 +13,6 @@ archive_dir: blog
 
 # Writing
 new_post_name: :year-:title.md
-titlecase: true
 filename_case: 1
 post_asset_folder: true
 highlight:
