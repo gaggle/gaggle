@@ -1,5 +1,5 @@
 ---
-title: Selenium testing with Ruby, JS, and Python
+title: Selenium Testing with Ruby, JS, and Python
 date: 2016-10-27 00:15:51
 ---
 UI tests, E2E tests, acceptance tests,
@@ -77,7 +77,7 @@ Where Ruby took minutes, this ended up taking more than an hour to complete the 
 [`wd`][wd] (webdriver)
 and [`selenium-standalone`][selenium-standalone] as dependencies.
 * Hm, website doesn't have a simple example to copy,
-but a lenghty file in their repo can be pruned down with a bit of effort.
+but a lengthy file in their repo can be pruned down with a bit of effort.
 * Hm, the Selenium standalone server must be started in one terminal window
 and the tests in another...
 * Add [`gulp`][gulp] (build tool) as dependency,
@@ -130,7 +130,7 @@ That leaves our challenge test, which is very minimal:
 {% gistit gaggle selenium-testing-across-languages blob/master/ruby-capybara/spec/challenge_spec.rb %}
 
 ### JavaScript / WD
-A nice sideeffect of extracting configuration
+A nice side-effect of extracting configuration
 is that we can also scoop out all that top-heavy module importing/glueing
 that clutters the test:
 {% gistit gaggle selenium-testing-across-languages blob/master/js-wd/test/conf.js %}
@@ -154,9 +154,8 @@ Resulting in a very clean test file:
 So that's three different takes on UI tests.
 If you have any comments or questions [I'd love to hear them][twitter],
 and [all the code is available][repo] if you'd like to test these things out yourself.
-If
 
-The results of this fits my preconcieved stereotypes of each language:
+The results of this fits my preconceived stereotypes of each language:
 **Ruby** is easy to get started with and easy to use,
 generally my first implementation would just work.
 **Javascript** is a smorgasbord of choice and everything is amazingly decoupled,
