@@ -106,6 +106,21 @@ http.createServer((req, res) => {
 
 Note: Theme's style should support `.highlight.line.marked` (recommend to use the selection or current line color).
 
+### JSON block
+
+Container should not have horizontal scrollbars if there's enough width.
+
+{% codeblock lang:json %}
+{
+  "glossary": {
+    "title": "example glossary",
+    "GlossDiv": {
+      "title": "S"
+    }
+  }
+}
+{% endcodeblock %}
+
 ### Gist
 
 {% gist 996818 %}
