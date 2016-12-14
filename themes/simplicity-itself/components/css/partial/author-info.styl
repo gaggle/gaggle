@@ -1,0 +1,51 @@
+pic-size = 80px
+pic-offset = 10px
+tablet-left-offset = 70px
+
+.author-info
+  line-height 1.25
+  padding 0
+  @media mq-tablet
+    height (pic-size - pic-offset)
+
+  &::before
+    border-top color-header-divider 1px solid
+    content ""
+    display block
+    margin 0 auto
+    width 100%
+
+  .image
+    background-color color-background
+    border-radius(100%)
+    box-shadow color-header-divider 0 0 0 1px
+    height (pic-size)
+    left 50%
+    margin-left -(@height / 2)
+    padding 6px
+    position absolute
+    top: -(pic-offset)
+    width @height
+    z-index 2
+
+    @media mq-tablet
+      left (30 + tablet-left-offset)
+      margin-left -40px
+
+  .name
+    font-size 1.625em
+    padding 82px 0 0
+    text-align center
+    @media mq-tablet
+      margin-left tablet-left-offset
+      padding 8px 0 0 90px
+      text-align left
+
+  .blurb
+    font-size .9em
+    margin 0 auto
+    max-width 300px
+    @media mq-tablet
+      margin 0 0 0 tablet-left-offset
+      max-width 100%
+      padding 0 0 0 90px
