@@ -4,21 +4,21 @@ mixin postList()
       - var has_excerpt_cls = item.excerpt != "" ? "has-excerpt" : ""
       li.post-list-item
         article.post-block
-          +itemInfo(item)
+          +_itemInfo(item)
           .content(class=has_excerpt_cls)
             != item.excerpt || item.content
           a.read-more(href= url_for(item.path), class=has_excerpt_cls)!= __("more")
 
 mixin post()
   article.post-block
-    +itemInfo(page)
+    +_itemInfo(page)
     .content
       .excerpt
         != page.excerpt
       .more
         != page.more
 
-mixin itemInfo(item)
+mixin _itemInfo(item)
   .info
     h1.title
       - var target = item.link ? "_blank" : "_self"

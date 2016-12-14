@@ -5,7 +5,7 @@
   "scripts": {
     "test": "istanbul cover _mocha test/unit && karma start && istanbul report && npm run lint",
     "test:ci": "npm test && wdio",
-    "watch": "hexo clean && concurrently --prefix \"[{name}]\" --names \"GEN,SRV\" --kill-others \"hexo generate --draft --watch\" \"hexo server --static\"",
+    "watch": "hexo clean && concurrently --prefix \"[{name}]\" --names \"GEN,SRV\" --kill-others \"hexo generate --draft --watch\" \"sleep 5 && hexo server --static\"",
     "build": "hexo clean && hexo generate",
     "deploy": "./build_scripts/deploy",
     "deploy:ci": "./build_scripts/ci-deploy",

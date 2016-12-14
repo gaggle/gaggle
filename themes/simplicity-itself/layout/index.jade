@@ -12,4 +12,5 @@ block content
     .content!= page.content
 
 block footer
-  include partial/footer
+  include mixins/footer
+  +footer()
