@@ -11,7 +11,9 @@ class Page {
   }
 
   screenshot() {
-    return browser.saveScreenshot(uiTesting.getScreenshotFilepath(browser))
+    const path = uiTesting.getScreenshotFilepath(browser)
+    console.log(`Saving screenshot to '${path}'`) // eslint-disable-line no-console
+    return browser.saveScreenshot(path)
   }
 
   size(size) {
