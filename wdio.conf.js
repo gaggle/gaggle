@@ -38,6 +38,7 @@ exports.config = {
     outputDir: "./"
   },
   mochaOpts: {
+    timeout: 120000,
     ui: "bdd"
   }
 }
