@@ -3,8 +3,8 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "watch": "hexo clean && concurrently --prefix \"[{name}]\" --names \"GEN,SRV\" --kill-others \"hexo generate --draft --watch\" \"sleep 5 && hexo server --static\"",
     "build": "hexo clean && hexo generate",
+    "start": "hexo clean && concurrently -p \"[{name}]\" -n \"GEN,SRV\" -k \"hexo generate -w --draft --silent\" \"sleep 5; hexo server -s\"",
     "test": "npm run test:unit && npm run test:frontend && npm run test:ui && istanbul report && npm run lint",
     "test:unit": "istanbul cover _mocha test/unit",
     "test:frontend": "karma start",
