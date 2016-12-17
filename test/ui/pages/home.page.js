@@ -2,9 +2,9 @@
 let Page = require("./page")
 
 class HomePage extends Page {
-  open(path = null) {
-    return super.open(path || "/")
+  open() {
+    return super.open("/")
   }
 }
 
-module.exports = HomePage
+module.exports = new HomePage()
