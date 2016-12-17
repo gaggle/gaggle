@@ -1,11 +1,11 @@
 "use strict";
 
 const browsers = {
-  chrome: {versions: ["latest"], platforms: ["Windows 10"]},
+  chrome: {versions: ["latest"], platforms: ["Windows 10", "OS X 10.11"]},
   safari: {versions: ["latest"], platforms: ["OS X 10.11"]},
-  firefox: {versions: ["latest"], platforms: ["Linux"]},
+  firefox: {versions: ["latest"], platforms: ["Windows 10", "OS X 10.11", "Linux"]},
   MicrosoftEdge: {versions: ["latest"], platforms: ["Windows 10"]},
-  "internet explorer": {versions: ["latest"], platforms: ["Windows 7"]}
+  "internet explorer": {versions: ["latest"], platforms: ["Windows 10", "Windows 7"]}
 }
 
 function sluggify(str) {
