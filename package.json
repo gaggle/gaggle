@@ -3,13 +3,15 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "test": "istanbul cover _mocha test/unit && karma start && istanbul report && npm run lint",
-    "test:ci": "npm test && wdio",
-    "watch": "hexo clean && concurrently --prefix \"[{name}]\" --names \"GEN,SRV\" --kill-others \"hexo generate --draft --watch\" \"sleep 5 && hexo server --static\"",
-    "build": "hexo clean && hexo generate",
+    "start": "hexo clean && concurrently -p \"[{name}]\" -n \"GEN,SRV\" -k \"hexo generate -w --draft --silent\" \"sleep 5; hexo server -s\"",
+    "test": "npm run test:unit && npm run test:frontend && npm run test:ui && istanbul report && npm run lint",
+    "test:unit": "istanbul cover _mocha test/unit",
+    "test:frontend": "karma start",
+    "test:ui": "hexo clean && concurrently -r -s first --kill-others \"hexo server --draft --silent\" \"sleep 5 && wdio\"",
     "deploy": "./build_scripts/deploy",
     "deploy:ci": "./build_scripts/ci-deploy",
-    "lint": "hexo clean && hexo generate --debug --silent && eslint . && stylelint public/**/*.css",
+    "build": "hexo clean && hexo generate",
+    "lint": "hexo clean && hexo generate --debug --draft --silent && eslint . && stylelint public/**/*.css",
     "submitcov": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
   },
   "hexo": {

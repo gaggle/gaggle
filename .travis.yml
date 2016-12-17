@@ -5,9 +5,8 @@ before_script:
 - phantomjs --version
 - phantomjs --webdriver=4444 2>&1 >/dev/null &
 - find ./build_scripts -type f -exec chmod +x {} \;
-- PATH=$(npm bin):$PATH hexo server & sleep 5
 script:
-- npm run test:ci
+- npm run test
 after_success:
 - npm run submitcov
 - npm run build
