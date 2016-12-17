@@ -2,8 +2,12 @@
 const uiTesting = require("../../ui-testing")
 
 class Page {
+  constructor() {
+    this.title = "Page"
+  }
+
   open(path = null) {
-    return browser.url(path || "/")
+    browser.url(path || "/")
   }
 
   screenshot() {

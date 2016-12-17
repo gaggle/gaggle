@@ -3,12 +3,12 @@ let Page = require("./page")
 
 class HeaderPage extends Page {
   get blog_link() {
-    return $(".blog > a")
+    return browser.element(".blog > a")
   }
 
   get home_link() {
-    return $(".home > a")
+    return browser.element(".home > a")
   }
 }
 
-module.exports = HeaderPage
+module.exports = new HeaderPage()
