@@ -7,7 +7,10 @@ class Page {
   }
 
   open(path = null) {
-    browser.url(path || "/")
+    if (path)
+      browser.url(path || "/")
+    else
+      throw new Error("No path specified")
   }
 
   screenshot() {
