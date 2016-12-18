@@ -19,6 +19,12 @@ describe("blog entry", () => {
         BlogEntryPage.open("2016/lists/")
         BlogEntryPage.size(size)
       })
+
+      it(`displays comments (${size_s})`, () => {
+        BlogEntryPage.open("2016/testing-disqus-comment-system/")
+        browser.scroll("#disqus_thread")
+        BlogEntryPage.size(size)
+      })
     })(e)
   }
 })

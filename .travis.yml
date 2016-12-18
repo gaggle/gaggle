@@ -9,7 +9,7 @@ script:
 - npm run test
 after_success:
 - npm run submitcov
-- npm run build
+- env DISQUS_PROD=true npm run build
 - npm run deploy:ci
 env:
   global:
