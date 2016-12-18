@@ -2,16 +2,16 @@ mixin archive()
   - var prev = page.prev_link
   - var next = page.next_link
   .paginator
-    if page.prev
+    if page.prev && isNotAlphaStatus(page.prev)
       a.prev(href=url_for(prev))!= titlecase(__("prev"))
-    if page.next
+    if page.next && isNotAlphaStatus(page.next)
       a.next(href=url_for(next))!= titlecase(__("next"))
 
 mixin post()
   - var prev = page.prev ? page.prev.path : false;
   - var next = page.next ? page.next.path : false;
   .paginator
-    if prev
+    if prev && isNotAlphaStatus(page.prev)
       a.prev(href=url_for(prev))!= titlecase(__("prev_post"))
-    if next
+    if next && isNotAlphaStatus(page.next)
       a.next(href=url_for(next))!= titlecase(__("next_post"))
