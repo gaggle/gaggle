@@ -11,6 +11,14 @@ block pagination
   include mixins/paginator
   +post()
 
+unless theme.disqus == undefined
+  include mixins/disqus
+  block comments
+    +disqus(process.env.DISQUS_PROD ? theme.disqus.prod : theme.disqus.dev)
+
+  append scripts
+    +disqus-end(process.env.DISQUS_PROD ? theme.disqus.prod : theme.disqus.dev)
+
 block footer
   include mixins/footer
   +post-footer()

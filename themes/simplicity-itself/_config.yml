@@ -12,3 +12,7 @@ authors:
     pic: /img/jon.jpg
     twitter: https://twitter.com/jonlauridsen
     github: https://github.com/gaggle
+
+disqus:
+  prod: "//jonlauridsen.disqus.com"
+  dev: "//jonlauridsen-dev.disqus.com"
