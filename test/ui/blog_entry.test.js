@@ -15,7 +15,7 @@ describe("blog entry", () => {
         expect(FooterPage.author_picture.isVisible()).to.be.true
       })
 
-      it(`display list bullets (${size_s})`, () => {
+      it(`displays list bullets (${size_s})`, () => {
         BlogEntryPage.open("2016/lists/")
         BlogEntryPage.size(size)
       })
