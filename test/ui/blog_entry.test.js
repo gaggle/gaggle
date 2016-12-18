@@ -14,6 +14,11 @@ describe("blog entry", () => {
         FooterPage.scroll_author_picture()
         expect(FooterPage.author_picture.isVisible()).to.be.true
       })
+
+      it(`display list bullets (${size_s})`, () => {
+        BlogEntryPage.open("2016/lists/")
+        BlogEntryPage.size(size)
+      })
     })(e)
   }
 })
