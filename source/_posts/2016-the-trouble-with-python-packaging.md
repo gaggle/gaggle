@@ -18,13 +18,13 @@ and I dream of a better alternative.
 Before I go on though,
 I want to state how grateful I am that `virtualenv` and `pip` exists at all.
 They represent countless hours of development
-and are good pragmatic solutions written by people much, much smarter than I.
+and are good pragmatic solutions written by people much, much smarter than me.
+
 During the writing of this blog its dawned on me that I'm probably missing some insights
 that explain why our tools work the way they do.
 If you can help fill in these blanks I’m all ears.
 
 # The problem
-
 So what is it I’m complaining about?
 There are 3 distinctly troubled areas to go through:
 
@@ -93,7 +93,8 @@ provides no solution for managing the configuration and use of a project.
 
 Let's say you've pulled a repository to help fix an issue,
 what do you do then? Where do you start? How do you run its tests?
-Who knows!, it's going to be different for every project so you better read up on their documentation.
+Maybe there's a makefile, or .bat file, or who knows!?,
+it's going to be different for every project so you better read up on their documentation.
 And hopefully the developers made their process compatible with your OS...
 
 # A new approach
