@@ -39,7 +39,7 @@ but what does *that* mean?
 
 At first glance a `virtualenv` is this thing that puts my terminal in a different state,
 and if I don't activate it nothing works.
-And I have to keep activating it every time I open a terminal?
+And I have to keep activating it everytime I open a terminal?
 
 {% asset_img venv-activate.gif %}
 
@@ -62,7 +62,7 @@ All it takes to install a dependency is `pip install [name]` which is just perfe
 But then I go store the list of dependencies with `pip freeze`
 and hang on why am I seeing transient dependencies??
 
-E.g. lets say I want to use the `twisted` library:
+E.g. let's say I want to use the `twisted` library:
 ```
 (venv) python-virtualenv-experiment $ pip install twisted
 (venv) python-virtualenv-experiment $ pip freeze > requirements.txt
