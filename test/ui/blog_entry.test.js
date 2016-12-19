@@ -25,6 +25,11 @@ describe("blog entry", () => {
         browser.scroll("#disqus_thread")
         BlogEntryPage.size(size)
       })
+
+      it(`renders an alpha post (${size_s})`, () => {
+        BlogEntryPage.open("2016/alpha/")
+        BlogEntryPage.size(size)
+      })
     })(e)
   }
 })
