@@ -1,22 +1,26 @@
 mixin postList()
   ul.posts.post-list
-    each item in page.posts.toArray()
+    each item in page.posts.filter(isNotAlphaStatus).toArray()
       - var has_excerpt_cls = item.excerpt != "" ? "has-excerpt" : ""
       li.post-list-item
-        article.post-block
+        +_article(item)
           +_itemInfo(item)
           .content(class=has_excerpt_cls)
             != item.excerpt || item.content
           a.read-more(href= url_for(item.path), class=has_excerpt_cls)!= __("more")
 
 mixin post()
-  article.post-block
+  +_article(page)
     +_itemInfo(page)
     .content
       .excerpt
         != page.excerpt
       .more
         != page.more
+
+mixin _article(item)
+  article.post-block(class=item.status, data-datetime= item.date, data-post-status= item.status)
+    block
 
 mixin _itemInfo(item)
   .info
@@ -26,3 +30,4 @@ mixin _itemInfo(item)
         != item.title || item.slug
     .date
       != full_date(item.date, "ll")
+    .post-state.alpha(title="Pre-release alpha") Alpha
