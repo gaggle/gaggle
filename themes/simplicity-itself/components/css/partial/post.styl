@@ -45,7 +45,7 @@ article
   blockquote
     background-color color-quote-background
     margin 0.5em .8em
-    padding 1.5em 1em
+    padding 1.2em 1em
     p
       font-style italic
       margin 0 2em
@@ -69,14 +69,15 @@ article
           right 0.4em
           text-align right
 
-      &.left, &.right
-        width 17em
+      @media mq-tablet
+        &.left, &.right
+          width 17em
 
-      &.left
-        float left
+        &.left
+          float left
 
-      &.right
-        float right
+        &.right
+          float right
 
     footer
       display block
