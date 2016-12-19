@@ -30,6 +30,10 @@ module.exports = function (config) {
       "test/frontend/**/*.js",
       "themes/simplicity-itself/**/*.js"
     ],
+    exclude: [
+      "themes/simplicity-itself/scripts/*.js"
+    ],
+
     preprocessors: {
       "test/**/*.js": ["browserify"],
       "themes/**/*.js": ["browserify"]
