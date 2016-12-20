@@ -1,7 +1,6 @@
 ---
 title: The Trouble with Python Packaging
 date: 2016-12-19 00:47:09
-status: alpha
 ---
 I’ve long wished Python allowed easier handling of multiple projects and their dependencies.
 You know how you create a folder, fill it with code, and want to share it with others?
@@ -54,8 +53,8 @@ and even after having learnt it it's an annoying ceremony of activating/deactiva
 
 ## pip?
 That's one part of the problem, but specifying dependencies is a whole thing too.
-`pip` is how we install dependencies,
-and it's how we specify which libraries we rely on so that others can use **our** code.
+`pip` is how we install dependencies
+and specify which libraries we rely on so that others can use **our** code.
 And it's almost good, but manages to snatch defeat from the jaws of victory.
 
 All it takes to install a dependency is `pip install [name]` which is just perfect.
@@ -101,12 +100,12 @@ And hopefully the developers made their process compatible with your OS...
 These annoyances add up to make it much more difficult than necessary
 to get started with and continue to use Python.
 It's a constant drain on productivity to continuously require activations of environments,
-managing those dependencies,
+managing dependencies,
 and remembering how individual projects are configured.
 
 What if instead we had a tool that's easy to learn,
 that simplifies the management and installation of dependencies,
-and that allows everyone to get started immediately?
+and allows everyone to get started immediately?
 
 This tool already exists,
 I came across it in the JavaScript community where it's used to great success.
@@ -143,6 +142,9 @@ I think because of these three reasons:
   js-experiment $ cat package.json
   {
     ...
+    "scripts": {
+      "test": "karma start"
+    },
     "dependencies": {
       "express": "^4.14.0"
     }
@@ -152,10 +154,10 @@ I think because of these three reasons:
   dependencies are stored in folder next to the `package.json` file.
   Let me say that again, **no dependencies are installed to any global folder by default**!
 
-The result is a very easy-to-learn process
+Together the result is an easy-to-learn system
 because the only command to learn initially is `npm install`.
-With that you can explore existing libraries and install dependencies, it's just *fun* to use.
-And because it always installs dependencies to a local folder
+With that you can install dependencies and explore existing libraries,
+and because it always installs to a local folder
 there's never a sense of “*Oh crap where did all my dependencies just go? What mess did I just create?*”.
 Just delete the folder and start over.
 
@@ -166,12 +168,14 @@ It's actually *difficult* to do the wrong thing with this tool!
 Is it heretical to suggest changing where Python stores modules?
 It's this change that makes `virtualenv` superfluous,
 because now any folder with a `package.json` file is inherently isolated.
-And the real benefit is giving users safety to experiment,
-because anything installed can be undone by just deleting this local folder.
+And the massive benefit is how safe it becomes to experiment and learn,
+because cause and effects are clear
+and a reset is only a deleted folder away.
 
-And BTW, when adding a new dependency (i.e. `npm install express`) the command **automatically** updates the .json file.
+And BTW, when adding new dependencies (i.e. `npm install express`)
+the command can **automatically** update the .json file.
 It's actually *difficult* to do the wrong thing with this tool!
-This feeling of safety is what I'm really advocating for.
+This feeling of safety makes it fun to learn.
 
 And finally `npm` exposes a way to run custom scripts,
 with two named hooks explicitly exposed at the top-level: `npm test` and `npm start`.
