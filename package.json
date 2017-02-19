@@ -4,15 +4,15 @@
   "private": true,
   "scripts": {
     "start": "hexo clean && concurrently -p \"[{name}]\" -n \"GEN,SRV\" -k \"hexo generate -w --draft --silent\" \"sleep 5; hexo server -s\"",
-    "test": "npm run test:unit && npm run test:frontend && npm run test:ui && istanbul report",
-    "test:unit": "istanbul cover _mocha test/unit",
-    "test:frontend": "karma start",
-    "test:ui": "hexo clean && concurrently -r -s first --kill-others \"hexo server --draft --silent\" \"sleep 5 && wdio\"",
+    "test": "echo travis_fold:start:test && npm run test:backend && npm run test:frontend && npm run test:ui && istanbul report && echo travis_fold:end:test",
+    "test:backend": "echo travis_fold:start:backend-tests && istanbul cover _mocha test/unit && echo travis_fold:end:backend-tests",
+    "test:frontend": "echo travis_fold:start:frontend-tests && karma start && echo travis_fold:end:frontend-tests",
+    "test:ui": "echo travis_fold:start:ui-tests && hexo clean && concurrently -r -s first --kill-others \"hexo server --draft --silent\" \"sleep 5 && wdio\" && echo travis_fold:end:ui-tests",
     "deploy": "./build_scripts/deploy",
-    "deploy:ci": "./build_scripts/ci-deploy",
+    "deploy:ci": "echo travis_fold:start:deploy && ./build_scripts/ci-deploy && echo travis_fold:start:deploy",
     "build": "hexo clean && hexo generate",
     "lint": "hexo clean && hexo generate --debug --draft --silent && eslint . && stylelint public/**/*.css",
-    "submitcov": "cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
+    "submitcov": "echo travis_fold:start:submit-coverage && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && echo travis_fold:end:submit-coverage"
   },
   "hexo": {
     "version": "3.2.2"
