@@ -1,5 +1,6 @@
 ---
 title: lists
+date: 1980-02-26 12:00:00
 ---
 ## Ordered
 
@@ -23,3 +24,6 @@ Note that this line is separate, but within the same paragraph.
    * And a sub-item
 - Or minuses
 + Or pluses
+
+This post needs its date specified,
+since its URL is used in tests.
