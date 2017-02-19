@@ -1,11 +1,7 @@
 "use strict";
 const uiTesting = require("../../ui-testing")
 
-class Page {
-  constructor() {
-    this.title = "Page"
-  }
-
+class BasePage {
   open(path = null) {
     if (path)
       browser.url(path || "/")
@@ -27,4 +23,4 @@ class Page {
   }
 }
 
-module.exports = Page
+module.exports = BasePage

@@ -1,7 +1,7 @@
 "use strict";
-let Page = require("./page")
+const Component = require("./lib/component")
 
-class HeaderPage extends Page {
+class HeaderComponent extends Component {
   get blog_link() {
     return browser.element(".blog > a")
   }
@@ -11,4 +11,4 @@ class HeaderPage extends Page {
   }
 }
 
-module.exports = new HeaderPage()
+module.exports = new HeaderComponent()

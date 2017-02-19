@@ -1,0 +1,9 @@
+{
+  "env": {
+    "phantomjs": true
+  },
+  "globals": {
+    "$": true,
+    "browser": true
+  }
+}
