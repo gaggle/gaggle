@@ -1,7 +1,7 @@
 "use strict";
-let Page = require("./page")
+const Component = require("./lib/component")
 
-class FooterPage extends Page {
+class FooterComponent extends Component {
   get author_picture() {
     return browser.element(".author-info .profile-pic")
   }
@@ -12,4 +12,4 @@ class FooterPage extends Page {
   }
 }
 
-module.exports = new FooterPage()
+module.exports = new FooterComponent()

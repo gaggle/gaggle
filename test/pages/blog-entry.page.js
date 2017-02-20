@@ -1,5 +1,5 @@
 "use strict";
-let Page = require("./page")
+const Page = require("./lib/page")
 
 class BlogEntryPage extends Page {
   open(path = null) {
