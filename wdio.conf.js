@@ -31,7 +31,7 @@ exports.config = {
   screenshotPath: "./errorShots/",
   // Set a base URL in order to shorten url command calls.
   baseUrl: "http://localhost:4000",
-  waitforTimeout: 10 * SECOND,
+  waitforTimeout: 30 * SECOND,
   connectionRetryTimeout: 90 * SECOND,
   connectionRetryCount: 3,
   services: [process.env.SAUCE_USERNAME ? "sauce" : "phantomjs"],
