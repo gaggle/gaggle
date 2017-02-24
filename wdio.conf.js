@@ -1,6 +1,9 @@
 "use strict";
 const slBrowsers = require("./saucelabs-browsers")
 
+const SECOND = 1000
+const MINUTE = 60 * SECOND
+
 let capabilities = [{browserName: "phantomjs"}]
 let maxInstances = 40
 if (process.env.SAUCE_USERNAME) {
@@ -28,8 +31,8 @@ exports.config = {
   screenshotPath: "./errorShots/",
   // Set a base URL in order to shorten url command calls.
   baseUrl: "http://localhost:4000",
-  waitforTimeout: 10000,
-  connectionRetryTimeout: 90000,
+  waitforTimeout: 10 * SECOND,
+  connectionRetryTimeout: 90 * SECOND,
   connectionRetryCount: 3,
   services: [process.env.SAUCE_USERNAME ? "sauce" : "phantomjs"],
   framework: "mocha",
@@ -38,7 +41,7 @@ exports.config = {
     outputDir: "./"
   },
   mochaOpts: {
-    timeout: 120000,
+    timeout: 2 * MINUTE,
     ui: "bdd"
   }
 }
