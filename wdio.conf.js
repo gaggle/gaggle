@@ -32,7 +32,7 @@ exports.config = {
   // Set a base URL in order to shorten url command calls.
   baseUrl: "http://localhost:4000",
   waitforTimeout: 30 * SECOND,
-  connectionRetryTimeout: 90 * SECOND,
+  connectionRetryTimeout: 6 * MINUTE,
   connectionRetryCount: 3,
   services: [process.env.SAUCE_USERNAME ? "sauce" : "phantomjs"],
   framework: "mocha",
