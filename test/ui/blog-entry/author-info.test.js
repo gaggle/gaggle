@@ -14,22 +14,6 @@ describe("blog entry", () => {
         Footer.scroll_author_picture()
         expect(Footer.author_picture.isVisible()).to.be.true
       })
-
-      it(`displays list bullets (${size_str})`, () => {
-        BlogEntryPage.open("1980/lists/")
-        BlogEntryPage.size(size)
-      })
-
-      it(`displays comments (${size_str})`, () => {
-        BlogEntryPage.open("1980/testing-disqus-comment-system/")
-        BlogEntryPage.size(size)
-        browser.scroll("#disqus_thread")
-      })
-
-      it(`renders an alpha post (${size_str})`, () => {
-        BlogEntryPage.open("1980/alpha/")
-        BlogEntryPage.size(size)
-      })
     })(e)
   }
 })
