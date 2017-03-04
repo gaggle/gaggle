@@ -21,7 +21,7 @@ exports.config = {
   user: process.env.SAUCE_USERNAME,
   key: process.env.SAUCE_ACCESS_KEY,
 
-  specs: ["./test/ui/*.js"],
+  specs: ["./test/ui/**/*.js"],
   maxInstances,
   capabilities,
   sync: true,

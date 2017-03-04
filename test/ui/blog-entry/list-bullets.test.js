@@ -1,6 +1,6 @@
 "use strict";
-const BlogEntryPage = require("../pages/blog-entry.page")
-const uiTesting = require("../ui-testing")
+const BlogEntryPage = require("../../pages/blog-entry.page")
+const uiTesting = require("../../ui-testing")
 
 describe("blog entry", () => {
   for (let e of uiTesting.sizes) {

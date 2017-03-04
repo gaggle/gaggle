@@ -1,8 +1,8 @@
 "use strict";
 const expect = require("chai").expect
-const BlogEntryPage = require("../pages/blog-entry.page")
-const Footer = require("../pages/footer.component")
-const uiTesting = require("../ui-testing")
+const BlogEntryPage = require("../../pages/blog-entry.page")
+const Footer = require("../../pages/footer.component")
+const uiTesting = require("../../ui-testing")
 
 describe("blog entry", () => {
   for (let e of uiTesting.sizes) {
