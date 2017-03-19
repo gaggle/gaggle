@@ -78,7 +78,7 @@ doing nothing to avoid those pitfalls.
 We need a quick detour into wikis before proceeding.
 If a process is described in a wiki then that's good right?
 I don't think so,
-wikis really aren't fit for describing processes at all.
+wikis really aren't fit for describing processes at all:
 
 First,
 it's rare a wiki page is the *source* of information,
