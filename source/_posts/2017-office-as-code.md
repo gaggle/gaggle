@@ -1,5 +1,6 @@
 ---
 title: Office as Code
+status: alpha
 date: 2017-03-19 13:02:43
 ---
 Once upon a time developers would finish code
