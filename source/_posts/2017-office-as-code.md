@@ -1,6 +1,5 @@
 ---
 title: Office as Code
-status: alpha
 date: 2017-03-19 13:02:43
 ---
 Once upon a time developers would finish code
@@ -78,7 +77,7 @@ doing nothing to avoid those pitfalls.
 We need a quick detour into wikis before proceeding.
 If a process is described in a wiki then that's good right?
 I don't think so,
-wikis really aren't fit for describing processes at all.
+wikis really aren't fit for describing processes at all:
 
 First,
 it's rare a wiki page is the *source* of information,
@@ -211,7 +210,7 @@ of ensuring continuous improvements of the office?
 # In conclusion
 Why bother with any of this though?
 Is it really that important?
-Doesn't your office works just fine the way it is?
+Doesn't your office work just fine the way it is?
 Well... I don't know, does it?
 Seriously I'd love to hear your experiences,
 please leave a comment
