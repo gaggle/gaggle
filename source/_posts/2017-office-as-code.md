@@ -211,7 +211,7 @@ of ensuring continuous improvements of the office?
 # In conclusion
 Why bother with any of this though?
 Is it really that important?
-Doesn't your office works just fine the way it is?
+Doesn't your office work just fine the way it is?
 Well... I don't know, does it?
 Seriously I'd love to hear your experiences,
 please leave a comment
