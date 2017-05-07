@@ -20,6 +20,11 @@ because tests shouldn't be written by a tester at all.
 
 <!-- more -->
 
+{% pullquote right %}
+It's not just that there's no future for the classic manually-testing QA person, 
+it's that there's no future for **any** embedded QA person.
+{% endpullquote %}
+
 What brought me to these thoughts 
 was wanting to change functionality on my website, 
 so I went to add a test to cover this new use-case. 
