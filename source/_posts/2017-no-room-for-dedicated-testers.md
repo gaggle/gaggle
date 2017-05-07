@@ -46,10 +46,10 @@ is to increase testability in the production-code itself.
 A QA developer whose job it is to write tests wouldn't change the library, 
 that's something the maintainers of the whole system thinks of. 
 So it's not just that there's no future for the classic manually-testing QA person, 
-it's that there's no future for any embedded QA person. 
+it's that there's no future for **any** embedded QA person. 
 Period! 
 It is only when developers write the logic 
-*and* have to maintain it 
+**and** have to maintain it 
 that pressure is put in the right spot to produce stable, testable systems.
 
 # But... what about quality??
@@ -68,12 +68,12 @@ Think of QA as a mindset,
 and we're looking for a place to put it 
 that sets up the same virtuous pressure as we put on developers 
 when they have to maintain the code they write. 
-We need someone to deeply care about quality, 
-not just because we abstractly know poor quality is bad for business, 
-but because they are *inconvenienced* by the lack of it. 
+We need someone that cares deeply about quality, 
+not just because abstractly we know poor quality is bad for business, 
+but because they are **inconvenienced** by the lack of it. 
 And it must be someone who has the power to do something about it, 
 someone who can affect change once they are fed up with hitting issues. 
-It needs to be a role who deeply uses the product, 
+It needs to be a role who deeply **uses** the product, 
 because who else will find and feel the bugs?
 
 I think I'm describing product owners here, 
