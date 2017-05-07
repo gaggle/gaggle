@@ -60,7 +60,7 @@ a higher-level coordination is needed to keep quality consistent,
 to normalize testing efforts across teams, 
 and to hold developers responsibly to standards if and when we slip into laziness.
 
-To that end I propose we reappropriate QA to mean "Quality Ambassadors”, 
+To that end I like to re-think QA to mean "Quality Ambassadors”, 
 and focus its values not on a position embedded in teams 
 but rather as a set of responsibilities 
 intrinsically woven into the project management structure. 
