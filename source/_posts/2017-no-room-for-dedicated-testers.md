@@ -1,6 +1,7 @@
 ---
 title: No room for dedicated testers
 date: 2017-05-07 11:57:47
+status: alpha
 ---
 I like writing code, 
 but the pressure of future maintenance always weighs on my shoulders. 
