@@ -1,6 +1,15 @@
 "use strict";
 const uiTesting = require("../../ui-testing")
 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 class BasePage {
   open(path = null) {
     if (path)
@@ -20,8 +29,7 @@ class BasePage {
       width: size.width,
       height: size.height
     })
-    const windowSize = browser.windowHandleSize()
-    console.debug(windowSize.value)
+    sleep(1000)
   }
 }
 
