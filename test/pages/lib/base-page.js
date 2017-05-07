@@ -16,10 +16,12 @@ class BasePage {
   }
 
   size(size) {
-    return browser.setViewportSize({
+    browser.setViewportSize({
       width: size.width,
       height: size.height
     })
+    const windowSize = browser.windowHandleSize()
+    console.debug(windowSize.value)
   }
 }
 
