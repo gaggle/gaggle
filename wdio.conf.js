@@ -1,26 +1,11 @@
 "use strict";
-const slBrowsers = require("./saucelabs-browsers")
-
 const SECOND = 1000
 const MINUTE = 60 * SECOND
 
 let capabilities = [{browserName: "phantomjs"}]
 let maxInstances = 40
-if (process.env.SAUCE_USERNAME) {
-  const browsers = slBrowsers({
-    "name-prefix": "ui",
-    tunnel: process.env.TRAVIS_JOB_NUMBER,
-    build: process.env.TRAVIS_BUILD_NUMBER
-  })
-
-  capabilities = Object.keys(browsers).map((key) => browsers[key])
-  maxInstances = 5
-}
 
 exports.config = {
-  user: process.env.SAUCE_USERNAME,
-  key: process.env.SAUCE_ACCESS_KEY,
-
   specs: ["./test/ui/**/*.js"],
   maxInstances,
   capabilities,
@@ -34,7 +19,7 @@ exports.config = {
   waitforTimeout: 10 * SECOND,
   connectionRetryTimeout: 90 * SECOND,
   connectionRetryCount: 3,
-  services: [process.env.SAUCE_USERNAME ? "sauce" : "phantomjs"],
+  services: ["phantomjs"],
   framework: "mocha",
   reporters: ["dot"],
   reporterOptions: {
