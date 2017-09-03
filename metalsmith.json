@@ -1,0 +1,27 @@
+{
+  "title": "Jon Lauridsen",
+  "menu": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
+    }
+  ],
+  "authors": {
+    "gaggle": {
+      "name": "Jon Lauridsen",
+      "blurb": "Software developer, and automated quality assurance aficionado.",
+      "pic": "/img/jon.jpg",
+      "twitter": "https://twitter.com/jonlauridsen",
+      "github": "https://github.com/gaggle"
+    }
+  },
+  "ga": "UA-22672641-1",
+  "disqus": {
+    "prod": "//jonlauridsen.disqus.com",
+    "dev": "//jonlauridsen-dev.disqus.com"
+  }
+}
