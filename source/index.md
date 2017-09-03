@@ -1,4 +1,5 @@
+---
 layout: index
-class: home
+type: home
 ---
 I write testable code
