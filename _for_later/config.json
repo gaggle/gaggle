@@ -1,0 +1,48 @@
+{
+  "title": "Jon Lauridsen",
+  "author": "Jon Lauridsen",
+  "language": "en",
+  "url": "http://jonlauridsen.com",
+  "root": "/",
+  "permalink": "blog/:year/:title/",
+  "archive_dir": "blog",
+  "new_post_name": "year-:title.md",
+  "filename_case": 1,
+  "post_asset_folder": true,
+  "highlight": {
+    "enable": true,
+    "line_number": true,
+    "auto_detect": false,
+    "tab_replace": true
+  },
+  "theme": "simplicity-itself",
+  "theme_config": {
+    "menu": {
+      "Home": "/",
+      "Blog": "/blog/"
+    },
+    "ga": "UA-22672641-1"
+  },
+  "archive_generator": {
+    "yearly": false,
+    "monthly": false,
+    "daily": false
+  },
+  "toc": {
+    "maxdepth": 3,
+    "class": "toc",
+    "anchor": {
+      "symbol": "#"
+    }
+  },
+  "markdown": {
+    "render": {
+      "html": true,
+      "breaks": false,
+      "linkify": true,
+      "typographer": true,
+      "quotes": "“”‘’"
+    }
+  }
+}
+
