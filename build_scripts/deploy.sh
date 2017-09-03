@@ -1,5 +1,4 @@
-#!/bin/bash
-set -e # exit with nonzero exit code if anything fails
+#!/bin/bash -e
 
 cd public
 git init

@@ -1,5 +1,4 @@
-#!/bin/bash
-set -e # exit with nonzero exit code if anything fails
+#!/bin/bash -e
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
   echo "Deploying..."
