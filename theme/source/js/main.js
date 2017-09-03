@@ -1,10 +1,10 @@
 "use strict";
-var gascrolldepth = require("gascrolldepth")
-var moment = require("moment")
-var helpers = require("../components/js/helpers")
+const gascrolldepth = require("gascrolldepth")
+const moment = require("moment")
+const helpers = require("../../js/helpers")
 
-var update_datetime = function (el) {
-  var d = el.getAttribute("data-datetime")
+const update_datetime = function (el) {
+  let d = el.getAttribute("data-datetime")
   el.textContent = moment(d).fromNow()
 }
 

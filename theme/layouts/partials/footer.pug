@@ -1,0 +1,6 @@
+section.site-info
+  - var now = moment()
+  .last-build
+    = "Updated "
+    abbr.relative-time(title=now.format("MMMM Do YYYY, HH:mm:ss"), data-datetime=now.format())= now.format("MMM Do")
+  .credit Powered by #[a(href="https://metalsmith.io") Metalsmith]

@@ -1,0 +1,15 @@
+extends partials/layout
+include mixins/paginator
+include mixins/post
+
+block header
+  include partials/header
+
+block content
+  +listPosts(posts)
+
+block pagination
+  +archivePagination(locals)
+
+block footer
+  include partials/footer

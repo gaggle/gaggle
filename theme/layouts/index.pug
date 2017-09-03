@@ -1,0 +1,14 @@
+extends ./partials/layout
+
+block header
+  include partials/header
+
+block content
+  h1.title= title || config.title
+  if description
+    .description= description
+  if contents
+    .content!= contents
+
+block footer
+  include partials/footer

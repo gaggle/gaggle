@@ -1,7 +1,7 @@
 !=js("main")
-if theme.ga
+if config.ga
   script
     | window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    | ga('create', '#{theme.ga}', 'auto');
+    | ga('create', '#{config.ga}', 'auto');
     | ga('send', 'pageview');
   script(async src='https://www.google-analytics.com/analytics.js')

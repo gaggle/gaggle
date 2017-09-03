@@ -1,0 +1,28 @@
+extends partials/layout
+include mixins/author
+include mixins/disqus
+include mixins/paginator
+include mixins/post
+
+block header
+  include partials/header
+
+block content
+  +post(locals)
+
+block pagination
+  +postPagination(locals)
+
+block comments
+  unless config.disqus === undefined
+    - var disqusHost = process.env.DISQUS_PROD ? config.disqus.prod : config.disqus.dev
+    +disqus(disqusHost, locals)
+
+append scripts
+  unless config.disqus === undefined
+    - var disqusHost = process.env.DISQUS_PROD ? config.disqus.prod : config.disqus.dev
+    +disqusEnd(disqusHost)
+
+block footer
+  +author(author)
+  include partials/footer

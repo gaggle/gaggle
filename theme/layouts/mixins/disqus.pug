@@ -1,8 +1,8 @@
-mixin disqus(host)
+mixin disqus(host, page)
   div#disqus_thread
   script
     | var disqus_config = function () {
-    |     this.page.url = "#{page.permalink}"
+    |     this.page.url = "#{page.path}"
     |     this.page.identifier = "#{page.path}"
     | };
     | (function() {
@@ -13,5 +13,5 @@ mixin disqus(host)
     | })();
   noscript Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
-mixin disqus-end(host)
-  script#dsq-count-scr(async src="#{host}/count.js")
+mixin disqusEnd(host)
+  script#dsq-count-scr(async src=`${host}/count.js`)

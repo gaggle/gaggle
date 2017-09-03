@@ -1,0 +1,31 @@
+mixin listPosts(pages)
+  ul.posts.post-list
+    each item in pages
+      - var has_excerpt_cls = item.excerpt ? "has-excerpt" : ""
+      li.post-list-item
+        +_article(item)
+          +_itemInfo(item)
+          .content(class=has_excerpt_cls)
+            != item.excerpt || item.contents
+          a.read-more(href= url_for(item), class=has_excerpt_cls)!= __("more")
+
+mixin post(page)
+  +_article(page)
+    +_itemInfo(page)
+    .content
+      != page.contents
+
+mixin _article(item)
+  article.post-block(class=item.status, data-datetime=item.date, data-post-status=item.status)
+    block
+
+mixin _itemInfo(item)
+  .info
+    h1.title
+      - var target = item.link ? "_blank" : "_self"
+      a.link(href=item.link || url_for(item), target=target)
+        = item.title || item.slug
+    .date
+      = full_date(item.date, "ll")
+    if published === false
+      .post-state.unpublished(title="Unpublished") Unpublished

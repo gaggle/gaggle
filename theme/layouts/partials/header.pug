@@ -1,0 +1,11 @@
+ul.nav.nav-list
+  each el in config.menu
+    - var active_cls = is_active(url_for(locals), el.url) ? "active" : ""
+    li.nav-list-item(class=[el.name.toLowerCase(), active_cls].join(" "))
+      a.link(
+      class=active_cls
+      href=el.url
+      target=url_is_internal(el.url) ? "_blank" : "_self"
+      )
+        = el.name
+hr

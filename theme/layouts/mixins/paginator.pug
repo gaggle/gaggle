@@ -1,0 +1,12 @@
+mixin archivePagination(page)
+  +_prevAndNextLinks(page, "prev", "next")
+
+mixin postPagination(page)
+  +_prevAndNextLinks(page, "prev_post", "next_post")
+
+mixin _prevAndNextLinks(item, prev_key, next_key)
+  .paginator
+    if item.previous && item.previous.published !== false
+      a.prev(href=url_for(item.previous))!= titlecase(__(prev_key))
+    if item.next && item.next.published !== false
+      a.next(href=url_for(item.next))!= titlecase(__(next_key))
