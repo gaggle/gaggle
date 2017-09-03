@@ -1,0 +1,4 @@
+---
+layout: posts
+type: blogs
+---
