@@ -1,7 +1,0 @@
-{
-  "name": "hexo-theme-simplicity-itself",
-  "version": "0.0.0",
-  "description": "A hexo theme for a website frontpage with a blog",
-  "main": "index.js",
-  "license": "MIT"
-}
