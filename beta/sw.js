@@ -10,20 +10,20 @@ workbox.precaching.precacheAndRoute([
     "revision": "dff096cf5d04c7e8cdb245ab9c284b22"
   },
   {
-    "url": "/beta/_nuxt/5ebf6becf0ba49ed0500.js",
-    "revision": "0109d7a57d4184856d190c80c3a67043"
-  },
-  {
     "url": "/beta/_nuxt/67b26ac8da655dd41757.js",
     "revision": "1069c122f171d1320616a5eda2e40efa"
+  },
+  {
+    "url": "/beta/_nuxt/7f0a2689b9f9b3df47d8.js",
+    "revision": "eb04a17e549317ed5d85902d2740603b"
   },
   {
     "url": "/beta/_nuxt/81f0ab19aadf97caf119.js",
     "revision": "a8f4ca3a1d626e7d3c17c4fec5f13c23"
   },
   {
-    "url": "/beta/_nuxt/bad691530a1c09595c12.js",
-    "revision": "ce5db378c44b372754291eb97ee71283"
+    "url": "/beta/_nuxt/9d84358fc36735420ba7.js",
+    "revision": "ad19daa177fd393a386fcf823009a453"
   }
 ], {
   "cacheId": "gaggle",
