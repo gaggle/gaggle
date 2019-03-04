@@ -46,7 +46,7 @@
         "xl": [5117, 2177]
       },
       "style": {
-        "textShadow": "0 1px 1px #FFD166, .8px -1.5px 1px #1F132B",
+        "textShadow": ".8px -1.5px 1px #1F132B, 0 .75px 1px rgba(255, 209, 102, 0.7), 0 1px 3px rgba(223, 68, 34, 0.5)",
         "color": "#E6E6E6",
         "backgroundColor": "rgba(20, 20, 20, 0.4)"
       }
@@ -71,7 +71,9 @@
         "xl": [5117, 2177]
       },
       "style": {
-        "textShadow": "0 1px 1px #D9CEB1, 0 -1px 2px #8A8371",
+        "textShadow2": "0 1px 1px #D9CEB1, 0 -1px 2px #8A8371",
+        "textShadow": "0 0 7px rgba(253, 255, 242, 0.8), 0 0 14px rgba(255, 243, 231, 0.7), 0 0 21px rgba(255, 241, 223, 0.6)",
+
         "backgroundColor": "rgba(170, 170, 170, 0.3)"
       }
     },
@@ -85,7 +87,7 @@
         "xl": [5117, 2177]
       },
       "style": {
-        "textShadow": "0 1px 0 #B34035",
+        "textShadow": "0 .25px 0 rgba(179, 64, 53, 1), 0 .5px 0 rgba(179, 64, 53, 0.9), 0 .75px 0 rgba(179, 64, 53, 0.8), 0 1px 0 rgba(179, 64, 53, 0.7), 0 1.25px 0 rgba(179, 64, 53, 0.6)",
         "color": "#E6E6E6",
         "backgroundColor": "rgba(20, 20, 20, 0.4)"
       }
@@ -100,9 +102,9 @@
         "xl": [5117, 2177]
       },
       "style": {
-        "textShadow": "1px 1px 1px #97854c",
+        "textShadow": "-.7px -1px 1px #97854c, 0 0 3px rgba(253, 255, 242, .5), 0 0 7px rgba(253, 255, 242, 0.25)",
         "color": "white",
-        "backgroundColor": "rgba(20, 20, 20, 0.4)"
+        "backgroundColor": "rgba(41, 41, 41, 0.4)"
       }
     }
   ]
