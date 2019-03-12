@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+DIR=$(cd `dirname $0` && pwd)
+KEY_PATH="${DIR}/deploy_key"
+
+# Register SSH key
+chmod 600 ${KEY_PATH}
+eval `ssh-agent -s`
+ssh-add ${KEY_PATH}
+
+# Permanently add key to SSH config
+echo -e "Host github.com\n\tStrictHostKeyChecking no\n\tIdentityFile ${KEY_PATH}\n" >> ~/.ssh/config
+
+# Configure Git
+git config --global user.email "travis@travis-ci.org"
+git config --global user.name "Travis CI"

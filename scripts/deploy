@@ -1,0 +1,92 @@
+#!/bin/bash -e
+
+function erase_tmp_folder {
+  rm -rf ${TMP_FOLDER}
+}
+
+if [[ -z "${TMP_FOLDER}" ]]; then
+  TMP_FOLDER="$(mktemp -d)"
+  trap erase_tmp_folder EXIT
+else
+  # Cast user-provided path to an absolute path
+  mkdir -p ${TMP_FOLDER}
+  TMP_FOLDER=$(cd ${TMP_FOLDER} && pwd)
+  rm -rf ${TMP_FOLDER} && mkdir -p ${TMP_FOLDER}
+fi
+
+set -u
+
+SOURCE_FOLDER=$(cd "$(dirname "${1}")"; pwd)/$(basename "${1}")
+TARGET_BRANCH=${2}
+BETA=
+while test $# -gt 0; do
+        case "$1" in
+                -h|--help)
+                        echo "usage: deploy source_path target_branch [options]"
+                        echo " "
+                        echo "options:"
+                        echo "-h, --help show brief help"
+                        echo "-b, --beta deploy to /beta folder"
+                        echo " "
+                        echo "For debugging, use TMP_FOLDER environment variable"
+                        echo "to control which folder is used for git operations"
+                        exit 0
+                        ;;
+                -b|--beta)
+                        BETA=1
+                        shift
+                        ;;
+                *)
+                        shift
+                        ;;
+        esac
+done
+
+REPO="$(git config remote.origin.url)"
+SHA="$(git rev-parse --verify HEAD)"
+SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
+
+if [[ ! -d "${SOURCE_FOLDER}" ]]; then
+    echo "Can't find folder '${SOURCE_FOLDER}'"
+    exit 1
+fi
+
+echo "Deploying '${SOURCE_FOLDER}' to '${REPO}#${TARGET_BRANCH}' (via '${TMP_FOLDER}')"
+
+# Clone the existing repo into temporary folder
+git clone --single-branch --branch ${TARGET_BRANCH} ${REPO} ${TMP_FOLDER}
+
+cd ${TMP_FOLDER}
+
+if [[ -z "${BETA}" ]]; then
+  # Production deploy
+  # Clean out the beta stage (to not leave it around forever)
+  rm -rf ${TMP_FOLDER}/beta
+  git add --all .
+  git commit --message "Delete beta: ${SHA}"
+
+  # Clean out existing contents
+  rm -rf ${TMP_FOLDER}/*
+
+  # Grab the new content
+  mkdir -p ${TMP_FOLDER} && cp -r ${SOURCE_FOLDER}/* ${TMP_FOLDER}
+  COMMIT_MSG="Deploy build to ${TARGET_BRANCH}: ${SHA}"
+else
+  # Beta deploy
+  # Clean out existing contents
+  rm -rf ${TMP_FOLDER}/beta/*
+
+  # Grab the new content
+  mkdir -p ${TMP_FOLDER}/beta && cp -r ${SOURCE_FOLDER}/* ${TMP_FOLDER}/beta
+  COMMIT_MSG="Deploy beta to ${TARGET_BRANCH}: ${SHA}"
+fi
+
+# Push changes
+if [[ -n "$(git status --porcelain)" ]]; then
+    git add --all .
+    git commit --message "${COMMIT_MSG}"
+    git push ${SSH_REPO} ${TARGET_BRANCH}
+    echo ${COMMIT_MSG}
+else
+    echo "No changes for ${TARGET_BRANCH}; exiting"
+fi
