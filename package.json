@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf .nuxt/ coverage/ dist/",
-    "deploy": "npm run generate && scripts/deploy dist/ gh-pages",
+    "deploy": "BASE_URL=http://jonlauridsen.com npm run generate && scripts/deploy dist/ gh-pages",
     "deploy:beta": "BASE_URL=http://jonlauridsen.com/beta/ npm run generate && scripts/deploy dist/ gh-pages --beta",
     "dev": "nuxt",
     "generate": "nuxt generate && cp -R coverage dist/ || true",
