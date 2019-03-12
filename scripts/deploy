@@ -63,7 +63,7 @@ if [[ -z "${BETA}" ]]; then
   # Clean out the beta stage (to not leave it around forever)
   rm -rf ${TMP_FOLDER}/beta
   git add --all .
-  git commit --message "Delete beta: ${SHA}"
+  git commit --message "Delete beta: ${SHA}" || true  # Just proceed if there's no delete-beta to commit
 
   # Clean out existing contents
   rm -rf ${TMP_FOLDER}/*
