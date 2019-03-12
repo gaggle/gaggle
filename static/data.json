@@ -1,0 +1,109 @@
+{
+  "themes": [
+    {
+      "name": "calibration",
+      "sizes": {
+        "s": [768, 328],
+        "m": [1536, 654],
+        "l": [3072, 1308],
+        "xl": [5117, 2177]
+      },
+      "debug": true
+    },
+    {
+      "name": "clouds",
+      "sizes": {
+        "s": [768, 328],
+        "m": [1536, 654],
+        "l": [3072, 1308],
+        "xl": [5117, 2177]
+      },
+      "style": {
+        "textShadow": "-1px -1px 1px #A69779, 1px 1px 2px #4A7FA8"
+      }
+    },
+    {
+      "name": "dog",
+      "position": "18% 100%",
+      "sizes": {
+        "s": [768, 328],
+        "m": [1536, 654],
+        "l": [3072, 1308],
+        "xl": [5117, 2177]
+      },
+      "style": {
+        "textShadow": "-1px -.5px 1px #20160F",
+        "color": "#E6E6E6",
+        "backgroundColor": "rgba(50, 50, 50, 0.2)"
+      }
+    },
+    {
+      "name": "dusk",
+      "sizes": {
+        "s": [768, 328],
+        "m": [1536, 654],
+        "l": [3072, 1308],
+        "xl": [5117, 2177]
+      },
+      "style": {
+        "textShadow": ".8px -1.5px 1px #1F132B, 0 .75px 1px rgba(184, 153, 76, 1), 0 .75px 3px rgba(254, 165, 65, 0.8), 0 1px 3px rgba(223, 68, 34, 0.7)",
+        "color": "#fff8cf",
+        "backgroundColor": "rgba(20, 20, 20, 0.3)"
+      }
+    },
+    {
+      "name": "grid",
+      "sizes": {
+        "s": [768, 328],
+        "m": [1536, 654],
+        "l": [3072, 1308],
+        "xl": [5117, 2177]
+      },
+      "debug": true
+    },
+    {
+      "name": "hospital",
+      "position": "20% 90%",
+      "sizes": {
+        "s": [768, 328],
+        "m": [1536, 654],
+        "l": [3072, 1308],
+        "xl": [5117, 2177]
+      },
+      "style": {
+        "textShadow": "0 0 7px rgba(253, 255, 242, 0.8), 0 0 14px rgba(255, 243, 231, 0.7), 0 0 21px rgba(255, 241, 223, 0.6)",
+        "backgroundColor": "rgba(170, 170, 170, 0.3)"
+      }
+    },
+    {
+      "name": "streaky",
+      "position": "center 100%",
+      "sizes": {
+        "s": [768, 328],
+        "m": [1536, 654],
+        "l": [3072, 1308],
+        "xl": [5117, 2177]
+      },
+      "style": {
+        "textShadow": "0 .25px 0 rgba(179, 64, 53, 1), 0 .5px 0 rgba(179, 64, 53, 0.9), 0 .75px 0 rgba(179, 64, 53, 0.8), 0 1px 0 rgba(179, 64, 53, 0.7), 0 1.25px 0 rgba(179, 64, 53, 0.6)",
+        "color": "#E6E6E6",
+        "backgroundColor": "rgba(20, 20, 20, 0.4)"
+      }
+    },
+    {
+      "name": "sunrise",
+      "position": "85% 68%",
+      "sizes": {
+        "s": [768, 328],
+        "m": [1536, 654],
+        "l": [3072, 1308],
+        "xl": [5117, 2177]
+      },
+      "style": {
+        "textShadow": "-.7px -1px 1px #97854c, 0 0 3px rgba(253, 255, 242, .5), 0 0 7px rgba(253, 255, 242, 0.25)",
+        "color": "white",
+        "backgroundColor": "rgba(41, 41, 41, 0.4)"
+      }
+    }
+  ]
+}
