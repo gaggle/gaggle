@@ -24,9 +24,10 @@ $ npm run lint
 ## Deploying
 This site is under continous deployment, no manual steps are involved.
 
-Pull-request are automatically deployed to `http://jonlauridsen.com/beta/`
+Pull-request are automatically deployed to http://jonlauridsen.com/beta/
 (redeployed on every commit from any pull-request, so multiple pull-requests will clobber each other)
 
-Commits to master are automatically deployed to `http://jonlauridsen.com`.
+Commits to master are automatically deployed to http://jonlauridsen.com
+(and will delete any active beta deploy)
 
 See [Nuxt.js docs](https://nuxtjs.org) for details on the underlying site-framework.
