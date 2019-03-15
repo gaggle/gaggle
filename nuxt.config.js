@@ -8,8 +8,8 @@ module.exports = {
   mode: 'universal',
 
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: pkg.name,
     meta: [
@@ -24,39 +24,39 @@ module.exports = {
   },
 
   /*
-  ** Customize the progress-bar color
-  */
+   ** Customize the progress-bar color
+   */
   loading: { color: '#fff' },
 
   /*
-  ** Global CSS
-  */
+   ** Global CSS
+   */
   css: ['~/assets/css/main.sass'],
 
   /*
-  ** Plugins to load before mounting the App
-  */
+   ** Plugins to load before mounting the App
+   */
   plugins: [],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
   /*
-  ** Axios module configuration
-  */
+   ** Axios module configuration
+   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     baseURL: BASE_URL
   },
 
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     postcss: {
       preset: {
@@ -66,8 +66,8 @@ module.exports = {
       }
     }
     /*
-    ** You can extend webpack config here
-    */
+     ** You can extend webpack config here
+     */
   },
   router: {
     base: NUXT_BASE

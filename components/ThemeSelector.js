@@ -8,7 +8,7 @@ export default {
     userSelectedTheme: { type: String, required: false }
   },
   computed: {
-    themesByName: function() {
+    themesByName: function () {
       return keyBy(this.themes, o => o.name)
     }
   },
@@ -17,7 +17,7 @@ export default {
       theme: undefined
     }
   },
-  beforeMount: function() {
+  beforeMount: function () {
     this.userSelectedTheme
       ? this.pickTheme(this.userSelectedTheme)
       : this.pickRandomTheme()
@@ -27,12 +27,12 @@ export default {
     return children.length > 1 ? h('div', children) : children
   },
   methods: {
-    pickRandomTheme: function() {
+    pickRandomTheme: function () {
       const themes = filter(this.themes, o => !o.debug)
       const rand = Math.floor(Math.random() * themes.length)
       this.pickTheme(themes[rand].name)
     },
-    pickTheme: function(name) {
+    pickTheme: function (name) {
       this.theme = merge(
         {
           ext: 'jpg',
