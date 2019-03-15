@@ -10,7 +10,7 @@
     "deploy:beta": "BASE_URL=http://jonlauridsen.com/beta/ npm run generate && scripts/deploy dist/ gh-pages --beta",
     "dev": "nuxt",
     "generate": "nuxt generate && cp -R coverage dist/ || true",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore . || true",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint:fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
     "test": "jest && npm run lint"
   },
