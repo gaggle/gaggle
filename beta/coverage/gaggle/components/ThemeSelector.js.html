@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/12</span>
+        <span class='fraction'>12/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>8/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>10/10</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -103,38 +103,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -148,39 +148,39 @@ export default {
     userSelectedTheme: { type: String, required: false }
   },
   computed: {
-    themesByName: <span class="fstat-no" title="function not covered" >fu</span>nction () {
-<span class="cstat-no" title="statement not covered" >      return keyBy(this.themes, <span class="fstat-no" title="function not covered" >o </span>=&gt; <span class="cstat-no" title="statement not covered" >o.name)</span></span>
+    themesByName: function () {
+      return keyBy(this.themes, o =&gt; o.name)
     }
   },
-<span class="fstat-no" title="function not covered" >  da</span>ta() {
-<span class="cstat-no" title="statement not covered" >    return {</span>
+  data() {
+    return {
       theme: undefined
     }
   },
-  beforeMount: <span class="fstat-no" title="function not covered" >fu</span>nction () {
-<span class="cstat-no" title="statement not covered" >    this.userSelectedTheme</span>
-      ? this.pickTheme(this.userSelectedTheme)
+  beforeMount: function () {
+    this.userSelectedTheme
+      ? <span class="branch-0 cbranch-no" title="branch not covered" >this.pickTheme(this.userSelectedTheme)</span>
       : this.pickRandomTheme()
   },
-<span class="fstat-no" title="function not covered" >  re</span>nder(h) {
-    const children = <span class="cstat-no" title="statement not covered" >this.$scopedSlots.default({ theme: this.theme })</span>
-<span class="cstat-no" title="statement not covered" >    return children.length &gt; 1 ? h('div', children) : children</span>
+  render(h) {
+    const children = this.$scopedSlots.default({ theme: this.theme })
+    return children.length &gt; 1 ? <span class="branch-0 cbranch-no" title="branch not covered" >h('div', children) </span>: children
   },
   methods: {
-    pickRandomTheme: <span class="fstat-no" title="function not covered" >fu</span>nction () {
-      const themes = <span class="cstat-no" title="statement not covered" >filter(this.themes, <span class="fstat-no" title="function not covered" >o </span>=&gt; <span class="cstat-no" title="statement not covered" >!o.debug)</span></span>
-      const rand = <span class="cstat-no" title="statement not covered" >Math.floor(Math.random() * themes.length)</span>
-<span class="cstat-no" title="statement not covered" >      this.pickTheme(themes[rand].name)</span>
+    pickRandomTheme: function () {
+      const themes = filter(this.themes, o =&gt; !o.debug)
+      const rand = Math.floor(Math.random() * themes.length)
+      this.pickTheme(themes[rand].name)
     },
-    pickTheme: <span class="fstat-no" title="function not covered" >fu</span>nction (name) {
-<span class="cstat-no" title="statement not covered" >      this.theme = merge(</span>
+    pickTheme: function (name) {
+      this.theme = merge(
         {
           ext: 'jpg',
           position: 'center center'
         },
         this.themesByName[name]
       )
-<span class="cstat-no" title="statement not covered" >      console.debug('Activated theme', JSON.parse(JSON.stringify(this.theme)))</span>
+      console.debug('Activated theme', JSON.parse(JSON.stringify(this.theme)))
     }
   }
 }
@@ -190,7 +190,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Mar 15 2019 01:31:18 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Mar 15 2019 02:14:26 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
