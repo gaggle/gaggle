@@ -37,7 +37,7 @@ export default {
     responseData: null
   }),
   computed: {
-    query: function() {
+    query: function () {
       return this.$route.query
     }
   },
@@ -53,7 +53,7 @@ export default {
           console.debug('Got data', JSON.parse(JSON.stringify(data)))
           this.responseData = data
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err)
         })
     }

@@ -10,15 +10,15 @@ export default {
       afterResizedHandler: debounce(this.reportResolution, 500)
     }
   },
-  beforeMount: function() {
+  beforeMount: function () {
     this.onResizeHandler()
     console.debug('Picked intial resolution', this.size)
   },
-  mounted: function() {
+  mounted: function () {
     window.addEventListener('resize', this.onResizeHandler)
     window.addEventListener('resize', this.afterResizedHandler)
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     window.removeEventListener('resize', this.onResizeHandler)
     window.removeEventListener('resize', this.afterResizedHandler)
   },
@@ -27,7 +27,7 @@ export default {
     return children.length > 1 ? h('div', children) : children
   },
   methods: {
-    onResizeHandler: function(ev) {
+    onResizeHandler: function (ev) {
       const QUERIES = {
         m: '(min-width: 768px), (min-height: 328px)',
         l: '(min-width: 1536px), (min-height: 654px)',
@@ -42,7 +42,7 @@ export default {
 
       this.size = size
     },
-    reportResolution: function() {
+    reportResolution: function () {
       console.debug('Picked resolution', this.size)
     }
   }
