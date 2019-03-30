@@ -1,5 +1,5 @@
-const url = require('url')
-const pkg = require('./package')
+import url from 'url'
+import pkg from './package'
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/'
 const NUXT_BASE = new url.URL(BASE_URL).pathname || '/'
