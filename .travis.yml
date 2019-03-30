@@ -15,12 +15,12 @@ jobs:
   - stage: branch
     if: type = push
     script:
-    - npm test && npm run test:submit-cov
+    - npm test && npm run submit-cov
   - stage: pr
     if: type = pull_request
     script:
-    - npm test && npm run test:submit-cov && npm run deploy:beta
+    - npm test && npm run submit-cov && npm run deploy:beta
   - stage: master
     if: branch = master AND type = push
     script:
-    - npm test && npm run test:submit-cov && npm run deploy
+    - npm test && npm run submit-cov && npm run deploy
