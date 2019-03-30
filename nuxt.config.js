@@ -4,8 +4,8 @@ import pkg from './package'
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/'
 const NUXT_BASE = new url.URL(BASE_URL).pathname || '/'
 
-module.exports = {
-  mode: 'universal',
+export default {
+  mode: 'spa',
 
   /*
    ** Headers of the page
