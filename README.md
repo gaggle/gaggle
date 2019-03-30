@@ -6,17 +6,17 @@ Install dependencies:
 $ npm ci
 ```
 
-Local server:
+Local server + constantly running unit tests:
 ``` bash
 $ npm run dev
 ```
 
-Run tests:
+Run tests (also checks for linting-errors):
 ``` bash
 $ npm test
 ```
 
-Fix linting errors:
+Automatically fix linting errors:
 ``` bash
 $ npm run lint:fix
 ```
@@ -25,9 +25,10 @@ $ npm run lint:fix
 This site is under continous deployment, no manual steps are involved.
 
 Pull-request are automatically deployed to http://jonlauridsen.com/beta/
-(redeployed on every commit from any pull-request, so multiple pull-requests will clobber each other)
+(redeployed on every commit from any pull-request, 
+so multiple pull-requests clobber each other)
 
 Commits to master are automatically deployed to http://jonlauridsen.com
-(and will delete any active beta deploy)
+(and automatically deletes any active beta deploys)
 
 See [Nuxt.js docs](https://nuxtjs.org) for details on the underlying site-framework.
