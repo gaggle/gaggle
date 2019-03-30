@@ -1,28 +1,29 @@
 import { mount } from '@vue/test-utils'
-import ImagePreloader from '@/components/ImagePreloader'
+import test from 'ava'
+import ImagePreloader from '../components/ImagePreloader'
+import { waitForPredicate } from './helpers/wait-for'
 
-describe('ImagePreloader', () => {
-  test('is a Vue instance', () => {
-    const wrapper = mount(ImagePreloader, {
-      propsData: {
-        image: 'imagepath'
-      },
-      scopedSlots: {
-        default: ''
-      }
-    })
-    expect(wrapper.isVueInstance()).toBeTruthy()
+test('starts loading', (t) => {
+  const wrapper = mount(ImagePreloader, {
+    propsData: {
+      image: 'thumb.jpg'
+    },
+    scopedSlots: {
+      default: ''
+    }
   })
+  t.is(wrapper.vm.loading, true)
+})
 
-  test('starts in loading state', () => {
-    const wrapper = mount(ImagePreloader, {
-      propsData: {
-        image: 'imagepath'
-      },
-      scopedSlots: {
-        default: ''
-      }
-    })
-    expect(wrapper.vm.loading).toBe(true)
+test('stops loading at some point later', async (t) => {
+  const wrapper = mount(ImagePreloader, {
+    propsData: {
+      image: 'thumb.jpg'
+    },
+    scopedSlots: {
+      default: ''
+    }
   })
+  await waitForPredicate(() => wrapper.vm.loading === false)
+  t.is(wrapper.vm.loading, false)
 })
