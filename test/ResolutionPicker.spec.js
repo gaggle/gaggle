@@ -1,23 +1,29 @@
 import { mount } from '@vue/test-utils'
-import ResolutionPicker from '@/components/ResolutionPicker'
+import test from 'ava'
+import ResolutionPicker from '../components/ResolutionPicker'
 
-window.matchMedia = jest.fn().mockImplementation((query) => {
+window.matchMedia = (query) => {
   return {
-    matches: false,
+    matches: true,
     media: query,
-    onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn()
+    onchange: null
   }
+}
+
+test('mounts with a size', (t) => {
+  const wrapper = mount(ResolutionPicker, {
+    scopedSlots: {
+      default: ''
+    }
+  })
+  t.not(wrapper.vm.size, undefined)
 })
 
-describe('ResolutionPicker', () => {
-  test('is a Vue instance', () => {
-    const wrapper = mount(ResolutionPicker, {
-      scopedSlots: {
-        default: ''
-      }
-    })
-    expect(wrapper.isVueInstance()).toBeTruthy()
+test('queries media for size', (t) => {
+  const wrapper = mount(ResolutionPicker, {
+    scopedSlots: {
+      default: ''
+    }
   })
+  t.is(wrapper.vm.size, 'xl')
 })
