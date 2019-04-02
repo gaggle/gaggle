@@ -1,13 +1,18 @@
 import { mount } from '@vue/test-utils'
-import FSBG from '@/components/FullscreenBackground.vue'
+import test from 'ava'
+import FSBG from '../components/FullscreenBackground.vue'
 
-describe('FSBG', () => {
-  test('is a Vue instance', () => {
-    const wrapper = mount(FSBG, {
-      propsData: {
-        image: 'imagepath'
-      }
-    })
-    expect(wrapper.isVueInstance()).toBeTruthy()
-  })
+test('sets image to component background image', (t) => {
+  const wrapper = mount(FSBG, { propsData: { image: 'foo.bar' } })
+  t.is(wrapper.vm.$el.style['background-image'], 'url(foo.bar)')
+})
+
+test('centers position by default', (t) => {
+  const wrapper = mount(FSBG, { propsData: { image: 'foo.bar' } })
+  t.is(wrapper.vm.$el.style['background-position'], 'center center')
+})
+
+test('sets position to component background position', (t) => {
+  const wrapper = mount(FSBG, { propsData: { image: '', position: 'top' } })
+  t.is(wrapper.vm.$el.style['background-position'], 'top')
 })
