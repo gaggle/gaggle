@@ -1,9 +1,8 @@
 import { mount } from '@vue/test-utils'
-import Nav from '@/components/Nav.vue'
+import test from 'ava'
+import Nav from '../components/Nav.vue'
 
-describe('Nav', () => {
-  test('is a Vue instance', () => {
-    const wrapper = mount(Nav)
-    expect(wrapper.isVueInstance()).toBeTruthy()
-  })
+test('is a Vue instance', (t) => {
+  const wrapper = mount(Nav)
+  t.is(wrapper.isVueInstance(), true)
 })
