@@ -1,9 +1,8 @@
 import { mount } from '@vue/test-utils'
-import Greeting from '@/components/Greeting.vue'
+import test from 'ava'
+import Greeting from '../components/Greeting.vue'
 
-describe('Greeting', () => {
-  test('is a Vue instance', () => {
-    const wrapper = mount(Greeting)
-    expect(wrapper.isVueInstance()).toBeTruthy()
-  })
+test('is a Vue instance', (t) => {
+  const wrapper = mount(Greeting)
+  t.is(wrapper.isVueInstance(), true)
 })
