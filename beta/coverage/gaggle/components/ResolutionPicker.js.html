@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">92.86% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>15/18</span>
+        <span class='fraction'>13/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">41.67% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>5/12</span>
+        <span class='fraction'>6/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">71.43% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>5/7</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">83.33% </span>
+        <span class="strong">92.31% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>15/18</span>
+        <span class='fraction'>12/13</span>
       </div>
     </div>
     <p class="quiet">
@@ -95,10 +95,15 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,24 +111,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,16 +133,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,22 +158,22 @@ export default {
   },
   beforeMount: function () {
     this.onResizeHandler()
-    console.debug('Picked intial resolution', this.size)
+<span class="fstat-no" title="function not covered" >    console.d</span>ebug('Picked intial resolution', this.size)
   },
-  mounted: function () {
+  mounted: function () <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
     window.addEventListener('resize', this.onResizeHandler)
     window.addEventListener('resize', this.afterResizedHandler)
   },
-  beforeDestroy: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >    window.r</span>emoveEventListener('resize', this.onResizeHandler)
-<span class="cstat-no" title="statement not covered" >    window.r</span>emoveEventListener('resize', this.afterResizedHandler)
+  beforeDestroy: function () {
+    window.removeEventListener('resize', this.onResizeHandler)
+    window.removeEventListener('resize', this.afterResizedHandler)
   },
   render(h) {
     const children = this.$scopedSlots.default({ size: this.size })
-    return children.length &gt; 1 ? <span class="branch-0 cbranch-no" title="branch not covered" >h('</span>div', children) : children
+    return <span class="cstat-no" title="statement not covered" >children.l</span>ength &gt; 1 ? h('div', children) : children
   },
-  methods: {
-    onResizeHandler: function (ev) {
+  methods: <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+    onResizeHandler: function (ev) <span class="branch-1 cbranch-no" title="branch not covered" >{</span>
       const QUERIES = {
         m: '(min-width: 768px), (min-height: 328px)',
         l: '(min-width: 1536px), (min-height: 654px)',
@@ -181,15 +181,15 @@ export default {
         // xxl: "(min-width: 2765px)"
       }
       const s = 's'
-      const m = window.matchMedia(QUERIES.m).matches ? 'm' : <span class="branch-1 cbranch-no" title="branch not covered" >null</span>
-      const l = window.matchMedia(QUERIES.l).matches ? 'l' : <span class="branch-1 cbranch-no" title="branch not covered" >null</span>
-      const xl = window.matchMedia(QUERIES.xl).matches ? 'xl' : <span class="branch-1 cbranch-no" title="branch not covered" >null</span>
-      const size = xl || <span class="branch-1 cbranch-no" title="branch not covered" >l || <span class="branch-2 cbranch-no" title="branch not covered" >m</span> || <span class="branch-3 cbranch-no" title="branch not covered" >s</span></span>
+      const m = window.matchMedia(QUERIES.m).matches ? 'm' : null
+      const l = window.matchMedia(QUERIES.l).matches ? 'l' : null
+      const xl = window.matchMedia(QUERIES.xl).matches ? 'xl' : null
+      const size = xl || l || m || s
 &nbsp;
       this.size = size
     },
-    reportResolution: <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >      console.d</span>ebug('Picked resolution', this.size)
+    reportResolution: function () {
+      console.debug('Picked resolution', this.size)
     }
   }
 }
@@ -199,7 +199,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Mar 31 2019 17:18:00 GMT+0000 (Coordinated Universal Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Apr 02 2019 20:40:47 GMT+0000 (Coordinated Universal Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
