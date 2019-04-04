@@ -18,7 +18,7 @@ $ npm test
 
 Automatically fix linting errors:
 ``` bash
-$ npm run lint:fix
+$ npm run lint
 ```
 
 ## Deploying
