@@ -18,7 +18,6 @@ set -u
 
 SOURCE_FOLDER=$(cd "$(dirname "${1}")"; pwd)/$(basename "${1}")
 TARGET_BRANCH=${2}
-BETA=
 while test $# -gt 0; do
         case "$1" in
                 -h|--help)
@@ -26,15 +25,10 @@ while test $# -gt 0; do
                         echo " "
                         echo "options:"
                         echo "-h, --help show brief help"
-                        echo "-b, --beta deploy to /beta folder"
                         echo " "
                         echo "For debugging, use TMP_FOLDER environment variable"
                         echo "to control which folder is used for git operations"
                         exit 0
-                        ;;
-                -b|--beta)
-                        BETA=1
-                        shift
                         ;;
                 *)
                         shift
@@ -58,28 +52,13 @@ git clone --single-branch --branch ${TARGET_BRANCH} ${REPO} ${TMP_FOLDER}
 
 cd ${TMP_FOLDER}
 
-if [[ -z "${BETA}" ]]; then
-  # Production deploy
-  # Clean out the beta stage (to not leave it around forever)
-  rm -rf ${TMP_FOLDER}/beta
-  git add --all .
-  git commit --message "Delete beta: ${SHA}" || true  # Just proceed if there's no delete-beta to commit
+# Production deploy
+# Clean out existing contents
+rm -rf ${TMP_FOLDER}/*
 
-  # Clean out existing contents
-  rm -rf ${TMP_FOLDER}/*
-
-  # Grab the new content
-  mkdir -p ${TMP_FOLDER} && cp -r ${SOURCE_FOLDER}/* ${TMP_FOLDER}
-  COMMIT_MSG="Deploy build to ${TARGET_BRANCH}: ${SHA}"
-else
-  # Beta deploy
-  # Clean out existing contents
-  rm -rf ${TMP_FOLDER}/beta/*
-
-  # Grab the new content
-  mkdir -p ${TMP_FOLDER}/beta && cp -r ${SOURCE_FOLDER}/* ${TMP_FOLDER}/beta
-  COMMIT_MSG="Deploy beta to ${TARGET_BRANCH}: ${SHA}"
-fi
+# Grab the new content
+mkdir -p ${TMP_FOLDER} && cp -r ${SOURCE_FOLDER}/* ${TMP_FOLDER}
+COMMIT_MSG="Deploy build to ${TARGET_BRANCH}: ${SHA}"
 
 # Push changes
 if [[ -n "$(git status --porcelain)" ]]; then

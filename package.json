@@ -7,7 +7,6 @@
   "scripts": {
     "clean": "rm -rf .nuxt/ .nyc_output/ coverage/ dist/",
     "deploy": "BASE_URL=https://jonlauridsen.com npm run generate && scripts/deploy dist/ gh-pages",
-    "deploy:beta": "BASE_URL=https://jonlauridsen.com/beta/ npm run generate && scripts/deploy dist/ gh-pages --beta",
     "dev": "concurrently -n nuxt,test nuxt \"ava --watch --timeout=5s\"",
     "generate": "nuxt generate && cp -R coverage dist/ || true",
     "lint": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
