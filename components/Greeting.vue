@@ -12,8 +12,8 @@
         >Say hi</a>, ping me on
         <a
           class="has-text-weight-bold"
-          href="https://twitter.com/jonlauridsen"
-        >Twitter</a>,
+          href="https://mastodon.social/@gaggle"
+        >Mastodon</a>,
         <span class="force-newline">or check
           <a class="has-text-weight-bold" href="https://www.linkedin.com/in/jonlauridsen">LinkedIn</a> and
           <a class="has-text-weight-bold" href="https://github.com/gaggle">GitHub</a>.</span>
