@@ -20,7 +20,7 @@ hooks(['vue', 'js'])
 window.Date = global.Date = Date
 const ASSETS_DIRECTORY = path.join(__dirname, '.')
 
-const WindowImage = function () {
+const WindowImage = function() {
   // Reimplemented the following class:
   // https://github.com/tmpvar/jsdom/blob/master/lib/jsdom/living/nodes/HTMLImageElement-impl.js
   // https://github.com/Automattic/node-canvas#imagesrcbuffer
@@ -29,9 +29,9 @@ const WindowImage = function () {
   let onload
   let onerror
   return {
-    set src(value) {
+    set src (value) {
       // TODO Throw errors to the Image.onerror handler.
-      const onDataLoaded = function (data) {
+      const onDataLoaded = function(data) {
         image = new CanvasImage()
         image.onload = () => {
           if (onload) {
@@ -47,29 +47,29 @@ const WindowImage = function () {
         source = value
       }
       // Fetch the data.
-      fs.readFile(path.join(ASSETS_DIRECTORY, value), function (err, data) {
+      fs.readFile(path.join(ASSETS_DIRECTORY, value), function(err, data) {
         if (err) {
           throw err
         }
         onDataLoaded(data)
       })
     },
-    set onload(handler) {
+    set onload (handler) {
       onload = handler
     },
-    set onerror(handler) {
+    set onerror (handler) {
       onerror = handler
     },
-    get src() {
+    get src () {
       return source
     },
     // TODO Should allows to modify height and width
     // + add natural height and width
     // Cf. https://github.com/tmpvar/jsdom/blob/master/lib/jsdom/living/nodes/HTMLImageElement-impl.js#L51
-    get width() {
+    get width () {
       return image && image.width
     },
-    get height() {
+    get height () {
       return image && image.height
     }
   }
