@@ -10,8 +10,7 @@
     "dev": "concurrently -n nuxt,test nuxt \"ava --watch --timeout=5s\"",
     "generate": "nuxt generate && cp -R coverage dist/ || true",
     "lint": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
-    "test": "nyc -a --reporter=html --reporter=text --reporter=lcov ava --timeout=5s && eslint --ext .js,.vue --ignore-path .gitignore .",
-    "submit-cov": "cat ./coverage/lcov.info | codacy-coverage"
+    "test": "nyc -a --reporter=html --reporter=text --reporter=lcov ava --timeout=5s && eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
